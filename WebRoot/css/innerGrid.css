@@ -1,0 +1,54 @@
+.inner-grid {
+  overflow: auto;
+  margin: 16px;
+  display: none;
+}
+.inner-table {
+  border-top: 1px solid #EEE;
+  border-left: 1px solid #EEE;
+}
+.inner-table .inner-title {
+  background-color: #ebeef7;
+}
+.inner-table .inner-title td {
+  color: #19418A;
+  font-weight: bolder;
+  text-indent: 8px;
+  border-bottom: 2px solid #657FB8;
+  border-right: 1px solid #EEE;
+}
+.inner-table .inner-head td {
+  text-indent: 2px;
+  color: #657FB8;
+  font-weight: bolder;
+  white-space:nowrap;
+  overflow: hidden;
+  border-bottom: 1px solid #EEE;
+  border-right: 1px solid #EEE;
+}
+.inner-table .inner-content td{
+  white-space:nowrap;
+  overflow: hidden;
+  border-bottom: 1px solid #EEE;
+  border-right: 1px solid #EEE;
+}
+.inner-table span{
+  text-overflow: ellipsis;
+  display: block;
+  margin-left: 5px;
+  margin-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ext-tr{ display: none; }
+.ext-td{ /* background-color: #EEE 不知用什么颜色好看*/}
+.shrink {
+    background-position: -20px 0px;
+}
+.expand {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-image: url(../image/ex-sh.gif);
+}

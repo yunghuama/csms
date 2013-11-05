@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+.ajaxupload {
+	position:relative;
+	width:300px;
+	height:50px;
+}
+.ajaxupload-button-addfile {
+  position: absolute;
+  left:0px;
+  top:0px;
+  color:#23508E;
+  height:20px;
+  line-height:20px;
+  width:60px;
+  padding-left:16px;
+  background:transparent url(../image/file.gif) no-repeat left center;
+}
+.ajaxupload-files {
+  position: absolute;
+  top:0px;
+  left:0px;
+  width: 80px;
+  height:20px;
+  filter: alpha(opacity = 0);
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.ajaxupload-content-listfiles {
+	position:absolute;
+	left:0px;
+	top:20px;
+	height:20px;
+}
+.uploaded-files {
+	position:relative;
+	margin-left:3px;
+	height:12px;
+}
+.closerdiv {
+	background: transparent url(../image/file.gif) no-repeat left center;
+}
+.ajaxupload-button-loading {
+	position:absolute;
+	left:80px;
+	top:0px;
+}
+.ajaxupload-button-loading-hidden {
+	display:none;
+}
+.ajaxupload-button-deletor {
+	margin-left:8px;
+}
+.ajaxupload li {
+	list-style:none;
+	display:inline;
+}

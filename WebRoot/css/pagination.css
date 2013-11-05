@@ -1,0 +1,104 @@
+@CHARSET "UTF-8";
+
+.pagination {
+  position: relative;
+  border-top : solid 1px #8DB2E3;
+  width: 100%;
+  height: 26px;
+  background: #F0F0F0 url('../image/Toolbar/tb_bg.png') repeat-x;
+  border-top: solid 1px #B4B4B4;
+  overflow: hidden;
+}
+
+.pagination td {
+  padding: 0px 2px;
+  vertical-align: middle;
+  height: 26px;
+}
+
+.pagination .textfield {
+  padding: 0 3px;
+  background: #FFFFFF url(../image/text-bg.gif) repeat-x 0 0;
+  border: 1px solid #B5B8C8;
+  font-size: 11px;
+  text-align: center;
+  width: 22px;
+}
+
+.pagination div {
+  width:16px;
+  height:17px;
+  padding:0;
+  margin:0;
+  background:transparent;
+  border: 0 none;
+  cursor: pointer;
+  background-image: url(../image/Page/page.gif);
+  background-repeat: no-repeat;
+}
+.pagination .first {
+  background-position: 0px -32px;
+}
+.pagination .first-disabled {
+  background-position: -16px -32px;
+}
+.pagination .prev {
+  background-position: 0px -48px;
+}
+.pagination .prev-disabled {
+  background-position: -16px -48px;
+}
+.pagination .next {
+  background-position: 0px 0px;
+}
+.pagination .next-disabled {
+  background-position: -16px 0px;
+}
+.pagination .last {
+  background-position: 0px -16px;
+}
+.pagination .last-disabled {
+  background-position: -16px -16px;
+}
+
+.pagination .s20 {
+  background-position: 0px -64px;
+}
+.pagination .s20-active {
+  background-position: -16px -64px;
+}
+.pagination .s50 {
+  background-position: 0px -80px;
+}
+.pagination .s50-active {
+  background-position: -16px -80px;
+}
+.pagination .s100 {
+  background-position: 0px -96px;
+  width:22px;
+}
+.pagination .s100-active {
+  background-position: 0px -112px;
+  width:22px;
+}
+
+.pagination .page-refresh {
+  background-position: 0px -127px;
+}
+
+.pagination .pagesizeinfo {
+  color: #444444;
+  text-align:right;
+  width: 10000px;
+  padding-right:5px;
+}
+
+.pagination .spacer {
+  height: 15px;
+  font-size: 1px;
+  border-left: solid 1px #B4B4B4;
+  border-right: solid 1px #FFFFFF;
+  display: block;
+  margin: 0;
+  padding: 0;
+}

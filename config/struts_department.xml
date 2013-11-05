@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="department" extends="role-default" namespace="/system/department">
+    <action name="listTree" class="departmentAction" method="listTree">
+      <result>/system/department/treeDepartment.jsp</result>
+    </action>
+    <action name="listPagination" class="departmentAction" method="listPagination">
+      <result>/system/department/tableDepartment.jsp</result>
+    </action>
+    <action name="toSave" class="departmentAction" method="toSave">
+      <result>/system/department/saveDepartment.jsp</result>
+    </action>
+    <action name="save" class="departmentAction" method="save">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="toUpdate" class="departmentAction" method="toUpdate">
+      <result>/system/department/updateDepartment.jsp</result>
+    </action>
+    <action name="update" class="departmentAction" method="update">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="delete" class="departmentAction" method="delete">
+      <result type="chain">listPagination</result>
+    </action>
+    <action name="select" class="departmentAction" method="selectDepartment">
+      <result>/system/department/selectDepartment.jsp</result>
+    </action>
+  </package>
+</struts>

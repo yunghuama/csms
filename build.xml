@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="veam" default="start" basedir=".">
+	<!--初始属性-->
+	<property name="name" value="VEAM" />
+	<property name="src" value="src" />
+	<property name="classes" value="WebRoot/WEB-INF/classes" />
+	<property name="root" value="WebRoot" />
+	<property name="dist" value="dist" />
+	<property name="lib" value="WebRoot/WEB-INF/lib" />
+	<property name="tomcat" value="E:/tomcat6/webapps" />
+	<!--开始执行-->
+	<target name="start" depends="copy,clean">
+		<echo message="**********************************************" />
+		<echo message="**               新版EAM                     **" />
+		<echo message="**********************************************" />
+		<echo message="**    build    -->  编译Java类                 **" />
+		<echo message="**    init     -->  初始化创建dist临时目录  　  **" />
+		<echo message="**    warfile  -->  为项目生成war文件              　  **" />
+		<echo message="**    copy     -->  将war文件拷贝到tomcat中  　  **" />
+		<echo message="**    clean    -->  清除dist和war            **" />
+		<echo message="**********************************************" />
+	</target>
+	<!--编译Java类文件-->
+	<target name="build" description="编译Java类文件">
+		<mkdir dir="${dist}" />
+		<javac srcdir="${src}" destdir="${classes}" classpath="${classpath}" debug="on">
+			<classpath>
+				<pathelement path="${classpath}" />
+				<fileset dir="${lib}">
+					<include name="*.jar" />
+				</fileset>
+				<pathelement path="${classes}" />
+			</classpath>
+		</javac>
+	</target>
+	<!--将WebRoot中的文件拷贝到dist-->
+	<target name="init" depends="build">
+		<mkdir dir="${dist}" />
+		<copy todir="${dist}">
+			<fileset dir="${root}">
+				<exclude name="WEB-INF/classes/com/vwinwork/test" />
+        <exclude name="WEB-INF/lib/" />
+			</fileset>
+		</copy>
+    <copy todir="${dist}/WEB-INF/lib">
+      <fileset dir="${lib}">
+        <include name="*.jar" />
+      </fileset>
+      <fileset dir="${lib}/struts">
+        <include name="*.jar" />
+      </fileset>
+      <fileset dir="${lib}/spring">
+        <include name="*.jar" />
+      </fileset>
+      <fileset dir="${lib}/hibernate">
+        <include name="*.jar" />
+      </fileset>
+      <fileset dir="${lib}/jbpm">
+        <include name="*.jar" />
+      </fileset>
+    </copy>
+	</target>
+	<!--生成war文件-->
+	<target name="warfile" depends="init" description="生成war文件">
+		<war destfile="${name}.war" webxml="${dist}/WEB-INF/web.xml">
+			<fileset dir="${dist}">
+				<exclude name="WEB-INF/web.xml" />
+				<exclude name="WEB-INF/classes" />
+			</fileset>
+		</war>
+	</target>
+	<!--将war拷贝到tomcat中-->
+	<target name="copy" depends="warfile" description="将war文件拷贝到tomcat中">
+		<copy todir="${tomcat}">
+			<fileset file="${name}.war" />
+		</copy>
+	</target>
+	<!--清除dist,war-->
+	<target name="clean" description="清除dist,war">
+		<delete dir="${dist}" />
+		<delete file="${name}.war" />
+	</target>
+</project>

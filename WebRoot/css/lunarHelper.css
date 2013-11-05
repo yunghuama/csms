@@ -1,0 +1,67 @@
+html,body,img,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,table
+{
+	margin:0px;
+	padding:0px;
+	border:0px;
+}
+.lunarPanel {
+	width:100%;
+	height:100%;
+}
+.lunarPanel .head {
+	position:relative;
+	width:123px;
+	height:36px;
+	background:url("../image/desktop/lunar.png") no-repeat;
+	text-align:center;
+	
+}
+.lunarPanel .head .year{
+	font:12px Arial,Sans-serif;
+	color:white;
+	margin-top:15px;
+	position:absolute;
+	left:40px;
+}
+
+.lunarPanel .content {
+	text-align:center;
+	border:1px solid #4567A1;
+	height:130px;
+}
+.content table {
+	width : 100%;
+}
+.lunarPanel .month {
+	font-size:14px;
+	width:15%;
+	word-wrap: break-word;
+	float : left;
+	font:Arial,Sans-serif;
+	font-weight:blod;
+}
+.lunarPanel .day {
+	font-size:40px;
+	float : left;
+	width:68%;
+	font:Arial,Sans-serif;
+	font-weight:900;
+}
+.lunarPanel .week {
+	font-size:14px;
+	width:12%;
+	float : left;
+	word-wrap: break-word;
+	font:Arial,Sans-serif;
+	font-weight:blod;
+}
+.lunarPanel .lunarMonth {
+	clear : both;
+	width:100%;
+}
+.lunarPanel .lunarYear {
+}
+.lunarPanel .lunarFes {
+	color:#DA731C;
+
+}

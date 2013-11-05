@@ -1,0 +1,162 @@
+.tableColumn {
+  overflow: hidden;
+  background-color: #E7E7E7;
+}
+.tableColumn table {
+  width: 100%;
+}
+.tableContent table {
+  width: 100%;
+}
+.tableColumn table tr td {
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+  border-left: solid 1px #F2F3F5;
+  border-right: solid 1px #B4B4B4;
+  border-bottom: solid 1px #B4B4B4;
+  border-top: solid 1px #F2F3F5;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.tableColumn table tr td input {
+  width: 13px;
+  height: 13px;
+}
+
+.tableContent {
+  overflow: auto;
+  background-color: #FFFFFF;
+}
+
+.tableContent table {
+  /*table-layout: fixed;*/
+}
+
+.tableContent table tr.row {
+  cursor:default;
+}
+
+.tableContent table tr.group {
+  background-color: #E3EAF2;
+  font-weight: bold;
+  color: #3764B0;
+}
+
+.tableContent table tr.group td {
+  border-bottom: solid 2px #677FB2;
+  border-left:none;
+  border-right: solid 1px #D5D5D5;
+}
+
+.tableContent table tr.group td input {
+  vertical-align: text-bottom;
+  *vertical-align: middle;
+}
+
+.tableContent table tr td {
+  border-bottom: solid 1px #D5D5D5;
+  border-left: solid 1px #FFFFFF;
+  border-right: solid 1px #D5D5D5;
+  line-height: 25px;
+  height: 25px;
+  white-space:nowrap;
+  overflow: hidden;
+}
+
+.tableContent table tr td span {
+  display: block;
+  margin-left: 5px;
+  margin-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.tableContent table tr td.box {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tableContent table tr td.box input {
+  width: 13px;
+  height: 13px;
+}
+
+.tableContent table tr td.box .more-operate {
+  cursor: pointer;
+}
+
+.tableContent table tr td.num {
+  background-color: #F0F0F0;
+  border-left: solid 1px #F0F0F0;
+  text-align: center;
+}
+
+.tableContent .selected td {
+  border-left: solid 1px #F2F3F5;
+  background-color: #DFE7F5;
+}
+
+.tableContent .selected td.num {
+  background-color: #677FB2;
+  border-left: solid 1px #677FB2;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+.tableContent table tr td.cantDelete {
+  background-color: #FF9999;
+  border-left: solid 1px #FF9999;
+}
+
+.search-div {
+  position:absolute;
+  top:27px;
+  width:100%;
+  background-color: #EFEFEF;
+  border-top:solid 1px #FFFFFF;
+  display:none;
+}
+.search-div .search-condition {
+  padding:10px;
+}
+.search-div .search-condition table tr td {
+  height:26px;
+  line-height:26px;
+}
+.search-div .search-condition table tr .c-left {
+  width:100px;
+  text-align:right;
+  padding-right:5px;
+  font-weight:700;
+}
+.search-div .search-split {
+  height:1px;
+  line-height:1px;
+  font-size:1;
+  background-color:#739CCF;
+  border-bottom:solid 1px #FFFFFF;
+  margin:5px 10px;
+}
+.search-div .search-commit {
+  height:26px;
+  border-top:solid 1px #335294;
+  border-bottom:solid 1px #335294;
+  background-color:#6B85B7;
+  padding-left:5px;
+  padding-top:5px;
+}
+.search-div .search-commit .search-button {
+  text-decoration:none;
+  color:#000000;
+  background:transparent url("../image/search-button.gif") no-repeat;
+  height:21px;
+  line-height:21px;
+  text-align:center;
+  display:block;
+  margin-right:5px;
+  width:60px;
+  border:0;
+  cursor:pointer;
+  float:left;
+}

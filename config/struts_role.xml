@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="role" extends="role-default" namespace="/system/role">
+    <action name="list" class="roleAction" method="list">
+        <result>/system/role/listRole.jsp</result>
+    </action>  
+    <action name="listTree" class="roleAction" method="listTree">
+        <result>/system/role/treeRole.jsp</result>
+    </action>  
+    <action name="listPagination" class="roleAction" method="listPagination">
+      <result>/system/role/tableRole.jsp</result>
+    </action>
+    <action name="toSave" class="roleAction" method="toSave">
+      <result>/system/role/saveRole.jsp</result>
+    </action>
+    <action name="save" class="roleAction" method="save">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="toUpdate" class="roleAction" method="toUpdate">
+      <result>/system/role/updateRole.jsp</result>
+    </action>
+    <action name="update" class="roleAction" method="update">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="toSaveUFO" class="roleAction" method="toSaveUFO">
+      <result>/system/role/saveUFO.jsp</result>
+    </action>
+    <action name="listModuleTree" class="roleAction" method="listModuleTree">
+      <result>/system/role/saveTreeUFO.jsp</result>
+    </action>
+    <action name="listRoleUFO" class="roleAction" method="listRoleUFO">
+      <result>/system/role/saveTableUFO.jsp</result>
+      <result name="help">/system/role/help.html</result>
+    </action>
+    <action name="listModuleOperate" class="roleAction" method="listModuleOperate">
+      <result>/system/role/tableOperate.jsp</result>
+    </action>
+    <action name="listModuleField" class="roleAction" method="listModuleField">
+      <result>/system/role/tableField.jsp</result>
+    </action>
+    <action name="listRoleDepartmentUsers" class="roleAction" method="listRoleDepartmentUsers">
+      <result>/system/role/tableUsers.jsp</result>
+    </action>
+    <action name="listRoleDepartments" class="roleAction" method="listRoleDepartments">
+      <result>/system/role/tableUsers.jsp</result>
+    </action>
+    <action name="listRoleDataUsers" class="roleAction" method="listRoleDataUsers">
+      <result>/system/role/tableUsers.jsp</result>
+    </action>
+    <action name="listRoleDataDepartments" class="roleAction" method="listRoleDataDepartments">
+      <result>/system/role/tableDepartments.jsp</result>
+    </action>
+    <action name="listRoleUsers" class="roleAction" method="listRoleUsers">
+      <result>/system/role/tableRoleUsers.jsp</result>
+    </action>
+    <action name="toUpdateRoleModuleField" class="roleAction" method="toUpdateRoleModuleField">
+      <result>/system/role/updateRoleModuleField.jsp</result>
+    </action>
+    <action name="updateRoleModuleField" class="roleAction" method="updateRoleModuleField">
+      <result>/system/role/ruleSetDone.jsp</result>
+    </action>
+    <action name="toUpdateScopeDataVisible" class="roleAction" method="toUpdateScopeDataVisible">
+      <result>/system/role/updateScopeDataVisible.jsp</result>
+    </action>
+    <action name="delete" class="roleAction" method="delete">
+      <result type="chain">listPagination</result>
+    </action>
+    <action name="toUpdateScopeDeptVisible" class="roleAction" method="toUpdateScopeDeptVisible">
+      <result>/system/role/updateScopeDeptVisible.jsp</result>
+    </action>
+  </package>
+  
+</struts>

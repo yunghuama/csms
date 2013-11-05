@@ -1,0 +1,152 @@
+/*********************** Toolbar工具栏部分 ***********************/
+.toolbar {
+  position: relative;
+	overflow: hidden;
+  white-space: nowrap;
+  background: #EFEFEF url(../image/Toolbar/tb_bg.png) repeat-x;
+  width: 100%;
+  padding: 2px 0;
+	height: 22px;
+}
+.toolbar-border-top {
+	border-top: solid 1px #B3B3B3;
+}
+.toolbar-border-bottom {
+	border-bottom: solid 1px #B3B3B3;
+}
+.toolbar-border-both {
+  border-top: solid 1px #B3B3B3;
+  border-bottom: solid 1px #B3B3B3;
+}
+/* 整个面板table */
+.toolbar-table {
+  float: left;
+}
+/* 左侧面板td */
+.toolbar-left {
+  float: left;
+}
+/* 右侧面板td */
+.toolbar-right {
+float: right;
+}
+/* 左侧空格 */
+.toolbar-left-spacer {
+  width: 5px;
+}
+/* 右侧空格 */
+.toolbar-right-spacer {
+  width: 5px;
+}
+.toolbar-cell {
+  height: 15px;
+}
+
+
+/*********************** Seperater分隔符部分 ***********************/
+.toolbar-seperater {
+  height: 17px;
+  font-size: 1px;
+  border-left: solid 1px #B3B3B3;
+  border-right: solid 1px #FFFFFF;
+  display: block;
+  margin: 2px;
+  padding: 0;
+}
+
+
+/*********************** Button按钮部分 ***********************/
+.toolbar-button-table {
+	border: solid 1px transparent;
+	color: #333333;
+	font-weight: normal;
+    cursor: pointer;
+	_border: 0px;/* NST(set border 0px) */
+}
+.toolbar-button-table .toolbar-button-center {
+	_padding: 1px;/* NST('padding 1px' act as 'border') */
+}
+.toolbar-button-table .toolbar-button-left,.toolbar-button-table .toolbar-button-right {
+  width: 2px;
+}
+.toolbar-button-table .toolbar-button-disabled {
+  cursor: no-drop;
+  opacity: 0.3;
+}
+
+.toolbar-button-table .toolbar-button-center div {
+	vertical-align: middle;
+	white-space: nowrap;
+	height: 20px;
+	line-height: 20px;
+	float: left;
+	vertical-align: baseline;
+}
+
+.toolbar-button-table .toolbar-button-center .toolbar-button-icon {
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+}
+
+/* START 鼠标滑过 START */
+.toolbar-button-over {
+	border: solid 1px #657FB8;
+    background-color: #DCE0EB;
+	color: #1E3F82;
+}
+/* END 鼠标滑过 END */
+
+/* START 鼠标按下 START */
+.toolbar-button-down {
+	border: solid 1px #334F88;
+    background-color: #50699F;
+	color: #FFFFFF;
+}
+/* END 鼠标按下 END */
+
+/* NST: fix for IE6 not support 'transparent' */
+.toolbar-button-over .toolbar-button-center {
+  _padding: 0px;/*NST(remove padding)*/
+}
+.toolbar-button-down .toolbar-button-center {
+  _padding: 0px;/*NST(remove padding)*/
+}
+
+/*********************** Filters快速过滤按钮组部分 ***********************/
+.toolbar-filter-table {
+	position: absolute;
+	right: 2px;
+	top: 2px;
+}
+.toolbar-filter-table .filter-center {
+}
+.toolbar-filter-table .filter-center a {
+  height: 20px;
+  line-height: 20px;
+	width: 20px;
+	background-repeat: no-repeat;
+  display: block;
+  cursor: pointer;
+}
+.toolbar-filter-table .center-active {
+	border: solid 1px #335294;
+  background-color: #50699F;
+}
+
+/*********************** TextField文本框部分 ***********************/
+.toolbar-textfield {
+}
+.toolbar-textfield-content {
+	height: 18px;
+	line-height: 18px;
+	padding:0;
+	margin:0;
+	border: solid 1px #A6B2CA;
+	font-size: 12px;
+}
+.toolbar-textfield-label {
+	height: 20px;
+	line-height: 20px;
+	float: left;
+}

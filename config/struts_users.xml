@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="users" extends="role-default" namespace="/system/users">
+  	<action name="listTree" class="usersAction" method="listTree">
+      <result>/system/user/treeUser.jsp</result>
+    </action>
+    <action name="listPagination" class="usersAction" method="listPagination">
+      <result>/system/user/tableUser.jsp</result>
+    </action>
+    <action name="toSave" class="usersAction" method="toSave">
+      <result>/system/user/saveUser.jsp</result>
+    </action>
+    <action name="save" class="usersAction" method="save">
+      <interceptor-ref name="vStack" />
+      <interceptor-ref name="fileUpload" />
+      <param name="savePath">/userpic</param>
+      <result name="input">/index.jsp</result>
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="toUpdate" class="usersAction" method="toUpdate">
+      <result>/system/user/updateUser.jsp</result>
+    </action>
+    <action name="update" class="usersAction" method="update">
+      <interceptor-ref name="vStack" />
+      <interceptor-ref name="fileUpload" />
+      <param name="savePath">/userpic</param>
+      <result name="input">/index.jsp</result>
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="delete" class="usersAction" method="delete">
+      <result type="chain">listPagination</result>
+    </action>
+    <action name="listUsersRole" class="usersAction" method="listUsersRole">
+      <result>/system/user/tableUsersRole.jsp</result>
+    </action>
+  </package>
+</struts>

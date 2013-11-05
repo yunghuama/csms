@@ -1,0 +1,84 @@
+@CHARSET "UTF-8";
+
+.afView {
+  overflow: hidden;
+}
+.afView h3 {
+  float: left;
+  height: 26px;
+  line-height: 26px;
+  display: inline;
+  margin-left: 10px;
+}
+
+.upFix {
+  width: 76px;
+  height: 30px;
+  margin-left: 10px;
+  position: relative;
+  overflow: hidden;
+  
+  left:0px;
+  top:0px;
+  /** background-color:red; */
+}
+
+.uploadBtn {
+  position: absolute;
+  left:0px;
+  top:0px;
+  color: #23508E;
+  height: 30px;
+  line-height: 30px;
+  width: 60px;
+  padding-left:16px;
+  background: transparent url(../image/file.gif) no-repeat left center;
+}
+
+.uploadFile {
+  position: absolute;
+  top:0px;
+  width: 80px;
+  font-size: 30px;
+  filter: alpha(opacity = 0);
+  -moz-opacity: 0;
+  opacity: 0;
+}
+
+.fileContent {
+}
+
+.fileContent .aFile {
+  border-top: solid 1px #CCCCCC;
+}
+.fileContent .rename {
+  margin-left: 5px;
+}
+.fileContent .inputHover {
+  margin-left: 5px;
+  color: #AAAAAA;
+}
+
+.fileContent .uploadPath {
+  background-color: #F5F5F5;
+  padding: 5px 0px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.fileContent .uploadPath span {
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 16px;
+  background: url('../image/file.gif') no-repeat left center;
+}
+
+.fileContent .uploadPath img {
+  margin-right: 2px;
+  vertical-align: middle;
+}
+
+.fileContent .deletor {
+  cursor: pointer;
+  margin-left: 10px;
+}

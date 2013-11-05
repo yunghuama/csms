@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  
+  <package name="systemAjax" extends="json-default" namespace="/system/ajax">
+  
+    <action name="listUsersByCondition" class="usersAjaxAction" method="listUsersByCondition">
+      <result type="json">
+        <param name="root">userList</param>
+      </result>
+    </action>
+    <action name="listMetaUsers" class="usersAjaxAction" method="listMetaUsers">
+      <result type="json">
+        <param name="root">userList</param>
+      </result>
+    </action>
+    <action name="validateAccountName" class="usersAjaxAction" method="validateAccountName">
+      <result type="json">
+        <param name="root">state</param>
+      </result>
+    </action>
+    <action name="deleteAttachedFile" class="attachedFileAjaxAction" method="deleteAttachedFile">
+      <result type="json">
+      	<param name="root">deleteSuccess</param>
+      </result>
+    </action>
+    <action name="saveAttachedFile" class="attachedFileAjaxAction" method="saveAttachedFile">
+      <param name="savePath">/uploads</param>
+      <result type="json">
+      <param name="root">listAttachedFile</param>
+      </result>
+    </action>
+    <action name="saveRole" class="roleAjaxAction" method="saveRole">
+      <result type="json"></result>
+    </action>
+    <action name="saveRoleOperate" class="roleAjaxAction" method="saveRoleOperate">
+      <result type="json">
+        <param name="root">webIdList</param>
+      </result>
+    </action>
+    <action name="saveRoleModuleUsers" class="roleAjaxAction" method="saveRoleModuleUsers">
+      <result type="json">
+        <param name="root">idList</param>
+      </result>
+    </action>
+    <action name="saveRoleModuleDepartments" class="roleAjaxAction" method="saveRoleModuleDepartments">
+      <result type="json">
+        <param name="root">idList</param>
+      </result>
+    </action>
+    <action name="saveRoleUsers" class="roleAjaxAction" method="saveRoleUsers">
+      <result type="json">
+        <param name="root">idList</param>
+      </result>
+    </action>
+    <action name="saveUsersRole" class="usersAjaxAction" method="saveUsersRole">
+      <result type="json">
+        <param name="root">idList</param>
+      </result>
+    </action>
+    <action name="deleteRoleModuleField" class="roleAjaxAction" method="deleteRoleModuleField">
+      <result type="json">
+        <param name="root">webIdList</param>
+      </result>
+    </action>
+    <action name="updateRoleModuleDepartments" class="roleAjaxAction" method="updateRoleModuleDepartments">
+      <result type="json"></result>
+    </action>
+    <action name="updateScopeDataVisible" class="roleAjaxAction" method="updateScopeDataVisible">
+      <result type="json">idList</result>
+    </action>
+    <action name="findOtherUsersOperate" class="metaAjaxAction" method="findOtherUsersOperate">
+      <result type="json">
+        <param name="root">useable</param>
+      </result>
+    </action>
+    <action name="deleteValidate" class="deleteValidateAjaxAction" method="deleteValidate">
+      <result type="json">
+        <param name="root">cantDeleteList</param>
+      </result>
+    </action>
+    <action name="updateIntercomToRead" class="intercomAjaxAction" method="updateIntercomToRead">
+      <result type="json">
+        <param name="root">result</param>
+      </result>
+    </action>
+    <action name="findNoReadCount" class="intercomAjaxAction" method="findNoReadCount">
+      <result type="json">
+        <param name="root">noread</param>
+      </result>
+    </action>
+    <action name="findNoRead" class="intercomAjaxAction" method="findNoRead">
+      <result type="json">
+        <param name="root">intercomList</param>
+      </result>
+    </action>
+    <action name="findNoReadByType" class="intercomAjaxAction" method="findNoReadByType">
+      <result type="json">
+        <param name="root">result</param>
+      </result>
+    </action>
+    <action name="updateFlag" class="intercomAjaxAction" method="updateFlag">
+      <result type="json">
+        <param name="root">result</param>
+      </result>
+    </action>
+    
+    <action name="validateDictName" class="dictionaryAjaxAction" method="validateDictName">
+      <result type="json">
+        <param name="root">state</param>
+      </result>
+    </action>
+    <action name="validateRoleName" class="roleAjaxAction" method="validateRoleName">
+      <result type="json">
+        <param name="root">state</param>
+      </result>
+    </action>
+    <action name="changePassword" class="usersAjaxAction" method="changePassword">
+      <result type="json">
+        <param name="root">state</param>
+      </result>
+    </action>
+    <action name="checkLogin" class="webServiceLoginAjaxAction" method="checkLogin">
+      <result type="json">
+        <param name="root">okFlag</param>
+      </result>
+    </action>
+    <action name="updateScopeDeptVisible" class="roleAjaxAction" method="updateScopeDeptVisible">
+      <result type="json">idList</result>
+    </action>
+    <action name="addLinkRecordDict" class="dictionaryAjaxAction" method="addLinkRecordDict">
+      <result type="json">
+        <param name="root">optionKey</param>
+      </result>
+    </action>
+  </package>
+  
+</struts>

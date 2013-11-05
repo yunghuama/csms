@@ -1,0 +1,15 @@
+ .productTb {
+    background-color: #E7E7E7;
+    width: 100%;
+  }
+  .productTb tr td {
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+  border-left: solid 1px #F2F3F5;
+  border-right: solid 1px #B4B4B4;
+  border-bottom: solid 1px #B4B4B4;
+  border-top: solid 1px #F2F3F5;
+  line-height: 26px;
+  white-space: nowrap;
+}

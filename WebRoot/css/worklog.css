@@ -1,0 +1,88 @@
+.worklog-title-left{
+	width:25%;
+    background-color: #EEEFF1;
+    border-bottom: solid 1px #D5D5D5;
+    line-height: 30px;
+    color: #2F4D89;
+    text-align: center;
+}
+.worklog-title-center{
+    width:50%;
+    background-color: #EEEFF1;
+    border-bottom: solid 1px #D5D5D5;
+    line-height: 30px;
+    color: #2F4D89;
+    text-align: center;
+}
+.worklog-title-right{
+    width:25%;
+    background-color: #EEEFF1;
+    border-bottom: solid 1px #D5D5D5;
+    line-height: 30px;
+    color: #2F4D89;
+    text-align: center;
+}
+.worklog-align-left{ text-align: left; border-bottom: solid 1px #D5D5D5; }
+.worklog-align-center{ text-align: center; border-bottom: solid 1px #D5D5D5; }
+.worklog-align-right{ text-align: right; border-bottom: solid 1px #D5D5D5; }
+#beforeTitle{
+    background-color: #F7EFE6;
+    border-top: solid 1px #FFFFFF;
+    border-right: solid 1px #FFFFFF;
+    color: #2F4D89;
+    text-align: right;
+    padding-right: 10px;
+    font-weight:bold;
+}
+#beforeDate{
+    background-color: #FBF5EE;
+    border-top: solid 1px #FFFFFF;
+    text-align: left;
+    padding-left: 5px;
+    word-break:break-all;
+    word-wrap:break-word;
+    overflow:hidden;
+}
+#currentTitle{
+    background-color: #E6F7EF;
+    border-top: solid 1px #FFFFFF;
+    border-right: solid 1px #FFFFFF;
+    color: #2F4D89;
+    text-align: right;
+    padding-right: 10px;
+    font-weight:bold;
+}
+#currentDate{
+    background-color: #EEFBF5;
+    border-top: solid 1px #FFFFFF;
+    text-align: left;
+    padding-left: 5px;
+    word-break:break-all;
+    word-wrap:break-word;
+    overflow:hidden;
+}
+#nextTitle{
+    background-color: #E6EFF8;
+    border-top: solid 1px #FFFFFF;
+    border-right: solid 1px #FFFFFF;
+    color: #2F4D89;
+    text-align: right;
+    padding-right: 10px;
+    font-weight:bold;
+}
+#nextDate{
+    background-color: #EEF4FB;
+    border-top: solid 1px #FFFFFF;
+    text-align: left;
+    padding-left: 5px;
+    word-break:break-all;
+    word-wrap:break-word;
+    overflow:hidden;
+}
+.otherDate{
+    background-color: #EEFBF5;
+    padding-left: 5px;
+    word-break:break-all;
+    word-wrap:break-word;
+    overflow:hidden;
+}

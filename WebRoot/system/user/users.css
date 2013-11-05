@@ -1,0 +1,37 @@
+.w {
+  position: relative;
+  height: 26px;
+  width: 90px;
+  overflow: hidden;
+}
+.p {
+  width: 80px; position: absolute; left: 10px; height: 26px;
+}
+.fileUpload {
+  font-size: 30px;
+  filter: alpha(opacity = 0);
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.f {
+  width: 135px;
+}
+.preview-border {
+  width: 168px;
+  height: 168px;
+  line-height: 168px;
+  border: solid 1px #888888;
+  text-align: center;
+  vertical-align: middle;
+}
+.preview-border img {
+  margin: 0px auto;
+  vertical-align: middle;
+}
+.text_f {
+  padding: 2px 3px;
+  background-color: #FFFFFF;
+  border: 1px solid #A6B2CA;
+  height: 15px;
+  line-height: 15px;
+}

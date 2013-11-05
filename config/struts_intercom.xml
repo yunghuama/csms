@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="intercom" extends="role-default" namespace="/system/intercom">
+    <action name="list" class="intercomAction" method="list">
+      <result>/system/intercom/listIntercom.jsp</result>
+    </action>
+    <action name="listTree" class="intercomAction" method="listTree">
+      <result>/system/intercom/treeIntercom.jsp</result>
+    </action>
+    <action name="listPagination" class="intercomAction" method="listPagination">
+      <result>/system/intercom/tableIntercom.jsp</result>
+    </action>
+     <action name="toSave" class="intercomAction" method="toSave">
+      <result>/system/intercom/saveIntercom.jsp</result>
+    </action>
+    <action name="save" class="intercomAction" method="save">
+      <interceptor-ref name="defaultStack" />
+      <interceptor-ref name="fileUpload" />
+      <param name="savePath">/uploads</param>
+      <result name="input">/index.jsp</result>
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="updateReadFlag" class="intercomAction" method="updateReadFlag">
+      <result type="chain">listPagination</result>
+    </action>
+    <action name="updateAllReadFlag" class="intercomAction" method="updateAllReadFlag">
+      <result type="chain">listPagination</result>
+    </action>
+    <action name="view" class="intercomAction" method="view">
+      <result>/system/intercom/viewIntercom.jsp</result>
+    </action>
+    <action name="delete" class="intercomAction" method="delete">
+      <result type="chain">listPagination</result>
+    </action>
+    <action name="listViewIntercom" class="intercomAction" method="listViewIntercom">
+      <result>/system/intercom/listViewIntercom.jsp</result>
+    </action> 
+  </package>
+  
+</struts>

@@ -1,0 +1,88 @@
+.blog { overflow: scroll; overflow-x: hidden; padding: 4px;}
+
+.blog-line { overflow: hidden; margin-bottom: 5px;}
+
+.blog-line .blog-date { width: 55px; padding-right:15px; float: left; overflow: hidden; background: url(../image/Blog/blog-date-arrows.gif) no-repeat right 5px;}
+.blog-line .blog-date * { text-align: center; font-weight: 700; border: solid 1px #395A9C;}
+.blog-line .blog-date .blog-date-year { background-color: #395A9C; color: #FFFFFF; height: 20px; line-height: 20px; border-bottom:0;}
+.blog-line .blog-date .blog-date-d { font-size: 20px; height: 28px; line-height: 28px; color: #494949; border-top:0;}
+
+.blog-line .blog-content { padding-top: 5px; width: 400px; background-color: #DCE0EB;}
+.blog-line .blog-personal { overflow: hidden; float:left; padding-bottom: 5px;}
+.blog-line .blog-personal .personal-head { float: left; width: 60px; height: 50px; background-position:center center; background-repeat: no-repeat; background-image:url(1.jpg);}
+.blog-line .blog-personal .blog-data-line { width: 300px; line-height: 24px; overflow: hidden; white-space:normal;}
+.blog-line .blog-personal .blog-data-line span { line-height: 24px;}
+.blog-line .blog-personal .blog-data-line .blog-tags { float:left; line-height: 20px; margin-top: 2px; padding: 0px 5px; color: #FFFFFF; margin-right: 5px;}
+.blog-line .blog-personal .blog-data-line .blog-data-date { white-space:nowrap; color: #686868;}
+.blog-line .blog-personal .blog-data-line .blog-reply-arrows { clear:both; width: 10px; height: 10px; margin-left: 10px; margin-top: 5px; background: url(../image/Blog/blog-reply-arrows.gif) no-repeat;}
+.blog-line .blog-personal .blog-data-line .blog-reply-contents { margin-bottom: 2px;}
+.blog-line .blog-personal .blog-data-line .blog-reply-data { overflow: hidden; vertical-align: middle; margin-left: 5px; line-height: 24px; padding-left: 24px; padding-right: 4px; background: 4px 4px no-repeat; background-color: #FFFFFF;}
+.blog-line .blog-personal .blog-data-line .blog-reply { float: left; clear:both; width: 408px;}
+.blog-line .blog-personal .blog-data-line .blog-reply textarea { width: 400px; height: 200px; filter: alpha(opacity = 0); -moz-opacity: 0; opacity: 0;}
+.blog-line .blog-personal .blog-data-line .blog-reply .reply { height: 24px; line-height: 24px; width: 60px; margin-top: 3px; float: right;}
+.blog-line .blog-personal .blog-data-line .blog-reply .pt { height: 20px; padding:2px; margin-top: 3px; margin-right: 3px; float: right;}
+
+.blog-line ul { float:left; overflow: hidden;}
+.blog-line ul li { list-style:none; display:block;}
+
+.blog-line .blog-content .head-view { float: left; margin-left: 5px; margin-bottom: 5px; width: 50px; height: 76px; position: relative; background: center top no-repeat;}
+.blog-line .blog-content .head-view * { position: absolute; right: 0px; font-weight: 700;}
+.blog-line .blog-content .head-view .realname { bottom: 0px; overflow: hidden; height: 20px; width: 50px; line-height:20px; background-color: #395A9C; color: #FFFFFF; text-align: center;}
+.blog-line .blog-content .head-view .agg-count { bottom: 26px; height: 18px; line-height:18px; padding: 0px 4px; background-color: #CC0000; color: #FFFFFF;}
+.blog-line .blog-content .head-hover .agg-count { background-color: #9BB42D;}
+
+.op-button { width: 20px; height: 20px; float: left; margin-right: 2px; background: url('../image/op.gif') no-repeat; cursor: pointer;}
+.reply-op-button, .pt-img { width: 16px; height: 20px; margin-top: 2px; margin-right: 4px; float: left; background: -126px -240px url('../image/op.gif') no-repeat; cursor: pointer;}
+.pt-img { width: 9px;}
+
+.tags-rect {
+  margin-bottom: 3px;
+  margin-right: 3px;
+  float:left;
+  padding: 0px 5px;
+  color: #FFFFFF;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+  border: solid 2px #FFFFFF;
+  white-space: nowrap;
+}
+.color-rect {
+  width: 16px;
+  height: 16px;
+  float: left;
+  cursor: pointer;
+  margin-right: 1px;
+  margin-top: 1px;
+  border: solid 2px #FFFFFF;
+}
+.color-selected {
+  border: solid 2px #000000;
+}
+.add-tags {
+  clear: left;
+}
+
+.quick-search {
+  margin-top: 4px;
+  margin-left: -4px;
+  padding-top: 4px;
+  padding-left: 4px;
+  border-top: solid 1px #B4B4B4;
+}
+.quick-search ul li {
+  height: 22px;
+  line-height: 22px;
+  cursor: pointer;
+}
+.quick-search ul li a {
+  display: block;
+  margin-right: 4px;
+  padding-left: 20px;
+  text-decoration: none;
+  background: no-repeat 2px 3px;
+  color: #395A9C;
+}
+.quick-search ul li a:hover {
+  background-color: #DCE0EB;
+}

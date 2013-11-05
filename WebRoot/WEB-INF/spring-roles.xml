@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<!-- 采用 OARoleId 代替 -->
+	<bean id="roleMap" class="java.util.concurrent.ConcurrentHashMap">
+      <constructor-arg> 
+        <map>
+          <entry key="admin" value="402881c92ca0977f012ca09978a30001"/>       <!-- 管理员 -->
+          <entry key="xzgl_jn" value="402881373165498501316582287c04de"/>     <!-- 行政管理（济南） -->
+          <entry key="xzgl_sz" value="402881373315a05e01331623740d002d"/>     <!-- 行政管理（深圳） -->
+          <entry key="xzzg_jn" value="f9a5ab6e326bf22e01326c5459540000"/>     <!-- 行政主管（济南） -->
+          <entry key="xzzg_sz" value="402881373315a05e0133163cbff101a0"/>     <!-- 行政主管（深圳） -->
+          <entry key="xzry_jn" value="402881373165498501316584e45004df"/>     <!-- 行政人员（济南） -->
+          <entry key="scry_sz" value="402881373165498501316585a62904e0"/>     <!-- 市场人员（深圳） -->
+          <entry key="xsjl_jn" value="4028813731654985013165867e2a04e1"/>     <!-- 销售经理（济南） -->
+          <entry key="xsjl_sz" value="402881373315a05e01331628051f0050"/>     <!-- 销售经理（深圳） -->
+          <entry key="xsry_jn" value="f9a5ab6e338125b7013382008bc1020b"/>     <!-- 销售人员（济南） -->
+          <entry key="xsry_sz" value="402881373165498501316587023f04e2"/>     <!-- 销售人员（深圳） -->
+          <entry key="jszj_jn" value="402881373165498501316587d96504e3"/>     <!-- 技术总监（济南） -->
+          <entry key="CADjszj_jn" value="402881373165498501316589dfd404e4"/>  <!-- CAD技术总监（济南） -->
+          <entry key="EAMzg_jn" value="40288137316549850131658a338204e5"/>    <!-- EAM主管（济南） -->
+          <entry key="JAVAzg_jn" value="40288137316549850131658aa39104e6"/>   <!-- java产品组主管（济南） -->
+          <entry key="jszcjl_jn" value="40288137316549850131658b8af304e7"/>   <!-- 技术支持经理（济南） -->
+          <entry key="jszcjl_sz" value="402881373315a05e01331630215a00bc"/>   <!-- 技术支持经理（深圳） -->
+          <entry key="swgl_sz" value="402881373315a05e01331624a6050034"/>     <!-- 商务主管（深圳） -->
+          <entry key="cwzg_sz" value="402881373315a05e01331625bd03003b"/>     <!-- 财务主管（深圳） -->
+          <entry key="rszg_sz" value="402881373315a05e0133162665880042"/>     <!-- 人事主管（深圳） -->
+          <entry key="sczg_sz" value="402881373315a05e013316271b1c0049"/>     <!-- 市场主管（深圳） -->
+          <entry key="sjcjzg_jn" value="4028814931cc750f0131cc84bc390002"/>   <!-- 数据采集主管（济南） -->
+          <entry key="zjlzl_sz" value="f9a5ab6e331b37be01331fe08313000f"/>    <!-- 总经理助理（深圳） -->
+          <entry key="jszcry_jn" value="f9a5ab6e338125b7013381eef30e01a7"/>   <!-- 技术支持人员（济南） -->
+          <entry key="zjlms_sz" value="f9a5ab6e338125b7013381f9ab4201c2"/>    <!-- 总经理秘书（深圳） -->
+          <entry key="cwry_jn" value="f9a5ab6e338125b7013381fd9ae301fc"/>     <!-- 财务人员（济南） -->
+          <entry key="cwry_sz" value="f9a5ab6e338125b7013382066c17026b"/>     <!-- 财务人员（深圳） -->
+          <entry key="jszcry_sz" value="f9a5ab6e338125b701338208524b027c"/>   <!-- 技术支持人员（深圳） -->
+          <entry key="JAVAry_jn" value="f9a5ab6e338125b70133820c6f170295"/>   <!-- java组人员（济南） -->
+          <entry key="csry_jn" value="f9a5ab6e338125b70133820e1b6f02a9"/>     <!-- 测试组人员（济南） -->
+          <entry key="3Dry_jn" value="f9a5ab6e338125b70133820fc9ea02b9"/>     <!-- 3D组人员（济南） -->
+          <entry key="sjcjry_jn" value="f9a5ab6e338125b701338211cb2902cc"/>   <!-- 数据采集组人员（济南） -->
+          <entry key="mgry_jn" value="f9a5ab6e338125b701338213498c02dc"/>     <!-- 美工组人员（济南） -->
+          <entry key="swry_sz" value="f9a5ab6e338125b70133821c7b8d02ed"/>     <!-- 商务人员（深圳） -->
+          <entry key="scry_jn" value="f9a5ab6e338125b70133821e041102fe"/>     <!-- 市场人员（济南） -->
+          <entry key="sczg_jn" value="f9a5ab6e339fb6e00133a9d546b00009"/>     <!-- 市场主管（济南） -->
+        </map> 
+      </constructor-arg> 
+    </bean>
+</beans>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="number" extends="role-default" namespace="/csms/number">
+     <action name="list" class="numberAction" method="list">
+      <result>/companycard/number/listNumber.jsp</result>
+    </action>
+    <action name="listA" class="numberAction" method="listA">
+      <result>/companycard/numberA/listNumber.jsp</result>
+    </action>
+    <action name="listTree" class="numberAction" method="listTree">
+      <result>/companycard/number/treeNumber.jsp</result>
+    </action>
+    <action name="listTreeA" class="numberAction" method="listTreeA">
+      <result>/companycard/numberA/treeNumber.jsp</result>
+    </action>
+    <action name="listPagination" class="numberAction" method="listPagination">
+      <result>/companycard/number/tableNumber.jsp</result>
+    </action>
+    <action name="listPaginationA" class="numberAction" method="listPaginationA">
+      <result>/companycard/numberA/tableNumber.jsp</result>
+    </action>
+    <action name="toSave" class="numberAction" method="toSave">
+      <result>/companycard/number/saveNumber.jsp</result>
+    </action>
+    <action name="toImport" class="numberAction" method="toImport">
+      <result>/companycard/number/importNumber.jsp</result>
+    </action>
+    <action name="importXls" class="numberAction" method="importXls">
+      <result name="success">/share/done.jsp</result>
+      <result name="error">/share/failed.jsp</result>
+    </action>
+    <action name="save" class="numberAction" method="save">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="toUpdate" class="numberAction" method="toUpdate">
+      <result>/companycard/number/updateNumber.jsp</result>
+    </action>
+    <action name="toUpdateA" class="numberAction" method="toUpdateA">
+      <result>/companycard/numberA/updateNumber.jsp</result>
+    </action>
+    <action name="update" class="numberAction" method="update">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="updateA" class="numberAction" method="updateA">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="delete" class="numberAction" method="delete">
+      <result type="chain">listPagination</result>
+    </action>
+  </package>
+</struts>

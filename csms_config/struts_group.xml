@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="group" extends="role-default" namespace="/csms/group">
+    <action name="listPagination" class="groupAction" method="listPagination">
+      <result>/companycard/group/tableGroup.jsp</result>
+    </action>
+    <action name="toSave" class="groupAction" method="toSave">
+      <result>/companycard/group/saveGroup.jsp</result>
+    </action>
+    <action name="save" class="groupAction" method="save">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="toUpdate" class="groupAction" method="toUpdate">
+      <result>/companycard/group/updateGroup.jsp</result>
+    </action>
+    <action name="update" class="groupAction" method="update">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="delete" class="groupAction" method="delete">
+      <result type="chain">listPagination</result>
+    </action>
+  </package>
+</struts>

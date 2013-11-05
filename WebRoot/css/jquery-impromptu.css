@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+.jqiwarning .jqi {
+  background-color: #85AADD;
+}
+
+.jqifade {
+  position: absolute;
+  background-color: #333333;
+}
+
+div.jqi {
+  position: absolute;
+  border: solid 1px #315193;
+  background-color: #677FB2;
+  padding: 2px;
+  width: 300px;
+  text-align: left;
+}
+
+div.jqi .jqiclose {
+  float: right;
+  margin: 3px 3px 0 0;
+  cursor: pointer;
+  display: none;
+}
+
+div.jqi .jqicontainer {
+  background-color: #FFFFFF;
+  padding: 3px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+div.jqi .jqimessage {
+  background-color: #677FB2;
+  padding: 10px;
+}
+
+div.jqi .jqibuttons {
+  text-align: center;
+  padding: 5px 0 0 0;
+}
+
+div.jqi button {
+  padding: 1px 3px;
+  margin: 5px 10px;
+}

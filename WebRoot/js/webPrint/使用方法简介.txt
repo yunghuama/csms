@@ -1,0 +1,18 @@
+1、首先安装install_lodop.exe，将其改名为uninstall_lodop.exe则为卸载
+2、在所需页面的head中添加以下代码
+	//引入js
+	<script language="javascript" src="LodopFuncs.js"></script>
+	//获得组件
+	<object id="LODOP" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0> 
+	<embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0 pluginspage="install_lodop.exe"></embed>
+	</object> 
+3、获得组件对象的方法
+	//该方法用于自动判断不同浏览器的控件对象获得方式，参数：1、object对象的id（用于ie下面获得对象） 2、embed对象id（用于非ie下获得对象）
+	var lodop = getLodop(document.getElementById('LODOP'),document.getElementById('LODOP_EM')); 
+4、相关方法介绍
+   1、LODOP.PRINT_INI('任务名称');打印时显示的打印任务名，该方法有一个返回值，会返回打印机的状态
+   2、其它方法见《web打印技术Lodop6.0手册》
+5、打印方法
+   1、PREVIEW();进入打印预览
+   2、PRINT_SETUP();没有预览，直接打印
+   

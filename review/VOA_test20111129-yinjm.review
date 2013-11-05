@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Review id="VOA_test20111129">
+  <ReviewIssue id="GVOIUQER">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-02 :: 09:35:33:171 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:53:10:671 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="173">WebRoot/sales/company/company/tableCompany.jsp</File>
+    <Type>java注释</Type>
+    <Severity>item.severity.label.critical</Severity>
+    <Summary>无说明</Summary>
+    <Description>173行到228行注释整段代码，最好有个小小的说明，为啥注释，为啥保留</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVOJ3O95">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-02 :: 09:42:30:281 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:52:33:234 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="158">WebRoot/sales/company/company/saveCompany.jsp</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>注释说明</Summary>
+    <Description>158行到167行注释掉的代码，如果有保留的价值，加一下说明</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVOYAR2L">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-02 :: 16:47:54:765 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:52:03:656 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="43">voa-src/com/voa/web/action/LinkmanAction.java</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>无说明</Summary>
+    <Description>34行到44行没有对定义的string有个说明，参考Java开发标准规范(Ver 1.5)  5.3，成员注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVOZ0087">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-02 :: 17:07:33:031 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:49:52:906 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>gaoj</AssignedTo>
+    <File line="43">voa-src/com/voa/web/action/MeetingMinutesAction.java</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>没注释</Summary>
+    <Description>32行到44行没注释，参考Java开发标准规范(Ver 1.5)  5.3，成员注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVOZD35B">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-02 :: 17:17:43:343 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-02 :: 17:18:39:921 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>gaoj</AssignedTo>
+    <File line="21">voa-src/com/voa/web/action/MeetingMinutesAction.java</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>不符合规范</Summary>
+    <Description>没有版本说明，参考Java开发标准规范(Ver 1.5)  5.1</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXH0VO9">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:54:16:281 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:55:18:562 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="250">WebRoot/sales/company/company/tableCompany.jsp</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>无函数注释</Summary>
+    <Description>250行 函数注释不规范，参考JavaScript开发标准规范(Ver 1.4)       5.4	函数注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXH2JSB">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:55:34:187 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:55:54:171 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="1">WebRoot/sales/company/company/tableCompany.jsp</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>无版本注释</Summary>
+    <Description>缺少版本注释说明，参考JavaScript开发标准规范(Ver 1.4)   5.1	版权信息注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXH3SCX">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:56:31:953 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:57:24:796 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="199">WebRoot/sales/company/company/saveCompany.jsp</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>函数注释不规范</Summary>
+    <Description>199行到294行 函数注释不规范，参考JavaScript开发标准规范(Ver 1.4)       5.4	函数注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXH53CB">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:57:32:843 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:57:55:656 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="1">WebRoot/sales/company/company/saveCompany.jsp</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>无版本注释</Summary>
+    <Description>缺少版本注释说明，参考JavaScript开发标准规范(Ver 1.4)   5.1	版权信息注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXH75QA">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:59:09:250 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 15:59:34:062 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>gaoj</AssignedTo>
+    <File line="1">WebRoot/office/meeting/meetingMinutes/saveMeetingMinutes.jsp</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>无版本注释</Summary>
+    <Description>缺少版本注释说明，参考JavaScript开发标准规范(Ver 1.4)   5.1	版权信息注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXH8HCO">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:00:10:968 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:00:23:328 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>gaoj</AssignedTo>
+    <File line="1">WebRoot/office/meeting/meetingMinutes/tableMeetingMinutes.jsp</File>
+    <Type>java注释</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>无版本注释</Summary>
+    <Description>缺少版本注释说明，参考JavaScript开发标准规范(Ver 1.4)   5.1	版权信息注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXH8ZKX">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:00:34:593 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:01:33:000 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>gaoj</AssignedTo>
+    <File line="159">WebRoot/office/meeting/meetingMinutes/tableMeetingMinutes.jsp</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>无函数注释</Summary>
+    <Description>159行，缺少函数注释，参考JavaScript开发标准规范(Ver 1.4)       5.4	函数注释</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXHDTWZ">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:04:20:531 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:05:05:531 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>gaoj</AssignedTo>
+    <File line="18">voa-src/com/voa/web/action/FileConvert.java</File>
+    <Type>java语句</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Dead store to directory</Summary>
+    <Description>		File   directory =   new   File( "."); &#13;
+Pattern id: DLS_DEAD_LOCAL_STORE, type: DLS, category: STYLE&#13;
+&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXHFC27">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:05:30:703 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:06:47:343 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>gaoj</AssignedTo>
+    <File line="704">src/com/vwinwork/util/DateTimeHelper.java</File>
+    <Type>java语句</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Dead store to lunar</Summary>
+    <Description>        LunarCalendar lunar = new LunarCalendar(cal);&#13;
+DLS_DEAD_LOCAL_STORE, type: DLS, category: STYLE</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXHHUNX">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:07:28:125 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:08:01:421 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="368">src/com/vwinwork/util/JXLUtil.java</File>
+    <Type>item.label.unset</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Write to static field com.vwinwork.util.JXLUtil.errorList from instance method com.vwinwork.util.JXLUtil.setErrorList(List)</Summary>
+    <Description>		this.errorList = errorList;&#13;
+ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD, type: ST, category: STYLE&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXHJZZR">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:09:08:343 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:09:32:718 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="852">src/com/vwinwork/util/DateTimeHelper.java</File>
+    <Type>java语句</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Result of integer multiplication cast to long</Summary>
+    <Description>        date.setTime(date.getTime() + days* 24 * 60 * 60 * 1000);&#13;
+ICAST_INTEGER_MULTIPLY_CAST_TO_LONG, type: ICAST, category: STYLE&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXHKT3I">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:09:46:062 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:10:25:625 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>mayh</AssignedTo>
+    <File line="831">src/com/vwinwork/util/DateTimeHelper.java</File>
+    <Type>java语句</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary>Result of integer multiplication cast to long</Summary>
+    <Description>		long aa=secs+d*24 * 3600 * 1000;&#13;
+ICAST_INTEGER_MULTIPLY_CAST_TO_LONG, type: ICAST, category: STYLE&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+  <ReviewIssue id="GVXHM7OP">
+    <ReviewIssueMeta>
+      <CreationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:10:51:625 CST</CreationDate>
+      <LastModificationDate format="yyyy-MM-dd :: HH:mm:ss:SSS z">2011-12-08 :: 16:11:16:609 CST</LastModificationDate>
+    </ReviewIssueMeta>
+    <ReviewerId>yinjm</ReviewerId>
+    <AssignedTo>gaoj</AssignedTo>
+    <File line="29">src/com/vwinwork/util/LoginBean.java</File>
+    <Type>java语句</Type>
+    <Severity>item.label.unset</Severity>
+    <Summary> Nullcheck of loginBean at line 29 of value previously dereferenced</Summary>
+    <Description>        synchronized (loginBean) {&#13;
+RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE, type: RCN, category: CORRECTNESS&#13;
+&#13;
+</Description>
+    <Annotation></Annotation>
+    <Revision></Revision>
+    <Resolution>item.label.unset</Resolution>
+    <Status>item.status.label.open</Status>
+  </ReviewIssue>
+</Review>

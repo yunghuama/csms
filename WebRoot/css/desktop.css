@@ -1,0 +1,303 @@
+#desk_left {
+	width: 17%;
+	float: left;
+}
+#desk_center {
+	width: 53%;
+	height: 100%;
+	float: left;
+}
+#desk_right {
+	width: 30%;
+	height: 100%;
+	float: left;
+}
+
+.shortcuts {
+	position: relative;
+    overflow: auto;
+    border: 1px solid #DFDFDF;
+    padding: 8px;
+    height: 100%;
+}
+#shortcutsMgr {
+    position:absolute;
+    right:16px;
+    color: #19418A;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.shortcutTd {
+	width: 50%;
+	height: 100px;
+	text-align: center;
+	font-weight: bolder;
+}
+
+.shortcutWrap {
+	display: block;  /* a标签一定要display:block */
+	margin: 0 auto;
+	width: 64px;
+	height: 64px;
+	/* 领导不喜欢
+	-webkit-box-reflect: below -16px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(.65, transparent), to(white));
+    */
+}
+.shortcut_style {
+	/* 领导不喜欢
+	-webkit-transition-property: zoom,opacity;
+	-webkit-transition: -webkit-transform 0.8s ease-in;
+	*/
+	opacity: 1;
+	zoom: 1;
+}
+    /* 领导不喜欢
+.shortcuts a:hover .shortcut_style{
+	-webkit-transform: rotate(360deg);
+	opacity: 0.6;
+}
+	*/
+
+#news_div .header {
+	width: 100%;
+	height: 30px;
+	line-height: 35px;
+	margin-top: 8px;
+	margin-left: 8px;
+	border-bottom: 2px solid #657FB8;
+}
+#news_div .headerword {
+    float: left;
+	text-indent: 16px;
+	font-weight: bolder;
+	font-stretch: wider;
+	font-size: 14px;
+	color: #19418A;
+}
+#news_div .more {
+	float: right;
+	margin-right: 16px;
+	font-style: italic;
+	cursor: pointer;
+	color: #668B8B;
+	font-size: 11px;
+}
+
+#news_div .content {
+    margin-left: 8px;
+    overflow: auto;
+}
+
+.newsTr1 {
+	height: 25px;
+	background-color: #FFFFFF;
+	white-space: nowrap;
+	color: #666;
+}
+.newsTr1 td{
+    border-bottom: 1px solid #EEE;
+}
+
+.newsTdLeft {
+    width: 40%;
+    padding-left: 10px;
+    overflow: hidden; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.newsTdCenter {
+    width: 35%;
+    padding-left: 10px;
+}
+.newsTdRight {
+    width: 25%;
+    padding-left: 10px;
+}
+.newsTdLeft2 {
+    padding-left: 10px;
+    overflow: hidden; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.newstitle {
+	text-overflow: ellipsis;
+    text-transform: capitalize;
+    text-indent: 4px;
+    cursor: pointer;
+	color: #136EC2;
+}
+
+.news_more {
+	padding-right: 8px;
+}
+
+
+#tabs_div .title_bg{ 
+    background-image:url(../image/desktop/bg_label.gif); 
+    background-repeat:repeat-x; 
+    height:25px; 
+    line-height:25px; 
+    color:#3f60a2; 
+    font-size:14px;
+    border: 1px solid #CFDAE9;
+    margin-left: 8px;
+}
+
+#tabs_div .title_bg .label{ 
+    cursor:pointer;
+    width:110px; 
+    float:left; 
+    border-right:1px solid #CFDAE9; 
+    text-align:center;
+}
+#tabs_div .title_bg .label_selected{ 
+    float:left;
+    text-align:center;
+    cursor:pointer;
+    width:110px; 
+    height:26px; 
+    font-weight:bold; 
+    border-right:1px solid #CFDAE9; 
+    border-bottom:1px solid #FFF; 
+    background-color: #E3EAF5;
+}
+#tabs_body{
+    border: 1px solid #CFDAE9; 
+    border-top: 2px solid #EEE;
+    margin-left: 8px;
+    padding: 0 8px;
+}
+
+.weather_div_title {
+	float: left;
+	width: 30px;
+	height: 80%;
+	background-color: #395A9D;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	margin: 5px 5px;
+	padding-top: 5px;
+}
+
+.todoList_title {
+	width: 50%;
+	height: 30px;
+	font-weight: bold;
+	color: #4B6FA9;
+	background-color: #F9F9F9;
+	border: solid 1px #DFDFDF;
+	padding-left: 10px;
+	cursor: default;
+}
+.todoList_title_over {
+	border-bottom: 0;
+	background-color: #FFF;
+}
+
+#todoList_div {
+    margin-right: 4px;
+    margin-left:8px;
+    clear: both;
+}
+
+#todoList_yesterday {
+	background-color: #FFFFFF;
+	border: solid 1px #DFDFDF;
+	border-top: 0;
+	padding-left: 5px;
+	overflow: auto;
+}
+
+#todoList_today {
+	display: none;
+	background-color: #FFFFFF;
+	border: solid 1px #DFDFDF;
+    border-top: 0;
+	padding-left: 5px;
+	overflow: auto;
+}
+
+#todoList_today .activityList {
+	width:100%;
+}
+.activityList tr {
+	height:22px;
+}
+.activityList .title {
+	padding-left:10px;
+}
+.activityList .haveBg {
+	background:#F2F2F2;
+}
+.activityList .mouseOver {
+	font-weight:blod;
+	font-style :italic ;
+}
+
+#queryLink_div_show {
+	float: left;
+	width: 70%;
+}
+
+#queryLink_div_show table tr td{
+	height: 35px;
+	color: #4B6FA9;
+	font-size: 14px;
+	text-align: center;
+	padding-left: 5px;
+}
+#lunar_div {
+	float:left;
+}
+
+
+
+#query {
+    background-color: #EEF4FA;
+    border-top: 0;
+    height: 70px;
+    overflow: auto;
+    color: #4f6eaf;
+    margin-top: 8px;
+}
+#query .header {
+    font-weight: bolder;
+    text-indent: 8px;
+    height: 20px;
+    line-height: 20px;
+    cursor: default;
+    margin-bottom: 8px;
+}
+#query .item {
+    height: 20px;
+    cursor: pointer;
+}
+#query .item:hover {
+    -webkit-transform: scale(1.05);
+}
+#query .item-icon {
+    background: url('../image/desktop/icos.gif') no-repeat ; 
+    height: 20px;
+    width: 20px;
+    float: left;
+}
+#query .air.item-icon {
+    background-position: 0 0;
+}
+#query .train {
+    background-position: -20px 0;
+}
+#query .map {
+    background-position: -40px 0;
+}
+#query .cellphone {
+    background-position: 0 -20px;
+}
+#query .bus {
+    background-position: -20px -20px;
+}
+#query .delivery {
+    background-position: -40px -20px;
+}
+

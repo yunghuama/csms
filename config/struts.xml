@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <constant name="struts.action.extension" value="v" />
+  <constant name="struts.i18n.encoding" value="UTF-8"/>
+  <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+  <constant name="struts.ui.theme" value="simple"/>
+  <constant name="struts.multipart.maxSize" value="1024000000000"/>
+  <constant name="struts.devMode" value="false"/>
+  <constant name="struts.configuration.xml.reload" value="true"/>
+  <constant name="struts.objectFactory" value="spring"/>
+  
+  <!-- 系统管理 -->
+  <include file="struts-default.xml"/>
+  <include file="struts_*.xml"/>
+  
+  <package name="sysLogin" extends="struts-default">
+    <action name="login" class="loginAction" method="login">
+      <result type="redirect">/</result>
+      <result name="passwordWrong" type="redirect">/login.jsp?PW=1</result>
+      <result name="stateFalse" type="redirect">/login.jsp?PW=2</result>
+    </action>
+    <action name="logout" class="loginAction" method="logout">
+      <result type="redirect">/login.jsp</result>
+    </action>
+     <action name="showDeskTop" class="loginAction" method="showDeskTop">
+      <result>/system/workspace/index.jsp</result>
+    </action>
+  </package>
+  
+  <package name="fileDownload" extends="role-default">
+    <action name="down" class="fileDownloadAction">
+      <result name="success" type="stream">
+        <param name="contentType">${contentType}</param>
+        <param name="inputName">inputStream</param>
+        <param name="contentDisposition">attachment;filename="${fileName}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+      <result name="failure">/share/downloadFail.jsp</result>
+    </action>
+    <action name="tempUpload" class="fileUploadAction" method="tempUpload">
+      <interceptor-ref name="defaultStack" />
+      <interceptor-ref name="fileUpload" />
+      <param name="savePath">/filetemp</param>
+      <result name="input">/index.jsp</result>
+      <result>/share/uploadSuccess.jsp</result>
+    </action>
+  </package>
+  
+</struts>

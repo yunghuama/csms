@@ -1,0 +1,43 @@
+.x-autocomplete-main {
+  border: 1px solid #A6B2CA;
+  background-color: #FFF;
+  padding: 5px 8px;
+  font-size: 14px;
+  cursor: default;
+  overflow: auto;
+  position: absolute;
+}
+.x-autocomplete-item-top {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.x-autocomplete-item-top .listtitle {
+  font-weight: 600;
+  margin-right: 10px;
+  color: #053998;
+  float: left;
+}
+.x-autocomplete-item-top .listnoresult {
+  color: #C00;
+  float: right;
+  font-style: italic;
+  margin-right: 2px;
+}
+.x-autocomplete-item-top .listresult {
+  margin-right: 2px;
+  float: right;
+  color: #7A7A7A;
+  font-style: italic;
+}
+.x-autocomplete-item {
+  padding: 3px;
+  height: 16px;
+  line-height: 16px;
+}
+.x-autocomplete-hover {
+  background-color: #657FB8;
+  color: #FFF;
+  font-weight: bold;
+}

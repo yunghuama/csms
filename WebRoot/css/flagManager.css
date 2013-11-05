@@ -1,0 +1,95 @@
+html,body,img,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,table{
+	margin:0px;
+	padding:0px;
+	border:0px;
+	list-style-type : none;
+}
+.baseContent {
+	width:100px;
+	height:200px;
+	position:absolute;
+	background-color:white;
+	border:solid 1px #657FB8;
+}
+.baseContent .title {
+	text-align:center;
+	margin:5px;
+	background-color:#cccccc;
+}
+
+.baseContent .title span {
+	height:20px;
+	color:black;
+}
+.mouseOver {
+	background: #657FB8;
+	cursor:pointer;
+}
+.content li span {
+	height:20px;
+	padding-left:20px;
+	margin-left:5px;
+}
+/*»ÒÆì*/
+.color_0 {
+	color:#ADADAC;
+	background:url("../image/flag.gif");
+	background-position:0 -140px;
+	background-repeat : no-repeat;
+}
+/*ºìÆì*/
+.color_1 {
+	color:#F71F34;
+	background:url("../image/flag.gif");
+	background-position:0 -160px;
+	background-repeat : no-repeat;
+}
+/*ÂÌÆì*/
+.color_2 {
+	color:#49C73A;
+	background:url("../image/flag.gif");
+	background-position:0 0px;
+	background-repeat : no-repeat;
+}
+/*³ÈÆì*/
+.color_3 {
+	color:#F78B1F;
+	background:url("../image/flag.gif");
+	background-position:0 -20px;
+	background-repeat : no-repeat;
+}
+/*À¶Æì*/
+.color_4 {
+	color:#43C2DB;
+	background:url("../image/flag.gif");
+	background-position:0 -40px;
+	background-repeat : no-repeat;
+}
+/*·ÛÆì*/
+.color_5 {
+	color:#F2A8DE;
+	background:url("../image/flag.gif");
+	background-position:0 -60px;
+	background-repeat : no-repeat;
+}
+/*ÇàÆì*/
+.color_6 {
+	color:#19B1B5;
+	background:url("../image/flag.gif");
+	background-position:0 -80px;
+	background-repeat : no-repeat;
+}
+/*»ÆÆì*/
+.color_7 {
+	color:#E5D806;
+	background:url("../image/flag.gif");
+	background-position:0 -100px;
+	background-repeat : no-repeat;
+}
+/*×ÏÆì*/
+.color_8 {
+	color:#D687FF;
+	background:url("../image/flag.gif");
+	background-position:0 -120px;
+	background-repeat : no-repeat;
+}

@@ -1,0 +1,105 @@
+#vMsgDiv {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  display:none;
+  height:330px;
+  width:400px;
+  z-index: 95;
+}
+#vMsg {
+  position: absolute;
+  right: 20px;
+  top: 7px;
+  width: 340px;
+  height: 250px;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+  z-index: 95;
+  padding: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#vMsgShadow {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  width: 356px;
+  height: 296px;
+  background-color: black;
+  border: 1px solid black;
+  z-index: 94;
+  color: green;
+  filter:alpha(opacity=50);
+  -moz-opacity:0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+}
+#vMsgArrow {
+  position: absolute;
+  right: 333px;
+  top: 0;
+  width: 17px;
+  height: 9px;
+  background-image: url('../image/index/arrow.gif');
+  z-index: 99;
+}
+#vMsgFoot {
+  position: absolute;
+  background-color: #FFF;
+  top: 273px;
+  right: 20px;
+  width: 356px;
+  height: 30px;
+  border: 1px solid #EEE;
+  line-height: 29px;
+  z-index: 98;
+}
+#vMsgAll {
+  float: right;
+  color: #2E64FE;
+  font-weight: bolder;
+  cursor: pointer;
+  margin-right: 8px;
+}
+#vMsgClose {
+  float: left;
+  width: 20px;
+  height: 20xp;
+  margin-top: 4px;
+  background: url('../image/index/icos.gif') no-repeat;
+  cursor: pointer;
+  /* -20px 0是hover效果，感觉不用加了 */
+}
+.vMsg-title {
+  font-weight: bolder;
+  margin: 4px 0;
+  cursor: default;
+}
+.vMsg-item {
+  width: 335px;
+  height: 20px;
+  line-height: 20px;
+}
+.vMsg-itemtxt {
+  float: left;
+  color: #666;
+  font-size: 12px;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  text-indent: 8px;
+  width: 300px;
+  overflow: hidden;
+  cursor: default;
+}
+.vMsg-itemtxt-hover {
+  color: #2E64FE;
+  font-weight: bolder;
+}
+.vMsg-ignore {
+  float: right;
+  width: 30px;
+  text-decoration: underline;
+  color: #668B8B;
+  cursor: pointer;
+}
