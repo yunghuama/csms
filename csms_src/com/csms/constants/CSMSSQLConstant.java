@@ -77,6 +77,25 @@ public class CSMSSQLConstant {
     public static final String WARN_SELECT_SQL = "select * from sms_warn order by createtime desc limit ?,?";
 
 
-
-
+    /**
+     * 集团管理
+     */
+    public static final String ENTERPRISE_SELECT_BY_PAGE_SQL = "select e.* from sms_enterprise e";
+    public static final String ENTERPRISE_ROWCOUNT_SQL = "select count(e.id)";
+    public static final String ENTERPRISE_SAVE_SQL = "insert into sms_enterprise(id,name,district,number,code,createtime) values(?,?,?,?,?,?)";
+    public static final String ENTERPRISE_DELETE_BY_IDS_SQL = "delete from sms_enterprise where id in ";
+    public static final String ENTERPRISE_UPDATE_SQL = "update sms_enterprise set name = ?,district = ?,number = ?,code = ? where id = ?";
+    public static final String ENTERPRISE_SELECT_BY_ID = "select * from sms_enterprise where id = ?";
+    
+    
+    /**
+     * 区域管理
+     */
+    public static final String DISTRICT_SELECT_ALL = "select d.* from sms_district d ";
+    public static final String DISTRICT_ROWCOUNT_SQL = "select count(d.id) ";
+    public static final String DISTRICT_SAVE_SQL = "insert into sms_district(id,name,parentid,createtime)";
+    public static final String DISTRICT_UPDATE_SQL = "update sms_district set name = ?, parentid = ? where id = ?";
+    public static final String DISTRICT_DELETE_BY_IDS = "delete from sms_district where id in ";
+    public static final String DISTRICT_SELECT_BY_ID = "select * from sms_district where id = ?";
+    public static final String DISTRICT_SELECT_BY_PARENT_ID = "select * from sms_district where parentid = ?";
 }

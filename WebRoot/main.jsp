@@ -291,6 +291,19 @@ if(session.getAttribute("LoginBean")==null) {
     });
       }
       
+      if("<s:property value='@com.platform.util.Meta@getOperate(\"comnumber_view\")'/>"=="T"){
+    	     eventArray.push({
+    	    	    trigger: 'com_enterprise',
+    	    	    id: 'enterprise',
+    	    	    title: '企业管理',
+    	    	    html: '<iframe id="enterpriseFrame" name="enterpriseFrame" src="' + projectName + '/csms/enterprise/list.v" width="100%" height="100%" frameborder="0"></iframe>',
+    	    	    position: {
+    	    	      a: '0px -66px',
+    	    	      b: '-22px -66px'
+    	    	    }
+    	    });
+    	      }
+      
      
       if("<s:property value='@com.platform.util.Meta@getOperate(\"comstatement_view\")'/>"=="T"){
      eventArray.push({
