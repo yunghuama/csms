@@ -126,6 +126,7 @@ if(session.getAttribute("LoginBean")==null) {
   <script src="<%=path%>/js/modules/rule.js" type="text/javascript"></script>
   <script src="<%=path%>/js/modules/group.js" type="text/javascript"></script>
   <script src="<%=path%>/js/modules/number.js" type="text/javascript"></script>
+  <script src="<%=path%>/js/modules/district.js" type="text/javascript"></script>
   <script src="<%=path%>/js/xDateFormat.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -278,6 +279,7 @@ if(session.getAttribute("LoginBean")==null) {
     	    }
     });
       }
+      
       if("<s:property value='@com.platform.util.Meta@getOperate(\"comnumber_view\")'/>"=="T"){
      eventArray.push({
     	    trigger: 'com_number',
@@ -290,6 +292,20 @@ if(session.getAttribute("LoginBean")==null) {
     	    }
     });
       }
+      
+      
+      if("<s:property value='@com.platform.util.Meta@getOperate(\"comnumber_view\")'/>"=="T"){
+    	     eventArray.push({
+    	    	    trigger: 'com_district',
+    	    	    id: 'district',
+    	    	    title: '区域管理',
+    	    	    html: '<iframe id="districtFrame" name="districtFrame" src="' + projectName + '/csms/district/list.v" width="100%" height="100%" frameborder="0"></iframe>',
+    	    	    position: {
+    	    	      a: '0px -66px',
+    	    	      b: '-22px -66px'
+    	    	    }
+    	    });
+    	      }
       
       if("<s:property value='@com.platform.util.Meta@getOperate(\"comnumber_view\")'/>"=="T"){
     	     eventArray.push({

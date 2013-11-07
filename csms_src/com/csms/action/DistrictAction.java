@@ -22,7 +22,7 @@ public class DistrictAction extends GenericAction<District> {
     private List<District> districtList;
     private District district;
     private String districtId;
-    
+    private String parentId;
     
     public String list() throws Exception {
     	
@@ -36,13 +36,13 @@ public class DistrictAction extends GenericAction<District> {
      * @throws Exception
      */
     public String listTree() throws Exception {
-    	
+    	districtList = districtService.findAll();
         return SUCCESS;
     }
 
     public String listPagination() throws Exception {
     	try{
-    	    page = districtService.listPagination(page);	
+    	    page = districtService.listPagination(page,parentId);	
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -57,7 +57,7 @@ public class DistrictAction extends GenericAction<District> {
      * @throws Exception
      */
     public String toSave() throws Exception {
-    	
+    	districtList = districtService.findAll();
         return SUCCESS;
     }
 
@@ -79,7 +79,8 @@ public class DistrictAction extends GenericAction<District> {
     
     public String toUpdate() throws Exception {
     	try{
-    		district = districtService.findById(district.getId());
+    		districtList = districtService.findAll();
+    		district = districtService.findById(districtId);
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -120,6 +121,50 @@ public class DistrictAction extends GenericAction<District> {
         
         return SUCCESS;
     }
+
+	public DistrictService getDistrictService() {
+		return districtService;
+	}
+
+	public void setDistrictService(DistrictService districtService) {
+		this.districtService = districtService;
+	}
+
+	public List<District> getDistrictList() {
+		return districtList;
+	}
+
+	public void setDistrictList(List<District> districtList) {
+		this.districtList = districtList;
+	}
+
+	public District getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(District district) {
+		this.district = district;
+	}
+
+	public String getDistrictId() {
+		return districtId;
+	}
+
+	public void setDistrictId(String districtId) {
+		this.districtId = districtId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
 
 	
 }

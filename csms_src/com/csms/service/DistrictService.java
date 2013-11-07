@@ -36,8 +36,11 @@ public class DistrictService implements IService {
      * @return
      * @throws CRUDException
      */
-    public Page<District> listPagination(Page<District> page) throws CRUDException {
+    public Page<District> listPagination(Page<District> page,String parentId) throws CRUDException {
+    	if(parentId==null)
         return districtDAO.pagination(page, CSMSSQLConstant.DISTRICT_SELECT_ALL,null);
+    	else 
+    	return districtDAO.pagination(page, CSMSSQLConstant.DISTRICT_SELECT_ALL_BY_PARENT,new Object[]{parentId});	
     }
     
 

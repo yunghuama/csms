@@ -91,9 +91,10 @@ public class CSMSSQLConstant {
     /**
      * 区域管理
      */
-    public static final String DISTRICT_SELECT_ALL = "select d.* from sms_district d ";
+    public static final String DISTRICT_SELECT_ALL = "select d.* from sms_district d";
+    public static final String DISTRICT_SELECT_ALL_BY_PARENT = "select d.* from sms_district d where parentId = ?";
     public static final String DISTRICT_ROWCOUNT_SQL = "select count(d.id) ";
-    public static final String DISTRICT_SAVE_SQL = "insert into sms_district(id,name,parentid,createtime)";
+    public static final String DISTRICT_SAVE_SQL = "insert into sms_district(id,name,parentid,createtime) values(?,?,?,?)";
     public static final String DISTRICT_UPDATE_SQL = "update sms_district set name = ?, parentid = ? where id = ?";
     public static final String DISTRICT_DELETE_BY_IDS = "delete from sms_district where id in ";
     public static final String DISTRICT_SELECT_BY_ID = "select * from sms_district where id = ?";

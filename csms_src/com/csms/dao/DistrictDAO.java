@@ -99,7 +99,7 @@ public class DistrictDAO extends GenericDAO{
 			UUIDGenerator.generate(),
 			district.getName(),
 			district.getParentId(),
-			new Date().getTime()
+			new Date()
 		});
 	}
 	
