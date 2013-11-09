@@ -18,7 +18,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.csms.domain.CsmsNumber;
+import com.csms.domain.District;
+import com.csms.domain.Enterprise;
 import com.csms.domain.Group;
+import com.csms.service.EnterpriseService;
 import com.csms.service.GroupService;
 import com.csms.service.NumberService;
 import com.platform.domain.AttachedFile;
@@ -35,18 +38,20 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 
     @Autowired
     private NumberService numberService;
-    @Autowired
-    private DepartmentService departmentService;
+
     @Autowired
     private GroupService groupService;
     
+    @Autowired
+    private EnterpriseService enterpriseService;
+    
     private List<CsmsNumber> numberList;
-    private List<Department> departmentList;
+    private List<Enterprise> departmentList;
     private List<Group> groupList;
     private CsmsNumber number;
     private String numberid;
     private String type;
-    private String depId;
+    private String enterpriseId;
     private String errorInfo;
     
     public String list() throws Exception {
@@ -59,16 +64,11 @@ public class NumberAction extends GenericAction<CsmsNumber> {
         return SUCCESS;
     }
     
-    /**
-     * 部门树
-     * 
-     * @return
-     * @throws Exception
-     */
     public String listTree() throws Exception {
-    	departmentList = departmentService.findAllDepartment();
+    	departmentList = enterpriseService.findAll();
         return SUCCESS;
     }
+
     
     public String listTreeA() throws Exception {
     	groupList = groupService.findAll();
@@ -78,7 +78,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 
     public String listPagination() throws Exception {
     	try{
-    	    page = numberService.listPagination(page,depId);	
+    	    page = numberService.listPagination(page,enterpriseId);	
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -87,7 +87,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
     
     public String listPaginationA() throws Exception {
     	try{
-    	    page = numberService.listPaginationA(page,depId);	
+    	    page = numberService.listPaginationA(page,enterpriseId);	
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -102,7 +102,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
      */
     public String toSave() throws Exception {
     	try{
-    		groupList = groupService.findAll(depId);
+    		groupList = groupService.findAll(enterpriseId);
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -118,7 +118,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
      */
     public String save() throws Exception {
     	try{
-    		number.setDepartment(depId);
+    		number.setDepartment(enterpriseId);
     		numberService.saveNumber(number);
     	}catch(Exception e){
     		e.printStackTrace();
@@ -133,7 +133,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
      */
     public String toImport() throws Exception {
     	//获得组群
-    	groupList = groupService.findAll(depId);
+    	groupList = groupService.findAll(enterpriseId);
     	return SUCCESS;
     }
     
@@ -220,7 +220,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
         					number1.setGroup(number.getGroup());
         					if(remarkCell!=null)
         					number1.setRemark(remarkCell.getStringCellValue());
-        					number1.setDepartment(depId);
+        					number1.setDepartment(enterpriseId);
         					//判断是否存在
         					if(numberService.findCountByNumber(num)==0)
         					numberService.saveNumber(number1);
@@ -288,7 +288,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
         					number1.setGroup(number.getGroup());
         					if(remarkCell!=null)
         					number1.setRemark(remarkCell.getStringCellValue());
-        					number1.setDepartment(depId);
+        					number1.setDepartment(enterpriseId);
         					if(numberService.findCountByNumber(num)==0)
         					numberService.saveNumber(number1);
         				}
@@ -320,7 +320,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
      */
     public String toUpdate() throws Exception {
     	try{
-    		groupList = groupService.findAll(depId);
+    		groupList = groupService.findAll(enterpriseId);
     		number = numberService.findById(number.getId());
     	}catch(Exception e){
     		e.printStackTrace();
@@ -411,12 +411,13 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 		this.numberService = numberService;
 	}
 
-	public DepartmentService getDepartmentService() {
-		return departmentService;
+
+	public GroupService getGroupService() {
+		return groupService;
 	}
 
-	public void setDepartmentService(DepartmentService departmentService) {
-		this.departmentService = departmentService;
+	public void setGroupService(GroupService groupService) {
+		this.groupService = groupService;
 	}
 
 	public List<CsmsNumber> getNumberList() {
@@ -427,12 +428,22 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 		this.numberList = numberList;
 	}
 
-	public List<Department> getDepartmentList() {
+	
+
+	public List<Enterprise> getDepartmentList() {
 		return departmentList;
 	}
 
-	public void setDepartmentList(List<Department> departmentList) {
+	public void setDepartmentList(List<Enterprise> departmentList) {
 		this.departmentList = departmentList;
+	}
+
+	public List<Group> getGroupList() {
+		return groupList;
+	}
+
+	public void setGroupList(List<Group> groupList) {
+		this.groupList = groupList;
 	}
 
 	public CsmsNumber getNumber() {
@@ -459,20 +470,12 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 		this.type = type;
 	}
 
-	public String getDepId() {
-		return depId;
+	public String getEnterpriseId() {
+		return enterpriseId;
 	}
 
-	public void setDepId(String depId) {
-		this.depId = depId;
-	}
-
-	public List<Group> getGroupList() {
-		return groupList;
-	}
-
-	public void setGroupList(List<Group> groupList) {
-		this.groupList = groupList;
+	public void setEnterpriseId(String enterpriseId) {
+		this.enterpriseId = enterpriseId;
 	}
 
 	public String getErrorInfo() {
@@ -482,5 +485,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 	public void setErrorInfo(String errorInfo) {
 		this.errorInfo = errorInfo;
 	}
+
+	
 
 }

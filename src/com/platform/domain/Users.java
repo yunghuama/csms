@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.apache.struts2.json.annotations.JSON;
 
+import com.csms.domain.Enterprise;
+
 public class Users extends BaseDomain {
 
     private static final long serialVersionUID = -7094766838338441306L;
@@ -22,6 +24,7 @@ public class Users extends BaseDomain {
     private String bigImage;
     private String normalImage;
     private String smallImage;
+    private Enterprise enterprise;
     private Set sysMesUsers = new HashSet(0);
     private Set roleUsers = new HashSet(0);
     
@@ -153,5 +156,13 @@ public class Users extends BaseDomain {
     public void setCellNo(String cellNo) {
         this.cellNo = cellNo;
     }
+
+	public Enterprise getEnterprise() {
+		return enterprise;
+	}
+
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
+	}
 
 }

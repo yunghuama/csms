@@ -80,7 +80,8 @@ public class CSMSSQLConstant {
     /**
      * 集团管理
      */
-    public static final String ENTERPRISE_SELECT_BY_PAGE_SQL = "select e.* from sms_enterprise e";
+    public static final String ENTERPRISE_SELECT_BY_PAGE_SQL = "select e.* from sms_enterprise e ";
+    public static final String ENTERPRISE_SELECT_BY_PAGE_DISTRICT_SQL = "select e.* from sms_enterprise e where district = ?";
     public static final String ENTERPRISE_ROWCOUNT_SQL = "select count(e.id)";
     public static final String ENTERPRISE_SAVE_SQL = "insert into sms_enterprise(id,name,district,number,code,createtime) values(?,?,?,?,?,?)";
     public static final String ENTERPRISE_DELETE_BY_IDS_SQL = "delete from sms_enterprise where id in ";

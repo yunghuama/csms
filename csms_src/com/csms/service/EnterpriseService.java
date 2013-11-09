@@ -39,8 +39,11 @@ public class EnterpriseService implements IService {
      * @return
      * @throws CRUDException
      */
-    public Page<Enterprise> listPagination(Page<Enterprise> page) throws CRUDException {
+    public Page<Enterprise> listPagination(Page<Enterprise> page,String district) throws CRUDException {
+    	if(district==null)
         return enterpriseDAO.pagination(page, CSMSSQLConstant.ENTERPRISE_SELECT_BY_PAGE_SQL,null);
+    	else
+    	return enterpriseDAO.pagination(page, CSMSSQLConstant.ENTERPRISE_SELECT_BY_PAGE_DISTRICT_SQL,new Object[]{district});
     }
     
 

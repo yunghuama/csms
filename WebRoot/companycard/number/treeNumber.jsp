@@ -41,12 +41,12 @@ String path = request.getContextPath();
 		};
         var zNodes =[];
         zNodes.push({ id:'00000000000000000000000000000000', pId:'', name:'全部',open:true});
-        <s:iterator id="district" value="districtList" status="st">
-    	zNodes.push({ id:'<s:property value="#district.id"/>', pId:'<s:property value="#district.parentId"/>', name:'<s:property value="#district.name"/>'});
+        <s:iterator id="group" value="groupList" status="st">
+    	zNodes.push({ id:'<s:property value="#group.id"/>', pId:'00000000000000000000000000000000', name:'<s:property value="#group.name"/>'});
     	</s:iterator>
       function treeOnClick(event,treeId,treeNode)
       {
-        parent.mainFrame.location = "<%=path%>/csms/enterprise/listPagination.v?district.id="+treeNode.id;
+        parent.mainFrame.location = "<%=path%>/csms/number/listPagination.v?groupid="+treeNode.id;
       }   
         
     function refreshTree()

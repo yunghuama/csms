@@ -5,24 +5,37 @@
 <struts>
   <package name="enterprise" extends="role-default" namespace="/csms/enterprise">
      <action name="list" class="enterpriseAction" method="list">
-      <result>/companycard/number/listEnterprise.jsp</result>
+      <result>/companycard/enterprise/listEnterprise.jsp</result>
     </action>
     <action name="listTree" class="enterpriseAction" method="listTree">
-      <result>/companycard/number/treeEnterprise.jsp</result>
+      <result>/companycard/enterprise/treeEnterprise.jsp</result>
     </action>
     <action name="listPagination" class="enterpriseAction" method="listPagination">
-      <result>/companycard/number/tableEnterprise.jsp</result>
+      <result>/companycard/enterprise/tableEnterprise.jsp</result>
     </action>
     <action name="toSave" class="enterpriseAction" method="toSave">
-      <result>/companycard/number/saveEnterprise.jsp</result>
+      <result>/companycard/enterprise/saveEnterprise.jsp</result>
     </action>
     <action name="save" class="enterpriseAction" method="save">
       <result>/share/done.jsp</result>
     </action>
     <action name="toUpdate" class="enterpriseAction" method="toUpdate">
-      <result>/companycard/number/updateEnterprise.jsp</result>
+      <result>/companycard/enterprise/updateEnterprise.jsp</result>
+    </action>
+    <action name="toImport" class="enterpriseAction" method="toImport">
+      <result>/companycard/enterprise/importNumber.jsp</result>
+    </action>
+    <action name="importXls" class="enterpriseAction" method="importXls">
+     <result name="success">/share/done.jsp</result>
+      <result name="error">/share/failed.jsp</result>
     </action>
     <action name="update" class="enterpriseAction" method="update">
+      <result>/share/done.jsp</result>
+    </action>
+    <action name="toUpdateUsers" class="enterpriseAction" method="toUpdateUsers">
+      <result>/companycard/enterprise/updateUser.jsp</result>
+    </action>
+    <action name="updateUsers" class="enterpriseAction" method="updateUsers">
       <result>/share/done.jsp</result>
     </action>
     <action name="delete" class="enterpriseAction" method="delete">

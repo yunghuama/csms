@@ -72,8 +72,8 @@ public final class StringConstant {
 		SEX_RADIO.put("0", "男");
 		SEX_RADIO.put("1", "女");
 
-		STATE_RADIO.put("T", "在职");
-		STATE_RADIO.put("F", "离职");
+		STATE_RADIO.put("T", "可用");
+		STATE_RADIO.put("F", "不可用");
 		
 		AREA_RADIO.put("0", "深圳");
 		AREA_RADIO.put("1", "济南");

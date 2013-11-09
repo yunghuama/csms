@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import com.csms.domain.Enterprise;
 import com.platform.constants.SQLConstant;
 import com.platform.constants.StringConstant;
 import com.platform.domain.Department;
@@ -65,7 +66,8 @@ public class UsersDAO extends GenericDAO{
 			users.getNormalImage(),
 			users.getSmallImage(),
 			users.getArea(),
-			users.getCellNo()
+			users.getCellNo(),
+			users.getEnterprise().getId()
 		});
 	}
 	
@@ -91,6 +93,7 @@ public class UsersDAO extends GenericDAO{
 				users.getSmallImage(),
 				users.getArea(),
 				users.getCellNo(),
+				users.getEnterprise().getId(),
 				users.getId()
 			});
 	}
@@ -152,6 +155,9 @@ public class UsersDAO extends GenericDAO{
 				Department d = new Department();
 				d.setId(rs.getString("departmentid"));
 				users.setDepartment(d);
+				Enterprise enterprise = new Enterprise();
+				enterprise.setId(rs.getString("enterprise"));
+				users.setEnterprise(enterprise);
 				return users;
 			}
 		});

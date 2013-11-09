@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +12,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.platform.constants.SQLConstant;
 import com.platform.constants.StringConstant;
 import com.platform.dao.UsersDAO;
+import com.platform.domain.Department;
 import com.platform.domain.Users;
 import com.platform.exception.CRUDException;
 import com.platform.util.FileHelper;
@@ -20,7 +20,6 @@ import com.platform.util.ImageHelper;
 import com.platform.util.LoginBean;
 import com.platform.util.Meta;
 import com.platform.util.SearchUtil;
-import com.platform.util.Uuid;
 import com.platform.util.Validate;
 import com.platform.vo.Page;
 
@@ -233,6 +232,7 @@ public class UsersService implements IService {
     public void updateUsers(Users user, String imagePath, String targetPath) {
         Users oldUser = usersDAO.find(SQLConstant.USERS_GET_BY_ID, new String[]{user.getId()});
         oldUser.setPassword(user.getPassword());
+        oldUser.setAccountName(user.getAccountName());
         oldUser.setSex(user.getSex());
         oldUser.setBirthday(user.getBirthday());
         oldUser.setState(user.getState());
@@ -242,12 +242,17 @@ public class UsersService implements IService {
         oldUser.setEditor(LoginBean.getLoginBean().getUser());
         oldUser.setEditTime(new Date());
         oldUser.setCellNo(user.getCellNo());
+        oldUser.setEnterprise(user.getEnterprise());
         if(Validate.notNull(imagePath)) {
             oldUser.setBigImage(getImagePath(imagePath, targetPath, Users.BIG_IMAGE));
             oldUser.setNormalImage(getImagePath(imagePath, targetPath, Users.NORMAL_IMAGE));
             oldUser.setSmallImage(getImagePath(imagePath, targetPath, Users.SMALL_IMAGE));
         }
-        usersDAO.update(oldUser);
+        try{
+     	   usersDAO.update(oldUser);
+	     }catch(Exception e){
+	     	e.printStackTrace();
+	     }
         
     }
     
@@ -298,7 +303,12 @@ public class UsersService implements IService {
         user.setState(state);
         user.setEditor(LoginBean.getLoginBean().getUser());
         user.setEditTime(new Date());
-        usersDAO.update(user);
+        try{
+        	   usersDAO.update(user);
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+     
     }
 
     /**
@@ -352,7 +362,25 @@ public class UsersService implements IService {
             user.setNormalImage(getImagePath(imagePath, targetPath, Users.NORMAL_IMAGE));
             user.setSmallImage(getImagePath(imagePath, targetPath, Users.SMALL_IMAGE));
         }
-        usersDAO.save(user);
+        if(user.getDepartment()==null){
+        	user.setDepartment(new Department());
+        }
+        try{
+        	  usersDAO.save(user);
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+    }
+    
+    /**
+     * 根据企业查询用户
+     * 
+     * @param user
+     * @throws CRUDException
+     */
+    @Transactional(rollbackFor={Exception.class,RuntimeException.class})
+    public Users findUsersByEnterprise(String enterpriseId){
+    	return usersDAO.find(SQLConstant.USERS_GET_BY_ENTERPRISE_ID,new Object[]{enterpriseId});
     }
     
     /**

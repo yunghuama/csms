@@ -127,6 +127,7 @@ if(session.getAttribute("LoginBean")==null) {
   <script src="<%=path%>/js/modules/group.js" type="text/javascript"></script>
   <script src="<%=path%>/js/modules/number.js" type="text/javascript"></script>
   <script src="<%=path%>/js/modules/district.js" type="text/javascript"></script>
+  <script src="<%=path%>/js/modules/enterprise.js" type="text/javascript"></script>
   <script src="<%=path%>/js/xDateFormat.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function(){

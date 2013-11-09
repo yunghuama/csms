@@ -38,14 +38,15 @@ public final class SQLConstant {
 	public static final String USERS_ALL_AND_DEP_SELECT_SQL = "select * from users where state = 'T' and departmentid = ? order by realName";
 	public static final String USERS_GET_BY_ID = "select * from users where id = ?";
 	public static final String USERS_NOSELF_ALL_SQL = "select * from users where id != ? and state = 'T'";
-	public static final String USERS_SAVE_SQL = "insert into users(id,accountname,realname,password,sex,birthday,edu,state,departmentid,creator,createtime,bigimage,normalimage,smallimage,area,cellno) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	public static final String USERS_UPDATE_SQL = "update users set accountname = ?,realname = ?,password = ?,sex = ?,birthday = ?,edu = ?,state = ?,departmentid = ?,editor = ?,edittime = ?,bigimage = ?,normalimage = ?,smallimage = ?,area = ?,cellno = ? where id = ?";
+	public static final String USERS_SAVE_SQL = "insert into users(id,accountname,realname,password,sex,birthday,edu,state,departmentid,creator,createtime,bigimage,normalimage,smallimage,area,cellno,enterprise) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	public static final String USERS_UPDATE_SQL = "update users set accountname = ?,realname = ?,password = ?,sex = ?,birthday = ?,edu = ?,state = ?,departmentid = ?,editor = ?,edittime = ?,bigimage = ?,normalimage = ?,smallimage = ?,area = ?,cellno = ?,enterprise = ? where id = ?";
 	public static final String USERS_DEPT_SQL = "select u1.*,u2.departmentid as creatorDepartment,u2.realname as creatorName,d.name as departmentName from users u1 left join users u2 on u1.creator = u2.id left join department d on u1.departmentid = d.id where u1.departmentid = ? ";
 	public static final String USERS_ALL_MORE_SELECT = "select u1.*,u2.departmentid as creatorDepartment,u2.realname as creatorName,d.name as departmentName from users u1 left join users u2 on u1.creator = u2.id left join department d on u1.departmentid = d.id where 1=1 ";
 	public static final String USERS_ALL_ROWCOUNT_SQL = "select count(u1.id) ";
 	public static final String USERS_BY_DEPARTCODE_SQL = "select * from users u,department d where u.departmentid = d.id and d.code like ?";
 	public static final String USERS_ALL_SELECT_SQL = "select * from users where 1 = 1";
 	public static final String USERS_UPDATE_TO_DELETE = "update users set state = ? where id = ?";
+	public static final String USERS_GET_BY_ENTERPRISE_ID = "select * from users where enterprise = ?";
 	
 	//部门表
 	public static final String DEPARTMENT_SAVE_SQL = "insert into department(id,name,code,superid,isstore,remark,creator,createtime) values(?,?,?,?,?,?,?,?)";

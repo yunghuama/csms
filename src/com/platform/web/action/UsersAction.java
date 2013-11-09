@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.csms.domain.Enterprise;
+import com.csms.service.EnterpriseService;
 import com.platform.domain.Department;
 import com.platform.domain.Role;
 import com.platform.domain.RoleUsers;
@@ -33,8 +35,11 @@ public class UsersAction extends GenericAction<Users> {
     private RoleService roleService;
     @Autowired
     private RoleUsersService roleUsersService;
+    @Autowired
+    private EnterpriseService enterpriseService;
 
     private List<Department> departmentList;
+    private List<Enterprise> enterpriseList;
     private Users user;
     private String imagePath;
     private String userId;
@@ -94,6 +99,7 @@ public class UsersAction extends GenericAction<Users> {
     public String toSave() throws Exception {
         // 加载部门列表
         departmentList = departmentService.findAllDepartment();
+        enterpriseList = enterpriseService.findAll();
         return SUCCESS;
     }
     
@@ -138,6 +144,7 @@ public class UsersAction extends GenericAction<Users> {
     public String toUpdate() throws Exception {
         // 加载部门列表
         departmentList = departmentService.findAllDepartment();
+        enterpriseList = enterpriseService.findAll();
         user = usersService.findById(userId);
         return SUCCESS;
     }
@@ -232,4 +239,13 @@ public class UsersAction extends GenericAction<Users> {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
+
+	public List<Enterprise> getEnterpriseList() {
+		return enterpriseList;
+	}
+
+	public void setEnterpriseList(List<Enterprise> enterpriseList) {
+		this.enterpriseList = enterpriseList;
+	}
+	
 }

@@ -104,7 +104,7 @@ public class EnterpriseDAO extends GenericDAO{
 			enterprise.getDistrict().getId(),
 			enterprise.getNumber(),
 			enterprise.getCode(),
-			new Date().getTime()
+			new Date()
 		});
 	}
 	

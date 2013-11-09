@@ -48,6 +48,7 @@ String path = request.getContextPath();
           <td class="form-left">手机号</td>
           <td class="form-right"><input type="text" id="cellNo" name="user.cellNo" class="text_f"/></td>
         </tr>
+        
       </table>
       <input id="imagePath" name="imagePath" type="hidden"/>
       <s:hidden name="tabId"/>
