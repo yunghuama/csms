@@ -54,6 +54,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
     private String enterpriseId;
     private String errorInfo;
     private String groupId;
+    private String ids;
     
     public String list() throws Exception {
     	
@@ -377,7 +378,16 @@ public class NumberAction extends GenericAction<CsmsNumber> {
      */
     public String updateA() throws Exception {
     	try{
-    		numberService.updateNumberA(number);
+    		if(ids!=null&&!"".equals(ids)){
+    			String array[] = ids.split(",");
+    			for(int i=0;i<array.length;i++){
+    				String id = array[i];
+    				if(id.length()==32){
+    					number.setId(id);
+    					numberService.updateNumberA(number);
+    				}
+    			}
+    		}
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -487,6 +497,11 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 		this.errorInfo = errorInfo;
 	}
 
-	
+	public String getIds() {
+		return ids;
+	}
 
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
 }

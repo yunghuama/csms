@@ -57,7 +57,7 @@ var numberFunctions = {
 	      width : 350,
 	      height : 205,
 	      closeConfirm : true,
-	      html : '<iframe name="numberAUpdateFrame" id="numberAUpdateFrame" src="'+projectName+'/csms/number/toUpdateA.v?'+getFlushParam('updateNumberA')+'&number.id='+id+'" frameborder="0" scrolling="auto"></iframe>',
+	      html : '<iframe name="numberAUpdateFrame" id="numberAUpdateFrame" src="'+projectName+'/csms/number/toUpdateA.v?'+getFlushParam('updateNumberA')+'&ids='+id+'" frameborder="0" scrolling="auto"></iframe>',
 	      tbar : new Toolbar({
 	        icon: 'image/op.gif',
 	        items : [{

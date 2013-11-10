@@ -23,7 +23,7 @@ String path = request.getContextPath();
           <td>&nbsp;</td>
           <td><input type="checkbox" id="allBox"/></td>
           <td>号码</td>
-          <td>组群</td>
+          <td>部门</td>
           <td>备注</td>
           <td>创建人</td>
           <td>创建时间</td>
@@ -66,15 +66,47 @@ String path = request.getContextPath();
         icon: '../../image/op.gif',
         items : [{
             type:'button',
-            text:'批量移动号码',
+            text:'批量修改号码',
             useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardnumber_edit\")"/>',
             position: {
            	   a: '-20px 0px',
                b: '-20px -120px'
             },
             handler:function(){
-             if(getFirstID())
-              top.numberFunctions.openUpdateNumberAWindow(getFirstID());
+             if(getFirstID()){
+            	 var idArray = [];
+            	 //获得所有选中的ID
+            	 $("input[name=idList]").each(function(){
+            		 if($(this).attr("checked")==true){
+	            		 var id = $(this).val();
+	            		 idArray.push(id);
+            		 }
+            	 });
+            	 console.debug(idArray.join(','));
+            	 top.numberFunctions.openUpdateNumberAWindow(idArray.join(','));
+             }
+            }
+        },'-',{
+            type:'button',
+            text:'号码资料导入',
+            useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardnumber_edit\")"/>',
+            position: {
+           	   a: '-20px 0px',
+               b: '-20px -120px'
+            },
+            handler:function(){
+             if(getFirstID()){
+            	 var idArray = [];
+            	 //获得所有选中的ID
+            	 $("input[name=idList]").each(function(){
+            		 if($(this).attr("checked")==true){
+	            		 var id = $(this).val();
+	            		 idArray.push(id);
+            		 }
+            	 });
+            	 console.debug(idArray.join(','));
+            	 top.numberFunctions.openUpdateNumberAWindow(idArray.join(','));
+             }
             }
         }]
       });

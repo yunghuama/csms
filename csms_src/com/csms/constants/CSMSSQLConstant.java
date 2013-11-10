@@ -59,8 +59,8 @@ public class CSMSSQLConstant {
 	/**
 	 * 号码管理
 	 */
-	public static final String NUMBER_SELECT_BY_PAGE_DEP_SQL = "select n.*,u.realname,g.name as groupname from sms_number n,users u,sms_group as g where n.department = ? and n.creator = u.id and n.smsgroup = g.id";
-	public static final String NUMBER_SELECT_BY_PAGE_GROUP_SQL = "select n.*,u.realname,g.name as groupname from sms_number n,users u,sms_group as g where n.smsgroup = ? and n.creator = u.id and n.smsgroup = g.id";
+	public static final String NUMBER_SELECT_BY_PAGE_DEP_SQL = "select n.*,u.realname,g.name as groupname from sms_number n left join users u on n.creator = u.id left join sms_group as g on n.smsgroup = g.id where n.department = ? ";
+	public static final String NUMBER_SELECT_BY_PAGE_GROUP_SQL = "select n.*,u.realname,g.name as groupname from sms_number n left join users u on n.creator = u.id left join sms_group as g on n.smsgroup = g.id where n.smsgroup = ? ";
 	public static final String NUMBER_SAVE_BY_GROUP_SQL = "insert into sms_number(id,number,smsgroup,department,remark,creator,createtime) values(?,?,?,?,?,?,?)";
 	public static final String NUMBER_SELECT_BY_ID_SQL = "select n.* from sms_number n where id = ?";
 	public static final String NUMBER_UPDATE_ALL_SQL = "update sms_number set number = ?,smsgroup = ?,remark = ? where id = ?";
