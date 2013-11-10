@@ -16,7 +16,7 @@ String path = request.getContextPath();
       <div class="form-group">基本信息</div>
       <table class="form-table" cellspacing="0" cellpadding="0">
         <tr>
-          <td class="form-left"><span class="form-required">*</span>组群名称</td>
+          <td class="form-left"><span class="form-required">*</span>部门名称</td>
           <td class="form-right">
           <s:if test='group.type=="1"'>
           <s:textfield type="text" name="group.name" id="name" cssClass="text"/>
@@ -27,7 +27,7 @@ String path = request.getContextPath();
           </td>
         </tr>
         <tr>
-          <td class="form-left"><span class="form-required">*</span>组群策略</td>
+          <td class="form-left"><span class="form-required">*</span>部门策略</td>
           <td class="form-right"><s:select name="group.rule" id="rule" list="ruleList" listKey="id" listValue="name" headerKey="" headerValue="无策略"></s:select> </td>
         </tr>
         <tr>

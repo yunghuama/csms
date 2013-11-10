@@ -15,11 +15,11 @@ String path = request.getContextPath();
       <div class="form-group">基本信息</div>
       <table class="form-table" cellspacing="0" cellpadding="0">
         <tr>
-          <td class="form-left"><span class="form-required">*</span>组群名称</td>
+          <td class="form-left"><span class="form-required">*</span>部门名称</td>
           <td class="form-right"><input type="text" name="group.name" id="name" class="text"/></td>
         </tr>
         <tr>
-          <td class="form-left"><span class="form-required">*</span>组群策略</td>
+          <td class="form-left"><span class="form-required">*</span>部门策略</td>
           <td class="form-right"><s:select name="group.rule" id="rule" list="ruleList" listKey="id" listValue="name" headerKey="" headerValue="无策略"></s:select> </td>
         </tr>
         <tr>
@@ -35,7 +35,7 @@ String path = request.getContextPath();
     <script src="<%=path%>/js/Validate.js" type="text/javascript"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-      addValidate('name', [{type:'canNull', value:'F', message:'必须填写组群名称'}]);
+      addValidate('name', [{type:'canNull', value:'F', message:'必须填写部门名称'}]);
       addValidate('name', [{type:'maxlength', value: 15, message:'【组群名称】最大长度为15'}]);
     });
     </script> 

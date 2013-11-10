@@ -32,7 +32,12 @@ String path = request.getContextPath();
         </tr>
         <tr>
           <td class="form-left">执行时间</td>
-          <td class="form-right">从:<s:select  list="@com.csms.constants.CSMSStringConstant@timeList" theme="simple" name="rule.ruleStartTime"></s:select>  至 <s:select  list="@com.csms.constants.CSMSStringConstant@timeList" theme="simple" name="rule.ruleEndTime"></s:select></td>
+          <td class="form-right"><s:radio list="#{'0':'工作时间','1':'非工作时间','2':'全天'}"  name="rule.timeType"></s:radio></td>
+        </tr>
+        <tr>
+          <td class="form-left">策略类型</td>
+          <td class="form-right">
+          <s:radio list="#{'0':'普通策略','1':'全局策略'}" name="rule.type" ></s:radio>
         </tr>
         <tr>
           <td class="form-left">是否开启</td>

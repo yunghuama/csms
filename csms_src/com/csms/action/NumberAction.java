@@ -53,6 +53,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
     private String type;
     private String enterpriseId;
     private String errorInfo;
+    private String groupId;
     
     public String list() throws Exception {
     	
@@ -87,7 +88,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
     
     public String listPaginationA() throws Exception {
     	try{
-    	    page = numberService.listPaginationA(page,enterpriseId);	
+    	    page = numberService.listPaginationA(page,groupId);	
     	}catch(Exception e){
     		e.printStackTrace();
     	}

@@ -6,8 +6,11 @@ public class LoginUtils {
 
 	public static String depId;
 	
-	public static String getDepartmentId(){
+	public static String getDepartmentId1(){
 		return LoginBean.getLoginBean().getUser().getDepartment().getId();
 	}
 	
+	public static String getEnterpriseId(){
+		return LoginBean.getLoginBean().getUser().getEnterprise().getId();
+	}
 }

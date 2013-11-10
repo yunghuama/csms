@@ -2,6 +2,7 @@ package com.csms.action;
 
 import java.io.FileInputStream;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -26,6 +27,7 @@ import com.csms.service.NumberService;
 import com.platform.domain.AttachedFile;
 import com.platform.domain.Users;
 import com.platform.exception.CRUDException;
+import com.platform.service.RoleUsersService;
 import com.platform.service.UsersService;
 import com.platform.util.UploadHelper;
 import com.platform.web.action.GenericAction;
@@ -44,6 +46,8 @@ public class EnterpriseAction extends GenericAction<Enterprise> {
     private NumberService numberService;
     @Autowired
     private UsersService usersService;
+    @Autowired
+    private RoleUsersService roleUsersService;
     
     private List<Enterprise> enterpriseList;
     private List<District> districtList;
@@ -169,8 +173,13 @@ public class EnterpriseAction extends GenericAction<Enterprise> {
     	if(users.getId()!=null&&users.getId().length()==32){
     		usersService.updateUsers(users,null,null);
     	}else {
+    		//保存企业管理员
     		users.setEnterprise(enterprise);
     		usersService.saveUsers(users,null,null);
+    		//添加角色
+    		List<String> idList = new ArrayList<String>();
+    		idList.add(users.getId());
+    		roleUsersService.saveRoleUsers(idList, "ff8080813c55b78c013c55e0649d0042", "T");
     	}
     	return SUCCESS;
     }

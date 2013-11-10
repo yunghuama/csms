@@ -22,8 +22,8 @@ String path = request.getContextPath();
         <tr>
           <td>&nbsp;</td>
           <td><input type="checkbox" id="allBox"/></td>
-          <td>组群名称</td>
-          <td>组群策略</td>
+          <td>部门名称</td>
+          <td>部门策略</td>
           <td>备注</td>
           <td>创建人</td>
           <td>创建时间</td>

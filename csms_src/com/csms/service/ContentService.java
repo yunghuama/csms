@@ -41,9 +41,9 @@ public class ContentService implements IService {
      */
     public Page<Content> listPagination(Page<Content> page,String type) throws CRUDException {
     	if(Validate.notNull(type))
-    	return contentDAO.pagination(page, CSMSSQLConstant.CONTENT_SELECT_BY_PAGE_STATE_SQL, new Object[]{LoginUtils.getDepartmentId(),type});
+    	return contentDAO.pagination(page, CSMSSQLConstant.CONTENT_SELECT_BY_PAGE_STATE_SQL, new Object[]{LoginUtils.getEnterpriseId(),type});
     	else
-        return contentDAO.pagination(page, CSMSSQLConstant.CONTENT_SELECT_BY_PAGE_SQL ,new Object[]{LoginUtils.getDepartmentId()});
+        return contentDAO.pagination(page, CSMSSQLConstant.CONTENT_SELECT_BY_PAGE_SQL ,new Object[]{LoginUtils.getEnterpriseId()});
     }
     
     /**
@@ -59,7 +59,7 @@ public class ContentService implements IService {
     }
 
     public List<Content> findByState(String state){
-    	return contentDAO.findAll(CSMSSQLConstant.CONTENT_SELECT_BY_STATE, new String[]{LoginUtils.getDepartmentId(),state});
+    	return contentDAO.findAll(CSMSSQLConstant.CONTENT_SELECT_BY_STATE, new String[]{LoginUtils.getEnterpriseId(),state});
     }
     
     /**
@@ -74,7 +74,7 @@ public class ContentService implements IService {
     }
     
     public List<Content> findAll(){
-    	return contentDAO.findAll(CSMSSQLConstant.CONTENT_SELECT_ALL_SQL,new Object[]{LoginUtils.getDepartmentId()});
+    	return contentDAO.findAll(CSMSSQLConstant.CONTENT_SELECT_ALL_SQL,new Object[]{LoginUtils.getEnterpriseId()});
     }
 
     /**
@@ -87,7 +87,7 @@ public class ContentService implements IService {
     public void saveContent(Content content) throws CRUDException {
     	content.setCreator(LoginBean.getLoginBean().getUser());
     	content.setState("0");
-    	content.setDepartment(LoginUtils.getDepartmentId());
+    	content.setDepartment(LoginUtils.getEnterpriseId());
         contentDAO.save(content);
     }
 

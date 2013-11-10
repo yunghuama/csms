@@ -26,11 +26,11 @@ public class CSMSSQLConstant {
 	/**
 	 * 策略管理
 	 */
-	public static final String RULE_SELECT_BY_PAGE_SQL = "select r.*,u.realname,c.content as contentname from sms_rule r,users u,sms_content c where r.department = ? and r.creator = u.id and r.content = c.id";
+	public static final String RULE_SELECT_BY_PAGE_SQL = "select r.*,u.realname,c.content as contentname from sms_rule r,users u,sms_content c where r.department = ? and r.creator = u.id and r.content = c.id order by r.type desc";
 	public static final String RULE_SELECT_ALL_SQL = "select r.* from sms_rule r,users u where r.department = ? and r.creator = u.id ";
 	public static final String RULE_SELECT_BY_ID = "select * from sms_rule where id = ?";
-	public static final String RULE_SAVE_SQL = "insert into sms_rule(id,name,ruleday,rulestarttime,ruleendtime,content,department,state,creator,createtime) value(?,?,?,?,?,?,?,?,?,?)";
-	public static final String RULE_UPDATE_SQL = "update sms_rule set name =? ,ruleday = ?, rulestarttime = ?,ruleendtime = ?,content = ?,state = ? where id = ?";
+	public static final String RULE_SAVE_SQL = "insert into sms_rule(id,name,ruleday,rulestarttime,ruleendtime,content,department,state,creator,createtime,timetype,type) value(?,?,?,?,?,?,?,?,?,?,?,?)";
+	public static final String RULE_UPDATE_SQL = "update sms_rule set name =? ,ruleday = ?, rulestarttime = ?,ruleendtime = ?,content = ?,state = ?,timetype=?,type=? where id = ?";
 	public static final String RULE_DELETE_BY_IDS_SQL = "delete from sms_rule where id in ";
 	public static final String RULE_UPDATE_STATE_SQL = "update sms_rule set state = ? where id = ?";
 	public static final String RULE_ROWCOUNT_SQL = "select count(r.id)";

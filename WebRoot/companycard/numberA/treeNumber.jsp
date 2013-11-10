@@ -40,13 +40,13 @@ String path = request.getContextPath();
 			}
 		};
         var zNodes =[];
-        zNodes.push({ id:'00000000000000000000000000000000', pId:'', name:'全部',open:true});
+        zNodes.push({ id:'00000000000000000000000000000000', pId:'', name:'全部部门',open:true});
         <s:iterator id="group" value="groupList" status="st">
     	zNodes.push({ id:'<s:property value="#group.id"/>', pId:'00000000000000000000000000000000', name:'<s:property value="#group.name"/>'});
     	</s:iterator>
       function treeOnClick(event,treeId,treeNode)
       {
-        parent.mainFrame.location = "<%=path%>/csms/number/listPaginationA.v?depId="+treeNode.id;
+        parent.mainFrame.location = "<%=path%>/csms/number/listPaginationA.v?groupId="+treeNode.id;
       }   
         
     function refreshTree()

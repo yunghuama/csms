@@ -43,8 +43,12 @@ public class NumberService implements IService {
     	return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_DEP_SQL, new Object[]{depId});
     }
 
-    public Page<CsmsNumber> listPaginationA(Page<CsmsNumber> page,String depId) throws CRUDException {
-    	return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_GROUP_SQL, new Object[]{depId});
+    public Page<CsmsNumber> listPaginationA(Page<CsmsNumber> page,String group) throws CRUDException {
+    	if(group!=null&&!"".equals(group)){
+    		return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_GROUP_SQL, new Object[]{group});
+    	}else {
+    		return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_DEP_SQL, new Object[]{LoginUtils.getEnterpriseId()});
+    	}
     }
     
     /**
@@ -64,7 +68,7 @@ public class NumberService implements IService {
     }
     
     public List<CsmsNumber> findAll(){
-    	return numberDAO.findAll(CSMSSQLConstant.NUMBER_SELECT_ALL_SQL,new Object[]{LoginUtils.getDepartmentId()});
+    	return numberDAO.findAll(CSMSSQLConstant.NUMBER_SELECT_ALL_SQL,new Object[]{LoginUtils.getEnterpriseId()});
     }
 
     /**

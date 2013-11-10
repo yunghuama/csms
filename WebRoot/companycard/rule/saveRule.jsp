@@ -31,15 +31,15 @@ String path = request.getContextPath();
         </tr>
         <tr>
           <td class="form-left">执行时间</td>
-          <td class="form-right">从:<s:select  list="@com.csms.constants.CSMSStringConstant@timeList" theme="simple" name="rule.ruleStartTime" id="ruleStartTime"></s:select>  至 <s:select  list="@com.csms.constants.CSMSStringConstant@timeList" theme="simple" name="rule.ruleEndTime" id="ruleEndTime"></s:select></td>
+          <td class="form-right"><input type="radio" name="rule.timeType" value="0" checked="checked">工作时间&nbsp;&nbsp;&nbsp;<input type="radio" name="rule.timeType" value="1">非工作时间&nbsp;&nbsp;&nbsp;<input type="radio" name="rule.timeType" value="2">全天</td>
+        </tr>
+         <tr>
+          <td class="form-left">策略类型</td>
+          <td class="form-right"><input type="radio" name="rule.type" value="0" checked="checked">普通策略&nbsp;&nbsp;&nbsp;<input type="radio" name="rule.type" value="1">全局策略&nbsp;&nbsp;&nbsp;</td>
         </tr>
         <tr>
           <td class="form-left">是否开启</td>
           <td class="form-right"><input type="checkbox" id="state" name="rule.state" checked="checked" value="0"/></td>
-        </tr>
-        <tr>
-          <td class="form-left">备注说明</td>
-          <td class="form-right"><textarea style="width:200px; height:70px;" class="textarea" id="remark" name="content.remark"></textarea></td>
         </tr>
       </table>
       <s:hidden name="tabId"/>

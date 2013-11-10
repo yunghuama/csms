@@ -44,7 +44,7 @@ public class RuleService implements IService {
      * @throws CRUDException
      */
     public Page<Rule> listPaginationRule(Page<Rule> page,String type) throws CRUDException {
-        return ruleDAO.paginationRule(page, CSMSSQLConstant.RULE_SELECT_BY_PAGE_SQL, new Object[]{LoginUtils.getDepartmentId()});
+        return ruleDAO.paginationRule(page, CSMSSQLConstant.RULE_SELECT_BY_PAGE_SQL, new Object[]{LoginUtils.getEnterpriseId()});
     }
 
     
@@ -54,7 +54,7 @@ public class RuleService implements IService {
      * @throws CRUDException
      */
     public List<Rule> findAllRule() throws CRUDException {
-        List<Rule> list = ruleDAO.findAllRule(CSMSSQLConstant.RULE_SELECT_ALL_SQL,new Object[]{LoginUtils.getDepartmentId()});
+        List<Rule> list = ruleDAO.findAllRule(CSMSSQLConstant.RULE_SELECT_ALL_SQL,new Object[]{LoginUtils.getEnterpriseId()});
         return list;
     }
     
@@ -79,8 +79,13 @@ public class RuleService implements IService {
     @Transactional(rollbackFor={Exception.class,RuntimeException.class})
     public void saveRule(Rule rule) throws CRUDException {
     	rule.setCreator(LoginBean.getLoginBean().getUser());
-    	rule.setDepartment(LoginUtils.getDepartmentId());
-        ruleDAO.saveRule(rule);
+    	rule.setDepartment(LoginUtils.getEnterpriseId());
+    	try{
+    		 ruleDAO.saveRule(rule);
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+       
     }
     
     /**
@@ -109,7 +114,7 @@ public class RuleService implements IService {
      * 全局策略查询
      */
     public Page<GloRule> listPaginationGloRule(Page<GloRule> page,String type) throws CRUDException {
-        return ruleDAO.paginationGloRule(page, CSMSSQLConstant.GLORULE_SELECT_SQL, new Object[]{LoginUtils.getDepartmentId()});
+        return ruleDAO.paginationGloRule(page, CSMSSQLConstant.GLORULE_SELECT_SQL, new Object[]{LoginUtils.getEnterpriseId()});
     }
 
     /**
@@ -132,7 +137,7 @@ public class RuleService implements IService {
     @Transactional(rollbackFor={Exception.class,RuntimeException.class})
     public void saveGloRule(GloRule rule) throws CRUDException {
     	rule.setCreator(LoginBean.getLoginBean().getUser());
-    	rule.setDepartment(LoginUtils.getDepartmentId());
+    	rule.setDepartment(LoginUtils.getEnterpriseId());
         ruleDAO.saveGloRule(rule);
     }
     

@@ -20,9 +20,28 @@ public class Rule {
 	
 	private String state;
 	
+	private String timeType;
+	
 	private Users creator;
 	
 	private long createTime;
+	
+	private String remark;
+	
+	private String type;
+	
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
 
 	public String getId() {
 		return id;
@@ -32,6 +51,18 @@ public class Rule {
 
 	public String getDepartment() {
 		return department;
+	}
+
+
+
+	public String getRemark() {
+		return remark;
+	}
+
+
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 
@@ -111,6 +142,18 @@ public class Rule {
 
 	public void setRuleEndTime(String ruleEndTime) {
 		this.ruleEndTime = ruleEndTime;
+	}
+
+
+
+	public String getTimeType() {
+		return timeType;
+	}
+
+
+
+	public void setTimeType(String timeType) {
+		this.timeType = timeType;
 	}
 
 	

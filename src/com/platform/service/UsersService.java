@@ -20,6 +20,7 @@ import com.platform.util.ImageHelper;
 import com.platform.util.LoginBean;
 import com.platform.util.Meta;
 import com.platform.util.SearchUtil;
+import com.platform.util.UUIDGenerator;
 import com.platform.util.Validate;
 import com.platform.vo.Page;
 
@@ -354,6 +355,7 @@ public class UsersService implements IService {
      */
     @Transactional(rollbackFor={Exception.class,RuntimeException.class})
     public void saveUsers(Users user, String imagePath, String targetPath) throws CRUDException {
+    	user.setId(UUIDGenerator.generate());
         user.setCreator(LoginBean.getLoginBean().getUser());
         user.setCreateTime(new Date());
         user.setState(user.getState());

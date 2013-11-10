@@ -66,7 +66,7 @@ String path = request.getContextPath();
         icon: '../../image/op.gif',
         items : [{
             type:'button',
-            text:'修改',
+            text:'批量移动号码',
             useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardnumber_edit\")"/>',
             position: {
            	   a: '-20px 0px',

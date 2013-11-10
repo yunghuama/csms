@@ -30,8 +30,8 @@ public class CSMSStringConstant {
 				timeList.add(i+":00");
 		}
 		
-		RULE_STATE_TYPE.put("0", "<font color=\"green\">开启</font>");
-		RULE_STATE_TYPE.put("1", "<font color=\"red\">关闭</font>");
+		RULE_STATE_TYPE.put("0", "开启");
+		RULE_STATE_TYPE.put("1", "关闭");
 	}
 	
 

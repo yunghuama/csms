@@ -43,7 +43,7 @@ public class GroupService implements IService {
      * @throws CRUDException
      */
     public Page<Group> listPagination(Page<Group> page,String type) throws CRUDException {
-        return groupDAO.pagination(page, CSMSSQLConstant.GROUP_SELECT_BY_PAGE_SQL,new Object[]{LoginUtils.getDepartmentId()});
+        return groupDAO.pagination(page, CSMSSQLConstant.GROUP_SELECT_BY_PAGE_SQL,new Object[]{LoginUtils.getEnterpriseId()});
     }
     
     /**
@@ -58,7 +58,7 @@ public class GroupService implements IService {
     }
     
     public List<Group> findAll(){
-    	return findAll(LoginUtils.getDepartmentId());
+    	return findAll(LoginUtils.getEnterpriseId());
     }
     
     public List<Group> findAll(String depId){
@@ -74,7 +74,7 @@ public class GroupService implements IService {
     @Transactional(rollbackFor={Exception.class,RuntimeException.class})
     public void save(Group group) throws CRUDException {
     	group.setCreator(LoginBean.getLoginBean().getUser());
-    	group.setDepartment(LoginUtils.getDepartmentId());
+    	group.setDepartment(LoginUtils.getEnterpriseId());
     	group.setType("1");
         groupDAO.save(group);
     }

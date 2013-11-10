@@ -236,7 +236,7 @@ if(session.getAttribute("LoginBean")==null) {
       eventArray.push({
         trigger: 'card_content',
         id: 'content',
-        title: '名片管理',
+        title: '内容设置',
         html: '<iframe id="contentFrame" name="contentFrame" src="' + projectName + '/csms/content/list.v" width="100%" height="100%" frameborder="0"></iframe>',
         position: {
           a: '0px -66px',
@@ -248,19 +248,20 @@ if(session.getAttribute("LoginBean")==null) {
       eventArray.push({
         trigger: 'card_rule',
         id: 'rule',
-        title: '策略管理',
-        html: '<iframe id="ruleFrame" name="ruleFrame" src="' + projectName + '/csms/rule/list.v" width="100%" height="100%" frameborder="0"></iframe>',
+        title: '计划任务',
+        html: '<iframe id="ruleFrame" name="ruleFrame" src="' + projectName + '/csms/rule/listPagination.v" width="100%" height="100%" frameborder="0"></iframe>',
         position: {
           a: '0px -66px',
           b: '-22px -66px'
         }
      });
       }
+      
       if("<s:property value='@com.platform.util.Meta@getOperate(\"cardgroup_view\")'/>"=="T"){ 
      eventArray.push({
     	    trigger: 'card_group',
     	    id: 'group',
-    	    title: '组群管理',
+    	    title: '部门管理',
     	    html: '<iframe id="groupFrame" name="groupFrame" src="' + projectName + '/csms/group/listPagination.v" width="100%" height="100%" frameborder="0"></iframe>',
     	    position: {
     	      a: '0px -66px',

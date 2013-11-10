@@ -78,6 +78,16 @@ public class RuleAction extends GenericAction<Rule> {
     	try{
     		if(!"0".equals(rule.getState()))
     			rule.setState("1");
+    		
+    		if("0".equals(rule.getTimeType())){
+    			rule.setRuleStartTime("8:00");
+    			rule.setRuleEndTime("18:00");
+    		}else if("1".equals(rule.getTimeType())){
+    			
+    		}else if("2".equals(rule.getTimeType())){
+    			
+    		}
+    		
     		ruleService.saveRule(rule);
     	}catch(Exception e){
     		e.printStackTrace();

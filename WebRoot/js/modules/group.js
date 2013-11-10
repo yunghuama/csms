@@ -2,7 +2,7 @@ var groupFunctions = {
   openSaveGroupWindow : function(){
     new WindowPanel({
       id : 'saveGroup',
-      title : '添加组群',
+      title : '添加部门',
       width : 350,
       height : 205,
       closeConfirm : true,
@@ -27,7 +27,7 @@ var groupFunctions = {
   openUpdateGroupWindow : function(id){
 	    new WindowPanel({
 	      id : 'updateGroup',
-	      title : '修改组群',
+	      title : '修改部门',
 	      width : 350,
 	      height : 205,
 	      closeConfirm : true,

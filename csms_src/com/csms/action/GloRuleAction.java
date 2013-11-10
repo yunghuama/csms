@@ -10,6 +10,7 @@ import com.csms.domain.Content;
 import com.csms.domain.GloRule;
 import com.csms.service.ContentService;
 import com.csms.service.RuleService;
+import com.csms.util.LoginUtils;
 import com.platform.exception.CRUDException;
 import com.platform.util.LoginBean;
 import com.platform.web.action.GenericAction;
@@ -76,7 +77,7 @@ public class GloRuleAction extends GenericAction<GloRule> {
     	try{
     		if(!"0".equals(rule.getState()))
     			rule.setState("1");
-    		rule.setDepartment(LoginBean.getLoginBean().getUser().getDepartment().getId());
+    		rule.setDepartment(LoginUtils.getEnterpriseId());
     		ruleService.saveGloRule(rule);
     	}catch(Exception e){
     		e.printStackTrace();

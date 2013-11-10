@@ -51,7 +51,7 @@ public class UsersDAO extends GenericDAO{
 	 */
 	public int save(Users users){
 		return jdbcTemplate.update(SQLConstant.USERS_SAVE_SQL, new Object[]{
-			UUIDGenerator.generate(),
+			users.getId(),
 			users.getAccountName(),
 			users.getRealName(),
 			users.getPassword(),

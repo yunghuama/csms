@@ -65,6 +65,8 @@ public class RuleDAO extends GenericDAO{
 				user.setId(rs.getString("creator"));
 				user.setRealName(rs.getString("realname"));
 				rule.setCreator(user);
+				rule.setTimeType(rs.getString("timetype"));
+				rule.setType(rs.getString("type"));
 				return rule;
 			}}));
 		int rowCount = queryForInt(Meta.getRowCountSQL(CSMSSQLConstant.RULE_ROWCOUNT_SQL , sql),args);
@@ -107,6 +109,8 @@ public class RuleDAO extends GenericDAO{
 				rule.setRuleEndTime(rs.getString("ruleendtime"));
 				rule.setState(rs.getString("state"));
 				rule.setContent(rs.getString("content"));
+				rule.setTimeType(rs.getString("timetype"));
+				rule.setType(rs.getString("type"));
 				return rule;
 			}
 		});
@@ -136,7 +140,9 @@ public class RuleDAO extends GenericDAO{
 			rule.getDepartment(),
 			rule.getState(),
 			rule.getCreator().getId(),
-			new Date().getTime()
+			new Date(),
+			rule.getTimeType(),
+			rule.getType()
 		});
 	}
 	
@@ -154,6 +160,8 @@ public class RuleDAO extends GenericDAO{
 			rule.getRuleEndTime(),
 			rule.getContent(),
 			rule.getState(),
+			rule.getTimeType(),
+			rule.getType(),
 			rule.getId()
 		});
 	}
