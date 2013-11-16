@@ -20,15 +20,16 @@ String path = request.getContextPath();
     <s:include value="/share/btMask.jsp" />
   	<div id="toolbar"></div>
   	<form id="listForm" action="<%=path%>/csms/rule/listPagination.v" method="post">
+  	<input type="hidden" name="state" id="state"/>
       <table id="titleTable" cellpadding="0" cellspacing="0">
         <tr>
           <td>&nbsp;</td>
           <td><input type="checkbox" id="allBox"/></td>
-          <td>计划名称</td>
-          <td>内容</td>
-          <td>执行时间</td>
+          <td>部门名称</td>
+          <td>名片内容</td>
+          <td>当前计划</td>
+          <td>备注</td>
           <td>状态</td>
-          <td>创建人</td>
         </tr>
       </table>
       <table id="dataTable" cellpadding="0" cellspacing="0">
@@ -38,26 +39,19 @@ String path = request.getContextPath();
           >
             <td class="num"><s:property value="#i.index+1"/></td>
             <td class="box">
-              <s:if test="#rule.creator.id == #session['LoginBean'].user.id">
-                <input type="checkbox" name="idList" value="<s:property value="#rule.id"/>"/>
-              </s:if>
-              <s:else>
-                <img class="more-operate" src="<%=path%>/image/more-operate.gif" onclick="openMoreOperateWindow(event, '<s:property value="#rule.creator.id"/>','<s:property value="#rule.creator.department.id"/>','<s:property value="#rule.id"/>');"/>
-              </s:else>
+                <input type="checkbox" name="idList" value="<s:property value="#rule.group.id"/>"/>
             </td>
-            <td><s:if test='#rule.type=="1"'><span style="display:inline;color:red">[全局计划]</span></s:if><s:else><span style="display:inline;color:blue">[局部计划]</span></s:else> <s:property value="#rule.name"/></td>
+            <td><s:property value="#rule.group.name"/></td>
             <td><span><s:property value="#rule.content"/>&nbsp;</span></td>
             <td align="center"><span><s:property value='#rule.ruleDay'/>&nbsp;
             <s:if test='#rule.timeType=="0"'>8：00-18：00</s:if>
             <s:if test='#rule.timeType=="1"'>18：00-24：00，00：00-08：00</s:if>
             <s:if test='#rule.timeType=="2"'>00：00-24：00</s:if></td>
-            <td align="center">
-            <s:if test='#rule.type=="1"&&#rule.state=="0"'><span style="display:inline;color:green">全局计划已开启,局部计划将被覆盖</span></s:if>
-            <s:if test='#rule.type=="1"&&#rule.state=="1"'><span style="display:inline;color:red">全局计划已关闭,局部计划将被执行</span></s:if>
-            <s:if test='#rule.type=="0"&&#rule.state=="0"'><span style="display:inline;color:green">开启</span></s:if>
-            <s:if test='#rule.type=="0"&&#rule.state=="1"'><span style="display:inline;color:red">关闭</span></s:if>
-           </td>
             <td align="center"><span><s:property value="#rule.creator.realName"/>&nbsp;</span></td>
+            <td align="center">
+            <s:if test='#rule.state=="0"'><span style="display:inline;color:green">开启</span></s:if>
+            <s:if test='#rule.state=="1"'><span style="display:inline;color:red">关闭</span></s:if>
+           </td>
           </tr>
         </s:iterator>
       </table>
@@ -84,43 +78,55 @@ String path = request.getContextPath();
         icon: '../../image/op.gif',
         items : [{
           type:'button',
-          text:'新建',
+          text:'计划设置',
           useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardrule_new\")"/>',
           position: {
             a: '0px 0px',
             b: '0px -120px'
           },
           handler:function(){
-            top.ruleFunctions.openSaveRuleWindow();
+        	  if(getFirstID()){
+             	 var idArray = [];
+             	 //获得所有选中的ID
+             	 $("input[name=idList]").each(function(){
+             		 if($(this).attr("checked")==true){
+ 	            		 var id = $(this).val();
+ 	            		 idArray.push(id);
+             		 }
+             	 });
+             	 top.ruleFunctions.openSaveRuleWindow(idArray.join(','));
+              }
+           
           }
         },'-',{
             type : 'button',
-            text : '修改',
+            text : '启用',
             useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardrule_edit\")"/>',
             position: {
-              a: '-20px 0px',
-              b: '-20px -120px'
+            	a: '-60px -40px',
+                b: '-140px -160px'
             },
             handler : function(){
               if(getFirstID()) {
-            	  top.ruleFunctions.openUpdateRuleWindow(getFirstID());
+            	  $("#state").val("0");
+            	  $("#listForm").attr("action","<%=path%>/csms/rule/updateState.v");
+            	  $("#listForm").submit();
               }
             }
          },'-',{
           type : 'button',
-          text : '删除',
+          text : '禁用',
           position: {
-            a: '-40px 0px',
-            b: '-40px -120px'
+        	  a: '-80px -40px',
+              b: '-140px -160px'
           },
           useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardrule_delete\")"/>',
           handler : function(){
-            validateBeforeDelete({
-              validateURL : '<%=path%>/system/ajax/deleteValidate.v',
-              validateParams : $('input:checkbox[name="idList"]:checked').serialize(),
-              validateTable : 'CSMSGroup',
-              deleteURL : '<%=path%>/csms/rule/delete.v'
-            });
+        	  if(getFirstID()) {
+            	  $("#state").val("1");
+            	  $("#listForm").attr("action","<%=path%>/csms/rule/updateState.v");
+            	  $("#listForm").submit();
+              }
           }
         }]
       });

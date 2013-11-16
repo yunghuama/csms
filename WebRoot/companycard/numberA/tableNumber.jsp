@@ -82,7 +82,6 @@ String path = request.getContextPath();
 	            		 idArray.push(id);
             		 }
             	 });
-            	 console.debug(idArray.join(','));
             	 top.numberFunctions.openUpdateNumberAWindow(idArray.join(','));
              }
             }

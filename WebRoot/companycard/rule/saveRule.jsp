@@ -14,20 +14,17 @@ String path = request.getContextPath();
   <body>
     <form name="ruleForm" id="ruleForm" action="<%=path%>/csms/rule/save.v" class="form" method="post">
     <s:hidden name="rule.ruleDay" id="rule_ruleDay" ></s:hidden>
+    <s:hidden name="ids"></s:hidden>
     <div id="toolbar"></div>
-      <div class="form-group">基本信息</div>
+      <div class="form-group">设置新计划会覆盖当前计划</div>
       <table class="form-table" cellspacing="0" cellpadding="0">
-        <tr>
-          <td class="form-left"><span class="form-required">*</span>名称</td>
-          <td class="form-right"><input type="text" id="name" name="rule.name" class="text"/></td>
-        </tr>
         <tr>
           <td class="form-left"><span class="form-required">*</span>内容</td>
           <td class="form-right"><s:select name="rule.content" id="content" list="contentList" listKey="id" listValue="content" headerKey="" headerValue="请选择内容"></s:select> </td>
         </tr>
         <tr>
           <td class="form-left">执行日期</td>
-          <td class="form-right">周一<input type="checkbox" name="ruleDay"/>&nbsp;周二<input type="checkbox" name="ruleDay"/>&nbsp;周三<input type="checkbox" name="ruleDay"/>&nbsp;周四<input type="checkbox" name="ruleDay"/>&nbsp;周五<input type="checkbox" name="ruleDay"/>&nbsp;周六<input type="checkbox" name="ruleDay"/>&nbsp;周日<input type="checkbox" name="ruleDay"/>&nbsp; </td>
+          <td class="form-right">周一<input type="checkbox" name="ruleDay" checked="checked"/>&nbsp;周二<input type="checkbox" name="ruleDay" checked="checked"/>&nbsp;周三<input type="checkbox" name="ruleDay" checked="checked"/>&nbsp;周四<input type="checkbox" name="ruleDay" checked="checked"/>&nbsp;周五<input type="checkbox" name="ruleDay" checked="checked"/>&nbsp;周六<input type="checkbox" name="ruleDay" checked="checked"/>&nbsp;周日<input type="checkbox" name="ruleDay" checked="checked"/>&nbsp; </td>
         </tr>
         <tr>
           <td class="form-left">执行时间</td>

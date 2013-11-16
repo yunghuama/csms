@@ -19,10 +19,6 @@ String path = request.getContextPath();
       <div class="form-group">基本信息</div>
       <table class="form-table" cellspacing="0" cellpadding="0">
         <tr>
-          <td class="form-left"><span class="form-required">*</span>名称</td>
-          <td class="form-right"><s:textfield id="name" name="rule.name"  cssClass="text"></s:textfield></td>
-        </tr>
-        <tr>
           <td class="form-left"><span class="form-required">*</span>内容</td>
           <td class="form-right"><s:select name="rule.content" id="content" list="contentList" listKey="id" listValue="content" headerKey="" headerValue="请选择内容"></s:select> </td>
         </tr>

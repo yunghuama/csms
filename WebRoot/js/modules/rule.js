@@ -1,12 +1,12 @@
 var ruleFunctions = {
-  openSaveRuleWindow : function(){
+  openSaveRuleWindow : function(ids){
     new WindowPanel({
       id : 'saveRule',
-      title : '添加普通策略',
+      title : '设置计划',
       width : 450,
       height : 400,
       closeConfirm : true,
-      html : '<iframe name="ruleSaveFrame" id="ruleSaveFrame" src="'+projectName+'/csms/rule/toSave.v?'+getFlushParam('saveRule')+'" frameborder="0" scrolling="auto"></iframe>'
+      html : '<iframe name="ruleSaveFrame" id="ruleSaveFrame" src="'+projectName+'/csms/rule/toSave.v?'+getFlushParam('saveRule')+'&ids='+ids+'" frameborder="0" scrolling="auto"></iframe>'
     });
   },
   openUpdateRuleWindow : function(id){

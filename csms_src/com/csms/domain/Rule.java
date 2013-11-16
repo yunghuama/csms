@@ -30,6 +30,24 @@ public class Rule {
 	
 	private String type;
 	
+	//所属部门
+	private Group group;
+	
+
+	
+	
+	
+	public Group getGroup() {
+		return group;
+	}
+
+
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
+
+
 
 	public String getType() {
 		return type;

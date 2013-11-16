@@ -30,6 +30,8 @@ public class RuleAction extends GenericAction<Rule> {
     private List<Content> contentList;
     private Rule rule;
     private String type;
+    private String ids;
+    private String state;
     
     public String list() throws Exception {
     	
@@ -88,7 +90,7 @@ public class RuleAction extends GenericAction<Rule> {
     			
     		}
     		
-    		ruleService.saveRule(rule);
+    		ruleService.saveRule(rule,ids);
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -104,7 +106,7 @@ public class RuleAction extends GenericAction<Rule> {
     public String toUpdate() throws Exception {
     	try{
     		contentList = contentService.findByState("1");
-    		rule = ruleService.findRuleById(rule.getId());
+    		rule = ruleService.findRuleById(rule.getGroup().getId());
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -152,6 +154,20 @@ public class RuleAction extends GenericAction<Rule> {
         
         return SUCCESS;
     }
+    
+    //更新状态
+    public String updateState(){
+    	ruleService.updateState(idList, state);
+    	return SUCCESS;
+    }
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 
 	public RuleService getRuleService() {
 		return ruleService;
@@ -191,6 +207,14 @@ public class RuleAction extends GenericAction<Rule> {
 
 	public void setContentList(List<Content> contentList) {
 		this.contentList = contentList;
+	}
+
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
 	}
 	
 }

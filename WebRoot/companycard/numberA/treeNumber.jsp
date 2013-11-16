@@ -104,17 +104,7 @@ String path = request.getContextPath();
            	  if(confirm("确认删除该部门?，该部门下得号码将被移动到默认部门下面!"))
             	parent.location = '<%=path%>/csms/group/delete.v?groupId='+groupId;
             }
-          },'-',{
-              type : 'button',
-              text : '刷新',
-              position: {
-            	  a: '-60px 0px',
-                  b: '-60px -120px'
-              },
-              handler : function(){
-            	  
-              }
-            }]
+          }]
       });
       
       setTreeHeight(['toolbarUp', 'toolbarDown']);

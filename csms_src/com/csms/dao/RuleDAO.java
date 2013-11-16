@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.csms.constants.CSMSSQLConstant;
 import com.csms.constants.CSMSStringConstant;
 import com.csms.domain.GloRule;
+import com.csms.domain.Group;
 import com.csms.domain.PreRule;
 import com.csms.domain.Rule;
 import com.platform.dao.GenericDAO;
@@ -61,12 +62,12 @@ public class RuleDAO extends GenericDAO{
 				rule.setRuleEndTime(rs.getString("ruleendtime"));
 				rule.setState(rs.getString("state"));
 				rule.setCreateTime(rs.getLong("createtime"));
-				Users user = new Users();
-				user.setId(rs.getString("creator"));
-				user.setRealName(rs.getString("realname"));
-				rule.setCreator(user);
 				rule.setTimeType(rs.getString("timetype"));
 				rule.setType(rs.getString("type"));
+				Group group = new Group();
+				group.setId(rs.getString("groupid"));
+				group.setName(rs.getString("groupname"));
+				rule.setGroup(group);
 				return rule;
 			}}));
 		int rowCount = queryForInt(Meta.getRowCountSQL(CSMSSQLConstant.RULE_ROWCOUNT_SQL , sql),args);
@@ -139,10 +140,11 @@ public class RuleDAO extends GenericDAO{
 			rule.getContent(),
 			rule.getDepartment(),
 			rule.getState(),
-			rule.getCreator().getId(),
+			"",
 			new Date(),
 			rule.getTimeType(),
-			rule.getType()
+			rule.getType(),
+			rule.getGroup().getId()
 		});
 	}
 	
@@ -162,7 +164,7 @@ public class RuleDAO extends GenericDAO{
 			rule.getState(),
 			rule.getTimeType(),
 			rule.getType(),
-			rule.getId()
+			rule.getGroup().getId()
 		});
 	}
 	
@@ -171,8 +173,8 @@ public class RuleDAO extends GenericDAO{
 	 * @param state
 	 * @return
 	 */
-	public int updateStateRule(String state){
-		return jdbcTemplate.update(CSMSSQLConstant.RULE_UPDATE_STATE_SQL, new Object[]{state});
+	public int updateStateRule(String state,String group){
+		return jdbcTemplate.update(CSMSSQLConstant.RULE_UPDATE_STATE_SQL, new Object[]{state,group});
 	}
 	
 	/**
@@ -268,6 +270,16 @@ public class RuleDAO extends GenericDAO{
 		if(list!=null&&list.size()>0)
 			return list.get(0);
 		return null;
+	}
+	
+	/**
+	 * 根据部门删除策略
+	 * @param sql
+	 * @param args
+	 * @return
+	 */
+	public int deleteRuleByGroup(String id){
+		return jdbcTemplate.update(CSMSSQLConstant.RULE_DELETE_BY_GROUP_SQL, new Object[]{id});
 	}
 	
 	//---------全局策略结束

@@ -28,5 +28,8 @@
     <action name="delete" class="ruleAction" method="delete">
       <result type="chain">listPagination</result>
     </action>
+    <action name="updateState" class="ruleAction" method="updateState">
+      <result type="chain">listPagination</result>
+    </action>
   </package>
 </struts>

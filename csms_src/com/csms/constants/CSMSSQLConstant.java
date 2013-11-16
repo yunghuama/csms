@@ -26,13 +26,15 @@ public class CSMSSQLConstant {
 	/**
 	 * 策略管理
 	 */
-	public static final String RULE_SELECT_BY_PAGE_SQL = "select r.*,u.realname,c.content as contentname from sms_rule r,users u,sms_content c where r.department = ? and r.creator = u.id and r.content = c.id order by r.type desc";
+	public static final String RULE_SELECT_BY_PAGE_SQL = "select r.*, g.id as groupid, g.name as groupname,c.content as contentname from sms_group g left join sms_rule r on g.id = r.smsgroup left join sms_content c on r.content = c.id where g.department = ?  order by g.type";
 	public static final String RULE_SELECT_ALL_SQL = "select r.* from sms_rule r,users u where r.department = ? and r.creator = u.id ";
 	public static final String RULE_SELECT_BY_ID = "select * from sms_rule where id = ?";
-	public static final String RULE_SAVE_SQL = "insert into sms_rule(id,name,ruleday,rulestarttime,ruleendtime,content,department,state,creator,createtime,timetype,type) value(?,?,?,?,?,?,?,?,?,?,?,?)";
-	public static final String RULE_UPDATE_SQL = "update sms_rule set name =? ,ruleday = ?, rulestarttime = ?,ruleendtime = ?,content = ?,state = ?,timetype=?,type=? where id = ?";
+	public static final String RULE_SELECT_BY_GROUP_ID = "select * from sms_rule where smsgroup = ?";
+	public static final String RULE_SAVE_SQL = "insert into sms_rule(id,name,ruleday,rulestarttime,ruleendtime,content,department,state,creator,createtime,timetype,type,smsgroup) value(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	public static final String RULE_UPDATE_SQL = "update sms_rule set name =? ,ruleday = ?, rulestarttime = ?,ruleendtime = ?,content = ?,state = ?,timetype=?,type=? where smsgroup = ?";
 	public static final String RULE_DELETE_BY_IDS_SQL = "delete from sms_rule where id in ";
-	public static final String RULE_UPDATE_STATE_SQL = "update sms_rule set state = ? where id = ?";
+	public static final String RULE_DELETE_BY_GROUP_SQL = "delete from sms_rule where smsgroup = ?";
+	public static final String RULE_UPDATE_STATE_SQL = "update sms_rule set state = ? where smsgroup = ?";
 	public static final String RULE_ROWCOUNT_SQL = "select count(r.id)";
 	public static final String PRERULE_SELECT_BY_RULE_SQL = "select pr.*,sc.content as contentname from sms_previousrule pr,sms_content sc where pr.rule = ? and pr.content = sc.id ";
 	public static final String PRERULE_SAVE_SQL = "insert into sms_previousrule(id,name,executedate,rule,content,creator,createtime) value(?,?,?,?,?,?,?)";
