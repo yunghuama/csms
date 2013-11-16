@@ -53,18 +53,19 @@ public class CSMSSQLConstant {
 	public static final String GROUP_UPDATE_SQL = "update sms_group set name=?,rule=?,remark=? where id = ?";
 	public static final String GROUP_DELETE_BY_IDS_SQL = "delete from sms_group where type='1' and id in ";
 	public static final String GROUP_SELECT_BY_ID = "select * from sms_group where id = ? ";
-	public static final String GROUP_SELECT_ALL_SQL = "select g.* from sms_group g where g.department = ?";
+	public static final String GROUP_SELECT_ALL_SQL = "select g.* from sms_group g where g.department = ? order by g.type";
 	public static final String GROUP_ROWCOUNT_SQL = "select count(g.id) ";
 	
 	/**
 	 * 号码管理
 	 */
-	public static final String NUMBER_SELECT_BY_PAGE_DEP_SQL = "select n.*,u.realname,g.name as groupname from sms_number n left join users u on n.creator = u.id left join sms_group as g on n.smsgroup = g.id where n.department = ? ";
-	public static final String NUMBER_SELECT_BY_PAGE_GROUP_SQL = "select n.*,u.realname,g.name as groupname from sms_number n left join users u on n.creator = u.id left join sms_group as g on n.smsgroup = g.id where n.smsgroup = ? ";
-	public static final String NUMBER_SAVE_BY_GROUP_SQL = "insert into sms_number(id,number,smsgroup,department,remark,creator,createtime) values(?,?,?,?,?,?,?)";
+	public static final String NUMBER_SELECT_BY_PAGE_DEP_SQL = "select n.*,g.name as groupname from sms_number n  left join sms_group as g on n.smsgroup = g.id where n.department = ? ";
+	public static final String NUMBER_SELECT_BY_PAGE_GROUP_SQL = "select n.*,g.name as groupname from sms_number n  , sms_group as g where n.smsgroup = g.id and n.smsgroup = ? ";
+	public static final String NUMBER_SAVE_BY_GROUP_SQL = "insert into sms_number(id,number,smsgroup,department,remark,name,creator,createtime) values(?,?,?,?,?,?,?,?)";
 	public static final String NUMBER_SELECT_BY_ID_SQL = "select n.* from sms_number n where id = ?";
-	public static final String NUMBER_UPDATE_ALL_SQL = "update sms_number set number = ?,smsgroup = ?,remark = ? where id = ?";
+	public static final String NUMBER_UPDATE_ALL_SQL = "update sms_number set number = ?,smsgroup = ?,remark = ?,name=? where id = ?";
 	public static final String NUMBER_UPDATE_GROUP_SQL = "update sms_number set smsgroup = ?,remark = ? where id = ?";
+	public static final String NUMBER_UPDATE_GROUP_NAME_SQL = "update sms_number set smsgroup = ?,remark = ?,name=? where id = ?";
 	public static final String NUMBER_ROWCOUNT_SQL = "select count(n.id)";
 	public static final String NUMBER_DELETE_BY_IDS_SQL = "delete from sms_number where id in ";
 	public static final String NUMBER_SELECT_ALL_SQL = "select n.* from sms_number n where n.department = ?";

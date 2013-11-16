@@ -46,7 +46,6 @@ public class GroupAction extends GenericAction<Group> {
      * @throws Exception
      */
     public String toSave() throws Exception {
-    	ruleList = ruleService.findAllRule();
         return SUCCESS;
     }
 
@@ -73,7 +72,6 @@ public class GroupAction extends GenericAction<Group> {
      */
     public String toUpdate() throws Exception {
     	try{
-    		ruleList = ruleService.findAllRule();
     		group = groupService.findById(group.getId()); 
     	}catch(Exception e){
     		e.printStackTrace();

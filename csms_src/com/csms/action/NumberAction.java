@@ -87,6 +87,8 @@ public class NumberAction extends GenericAction<CsmsNumber> {
         return SUCCESS;
     }
     
+    
+    //根据部门获得号码
     public String listPaginationA() throws Exception {
     	try{
     	    page = numberService.listPaginationA(page,groupId);	
@@ -504,4 +506,14 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 	public void setIds(String ids) {
 		this.ids = ids;
 	}
+
+	public String getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
+	
+	
 }

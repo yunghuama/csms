@@ -15,8 +15,12 @@ String path = request.getContextPath();
       <div class="form-group">基本信息</div>
       <s:hidden name="ids"></s:hidden>
       <table class="form-table" cellspacing="0" cellpadding="0">
+      	<tr>
+          <td class="form-left"><span class="form-required">*</span>姓名</td>
+          <td class="form-right"><s:textfield type="text" class="text" name="number.name" id="number"/> </td>
+        </tr>
         <tr>
-          <td class="form-left"><span class="form-required">*</span>所属组群</td>
+          <td class="form-left"><span class="form-required">*</span>所属部门</td>
           <td class="form-right"><s:select list="groupList" listKey="id" listValue="name" name="number.group" id="group"></s:select> </td>
         </tr>
         <tr>

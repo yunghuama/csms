@@ -10,6 +10,8 @@ public class CsmsNumber {
 	
 	private String group;
 	
+	private String name;//姓名
+	
 	private String 	department;
 	
 	private String remark;
@@ -17,6 +19,16 @@ public class CsmsNumber {
 	private Users creator;
 	
 	private long createTime;
+	
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public String getId() {
 		return id;

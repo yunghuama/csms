@@ -57,10 +57,7 @@ public class NumberDAO extends GenericDAO{
 				number.setRemark(rs.getString("remark"));
 				number.setGroup(rs.getString("groupname"));
 				number.setCreateTime(rs.getLong("createtime"));
-				Users user = new Users();
-				user.setId(rs.getString("creator"));
-				user.setRealName(rs.getString("realname"));
-				number.setCreator(user);
+				number.setName(rs.getString("name"));
 				return number;
 			}}));
 		int rowCount = queryForInt(Meta.getRowCountSQL(CSMSSQLConstant.NUMBER_ROWCOUNT_SQL , sql),args);
@@ -108,6 +105,7 @@ public class NumberDAO extends GenericDAO{
 			number.getGroup(),
 			number.getDepartment(),
 			number.getRemark(),
+			number.getName(),
 			number.getCreator().getId(),
 			new Date().getTime()
 		});
@@ -119,17 +117,28 @@ public class NumberDAO extends GenericDAO{
 				number.getNumber(),
 				number.getGroup(),
 				number.getRemark(),
+				number.getName(),
 				number.getId()
 			});
 		}
 	
 	public int updateA(CsmsNumber number){
+		if(number.getName()==null||"".equals(number.getName()))
 	     return jdbcTemplate.update(CSMSSQLConstant.NUMBER_UPDATE_GROUP_SQL, new Object[]{
 				number.getGroup(),
 				number.getRemark(),
 				number.getId()
 			});
+		else 
+		return jdbcTemplate.update(CSMSSQLConstant.NUMBER_UPDATE_GROUP_NAME_SQL, new Object[]{
+				number.getGroup(),
+				number.getRemark(),
+				number.getName(),
+				number.getId()
+			});	
 		}
+
+		
 	
 	/**
 	 * 根据ID 查询部门

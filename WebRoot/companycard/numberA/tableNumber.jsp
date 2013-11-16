@@ -24,8 +24,8 @@ String path = request.getContextPath();
           <td><input type="checkbox" id="allBox"/></td>
           <td>号码</td>
           <td>部门</td>
+          <td>姓名</td>
           <td>备注</td>
-          <td>创建人</td>
           <td>创建时间</td>
         </tr>
       </table>
@@ -38,8 +38,8 @@ String path = request.getContextPath();
             </td>
             <td><span><s:property value="#number.number"/>&nbsp;</span></td>
             <td><span><s:property value="#number.group"/>&nbsp;</span></td>
+            <td align="center"><span><s:property value="#number.name"/></span></td>
             <td><span><s:property value="#number.remark"/>&nbsp;</span></td>
-            <td align="center"><span><s:property value="#number.creator.realName"/>&nbsp;</span></td>
             <td align="center"><span><s:date name="#number.createTime" format="yyyy-MM-dd HH:mm:ss"/>&nbsp;</span></td>
           </tr>
         </s:iterator>
@@ -95,18 +95,7 @@ String path = request.getContextPath();
                b: '-20px -120px'
             },
             handler:function(){
-             if(getFirstID()){
-            	 var idArray = [];
-            	 //获得所有选中的ID
-            	 $("input[name=idList]").each(function(){
-            		 if($(this).attr("checked")==true){
-	            		 var id = $(this).val();
-	            		 idArray.push(id);
-            		 }
-            	 });
-            	 console.debug(idArray.join(','));
-            	 top.numberFunctions.openUpdateNumberAWindow(idArray.join(','));
-             }
+             s
             }
         }]
       });

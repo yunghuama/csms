@@ -40,7 +40,7 @@ String path = request.getContextPath();
 			}
 		};
         var zNodes =[];
-        zNodes.push({ id:'00000000000000000000000000000000', pId:'', name:'全部部门',open:true});
+        zNodes.push({ id:'00000000000000000000000000000000', pId:'', name:'部门',open:true});
         <s:iterator id="group" value="groupList" status="st">
     	zNodes.push({ id:'<s:property value="#group.id"/>', pId:'00000000000000000000000000000000', name:'<s:property value="#group.name"/>'});
     	</s:iterator>
@@ -63,23 +63,50 @@ String path = request.getContextPath();
         icon: '../../image/op.gif',
         items : [{
           type : 'button',
-          text : '全部展开',
+          text : '新建',
           position: {
-            a: '-160px -80px',
-            b: '-160px -200px'
+        	  a: '0px 0px',
+              b: '0px -120px'
           },
           handler : function(){
-            tree.expandAll();
+        	  top.groupFunctions.openSaveGroupWindow();
           }
         },'-',{
           type : 'button',
-          text : '刷新',
+          text : '修改',
           position: {
-            a: '-60px 0px',
-            b: '-60px -120px'
+        	  a: '-20px 0px',
+              b: '-20px -120px'
           },
-          handler : refreshTree
-        }]
+          handler : function(){
+        	  top.groupFunctions.openUpdateGroupWindow(getFirstID());
+          }
+        },'-',{
+            type : 'button',
+            text : '删除',
+            position: {
+            	a: '-40px 0px',
+                b: '-40px -120px'
+            },
+            handler : function(){
+            	validateBeforeDelete({
+                    validateURL : '<%=path%>/system/ajax/deleteValidate.v',
+                    validateParams : $('input:checkbox[name="idList"]:checked').serialize(),
+                    validateTable : 'CSMSNumber',
+                    deleteURL : '<%=path%>/csms/group/delete.v'
+                  });
+            }
+          },'-',{
+              type : 'button',
+              text : '刷新',
+              position: {
+            	  a: '-60px 0px',
+                  b: '-60px -120px'
+              },
+              handler : function(){
+            	  
+              }
+            }]
       });
       
       setTreeHeight(['toolbarUp', 'toolbarDown']);

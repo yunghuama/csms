@@ -11,18 +11,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.csms.constants.CSMSSQLConstant;
 import com.csms.dao.EnterpriseDAO;
+import com.csms.dao.GroupDAO;
 import com.csms.domain.Enterprise;
+import com.csms.domain.Group;
 import com.csms.util.LoginUtils;
 import com.platform.exception.CRUDException;
 import com.platform.service.IService;
-import com.platform.util.LoginBean;
-import com.platform.util.Validate;
 import com.platform.vo.Page;
 
 @Service
 public class EnterpriseService implements IService {
 
     private EnterpriseDAO enterpriseDAO;
+    private GroupDAO groupDAO;
     
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -63,14 +64,21 @@ public class EnterpriseService implements IService {
     }
 
     /**
-     * 新建内容
+     * 
      * 
      * @param department
      * @throws CRUDException
      */
     @Transactional(rollbackFor={Exception.class,RuntimeException.class})
     public void saveEnterprise(Enterprise enterprise) throws CRUDException {
+    	//保存企业
         enterpriseDAO.save(enterprise);
+        //为企业添加默认部门
+        Group group = new Group();
+        group.setDepartment(LoginUtils.getEnterpriseId());
+        group.setName("默认部门");
+        group.setType("0");
+        groupDAO.save(group);
     }
 
     
