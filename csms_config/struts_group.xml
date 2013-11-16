@@ -20,7 +20,10 @@
       <result>/share/done.jsp</result>
     </action>
     <action name="delete" class="groupAction" method="delete">
-      <result type="chain">listPagination</result>
+      <result type="redirectAction">
+          <param name="namespace">/csms/number</param>
+     	  <param name="actionName">listA</param>
+      </result>
     </action>
   </package>
 </struts>

@@ -12,6 +12,7 @@ String path = request.getContextPath();
     <link href="<%=path%>/js/ztree/zTreeStyle.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
+  	<input type="hidden" value="" id="groupId"></input>
     <div id="toolbarUp"></div>
     <div class="treePanel">
       <div class="paddingPanel">
@@ -46,6 +47,7 @@ String path = request.getContextPath();
     	</s:iterator>
       function treeOnClick(event,treeId,treeNode)
       {
+    	$("#groupId").val(treeNode.id);  
         parent.mainFrame.location = "<%=path%>/csms/number/listPaginationA.v?groupId="+treeNode.id;
       }   
         
@@ -79,7 +81,12 @@ String path = request.getContextPath();
               b: '-20px -120px'
           },
           handler : function(){
-        	  top.groupFunctions.openUpdateGroupWindow(getFirstID());
+        	  var groupId = $("#groupId").val();
+        	  if(groupId==""){
+        		  alert("请选择部门");
+        		  return;
+        	  }
+        	  top.groupFunctions.openUpdateGroupWindow(groupId);
           }
         },'-',{
             type : 'button',
@@ -89,12 +96,13 @@ String path = request.getContextPath();
                 b: '-40px -120px'
             },
             handler : function(){
-            	validateBeforeDelete({
-                    validateURL : '<%=path%>/system/ajax/deleteValidate.v',
-                    validateParams : $('input:checkbox[name="idList"]:checked').serialize(),
-                    validateTable : 'CSMSNumber',
-                    deleteURL : '<%=path%>/csms/group/delete.v'
-                  });
+           	 var groupId = $("#groupId").val();
+           	  if(groupId==""){
+           		  alert("请选择部门");
+           		  return;
+           	  }
+           	  if(confirm("确认删除该部门?，该部门下得号码将被移动到默认部门下面!"))
+            	parent.location = '<%=path%>/csms/group/delete.v?groupId='+groupId;
             }
           },'-',{
               type : 'button',

@@ -102,7 +102,7 @@ public class GroupAction extends GenericAction<Group> {
      */
     public String delete() throws Exception {
     	try{
-    		 groupService.delete(idList);
+    		 groupService.delete(groupId);
     	}catch(Exception e){
     		e.printStackTrace();
     	}

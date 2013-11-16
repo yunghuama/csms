@@ -52,9 +52,11 @@ public class CSMSSQLConstant {
 	public static final String GROUP_SAVE_SQL = "insert into sms_group(id,name,rule,department,remark,type,creator,createtime) values(?,?,?,?,?,?,?,?)";
 	public static final String GROUP_UPDATE_SQL = "update sms_group set name=?,rule=?,remark=? where id = ?";
 	public static final String GROUP_DELETE_BY_IDS_SQL = "delete from sms_group where type='1' and id in ";
-	public static final String GROUP_SELECT_BY_ID = "select * from sms_group where id = ? ";
+	public static final String GROUP_DELETE_BY_ID_SQL = "delete from sms_group where type='1' and id = ?";
+	public static final String GROUP_SELECT_BY_ID = "select * from sms_group where id = ? and type='1'";
 	public static final String GROUP_SELECT_ALL_SQL = "select g.* from sms_group g where g.department = ? order by g.type";
 	public static final String GROUP_ROWCOUNT_SQL = "select count(g.id) ";
+	public static final String GROUP_DEFAULT_SELECT = "select * from sms_group where type = '0' and department = ?";
 	
 	/**
 	 * 号码管理
@@ -70,6 +72,7 @@ public class CSMSSQLConstant {
 	public static final String NUMBER_DELETE_BY_IDS_SQL = "delete from sms_number where id in ";
 	public static final String NUMBER_SELECT_ALL_SQL = "select n.* from sms_number n where n.department = ?";
 	public static final String NUMBER_SELECT_COUNT_SQL = "select count(id) from sms_number where number = ?";
+	public static final String NUMBER_UPDATE_TODEFAULT_GROUP = "update sms_number set smsgroup = ? where smsgroup = ?";
 
     /**
      * 报警管理

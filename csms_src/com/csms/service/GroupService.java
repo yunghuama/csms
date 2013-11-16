@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.csms.constants.CSMSSQLConstant;
 import com.csms.dao.GroupDAO;
+import com.csms.dao.NumberDAO;
 import com.csms.domain.Group;
 import com.csms.util.LoginUtils;
 import com.platform.constants.SQLConstant;
@@ -26,12 +27,14 @@ import com.platform.vo.Page;
 public class GroupService implements IService {
 
     private GroupDAO groupDAO;
+    private NumberDAO numberDAO;
     
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
     	Log log = LogFactory.getLog(GroupService.class);
     	log.debug(jdbcTemplate);
     	groupDAO = GroupDAO.getInstance(jdbcTemplate);
+    	numberDAO = NumberDAO.getInstance(jdbcTemplate);
     }
 
     /**
@@ -97,5 +100,20 @@ public class GroupService implements IService {
     @Transactional(rollbackFor={Exception.class,RuntimeException.class})
     public void delete(List<String> idList){
     	groupDAO.deleteByIdList(CSMSSQLConstant.GROUP_DELETE_BY_IDS_SQL,idList);
+    }
+    
+    
+    @Transactional(rollbackFor={Exception.class,RuntimeException.class})
+    public void delete(String id){
+    	//将本组群的号码修改为默认组群
+    	List<Group> groupList =  groupDAO.findAll(CSMSSQLConstant.GROUP_DEFAULT_SELECT,new Object[]{LoginUtils.getEnterpriseId()});
+    	if(groupList!=null&&groupList.size()>0){
+    		Group group = groupList.get(0);
+    		//首先修改为默认部门
+    		numberDAO.updateDefaultGroup(group.getId(),id);
+    		//删除该部门
+    		groupDAO.deleteByProperty(CSMSSQLConstant.GROUP_DELETE_BY_ID_SQL, id);
+    	}
+    	
     }
 }

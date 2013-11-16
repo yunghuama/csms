@@ -122,6 +122,13 @@ public class NumberDAO extends GenericDAO{
 			});
 		}
 	
+	public int updateDefaultGroup(String defaultGroup,String group){
+	     return jdbcTemplate.update(CSMSSQLConstant.NUMBER_UPDATE_TODEFAULT_GROUP, new Object[]{
+	    		 defaultGroup,
+	    		 group
+			});
+		}
+	
 	public int updateA(CsmsNumber number){
 		if(number.getName()==null||"".equals(number.getName()))
 	     return jdbcTemplate.update(CSMSSQLConstant.NUMBER_UPDATE_GROUP_SQL, new Object[]{
