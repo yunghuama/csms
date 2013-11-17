@@ -148,9 +148,8 @@ if(session.getAttribute("LoginBean")==null) {
     	    icon: 'image/module_icon.gif',
     	    items: [{
     	      id: 'workspace',
-    	      title: '&nbsp;&nbsp;',
+    	      title: '',
     	      closable: false,
-    	      html: '<iframe id="workspaceFrame" name="workspaceFrame" src="' + projectName + '/showDeskTop.v" width="100%" height="100%" frameborder="0"></iframe>',
     	      position: {
     	        a: '0px -110px',
     	        b: '-22px -110px'
@@ -257,7 +256,7 @@ if(session.getAttribute("LoginBean")==null) {
      });
       }
       
-      if("<s:property value='@com.platform.util.Meta@getOperate(\"cardgroup_view\")'/>"=="T"){ 
+      if("<s:property value='@com.platform.util.Meta@getOperate(\"cardgroup_view1\")'/>"=="T"){ 
      eventArray.push({
     	    trigger: 'card_group',
     	    id: 'group',

@@ -124,10 +124,9 @@ TabPanel.prototype = {
     }
     this.update();
     //循环添加item
-   /* for (var i = 0; i < this.items.length; i++) {
+    for (var i = 0; i < this.items.length; i++) {
       this.addTab(this.items[i]);
     }
-   
     //打开默认选项卡
    if (this.defaultTab != undefined) {
       switch (typeof this.defaultTab) {
@@ -138,7 +137,7 @@ TabPanel.prototype = {
           this.show(this._getItemObject(this.defaultTab).id);
           break;
       }
-    } */
+    } 
   },
   /**
    * 更新

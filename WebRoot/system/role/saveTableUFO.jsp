@@ -19,6 +19,7 @@ String path = request.getContextPath();
     var tabpanel;
     $(document).ready(function(){
       tabpanel = new TabPanel({
+    	id : 'jtable',
         renderTo:'tabs',
         border: false,
         autoResize: true,
