@@ -4,7 +4,7 @@ var groupFunctions = {
       id : 'saveGroup',
       title : '添加部门',
       width : 350,
-      height : 205,
+      height : 80,
       closeConfirm : true,
       html : '<iframe name="groupSaveFrame" id="groupSaveFrame" src="'+projectName+'/csms/group/toSave.v?'+getFlushParam('saveGroup')+'" frameborder="0" scrolling="auto"></iframe>',
       tbar : new Toolbar({
@@ -29,7 +29,7 @@ var groupFunctions = {
 	      id : 'updateGroup',
 	      title : '修改部门',
 	      width : 350,
-	      height : 205,
+	      height : 80,
 	      closeConfirm : true,
 	      html : '<iframe name="groupUpdateFrame" id="groupUpdateFrame" src="'+projectName+'/csms/group/toUpdate.v?'+getFlushParam('updateGroup')+'&group.id='+id+'" frameborder="0" scrolling="auto"></iframe>',
 	      tbar : new Toolbar({

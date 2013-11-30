@@ -55,7 +55,7 @@ public class CSMSSQLConstant {
 	public static final String GROUP_UPDATE_SQL = "update sms_group set name=?,rule=?,remark=? where id = ?";
 	public static final String GROUP_DELETE_BY_IDS_SQL = "delete from sms_group where type='1' and id in ";
 	public static final String GROUP_DELETE_BY_ID_SQL = "delete from sms_group where type='1' and id = ?";
-	public static final String GROUP_SELECT_BY_ID = "select * from sms_group where id = ? and type='1'";
+	public static final String GROUP_SELECT_BY_ID = "select * from sms_group where id = ?";
 	public static final String GROUP_SELECT_ALL_SQL = "select g.* from sms_group g where g.department = ? order by g.type";
 	public static final String GROUP_ROWCOUNT_SQL = "select count(g.id) ";
 	public static final String GROUP_DEFAULT_SELECT = "select * from sms_group where type = '0' and department = ?";
@@ -68,7 +68,7 @@ public class CSMSSQLConstant {
 	public static final String NUMBER_SAVE_BY_GROUP_SQL = "insert into sms_number(id,number,smsgroup,department,remark,name,creator,createtime) values(?,?,?,?,?,?,?,?)";
 	public static final String NUMBER_SELECT_BY_ID_SQL = "select n.* from sms_number n where id = ?";
 	public static final String NUMBER_UPDATE_ALL_SQL = "update sms_number set number = ?,smsgroup = ?,remark = ?,name=? where id = ?";
-	public static final String NUMBER_UPDATE_GROUP_SQL = "update sms_number set smsgroup = ?,remark = ? where id = ?";
+	public static final String NUMBER_UPDATE_GROUP_SQL = "update sms_number set smsgroup = ? where id = ?";
 	public static final String NUMBER_UPDATE_GROUP_NAME_SQL = "update sms_number set smsgroup = ?,remark = ?,name=? where id = ?";
 	public static final String NUMBER_ROWCOUNT_SQL = "select count(n.id)";
 	public static final String NUMBER_DELETE_BY_IDS_SQL = "delete from sms_number where id in ";

@@ -26,10 +26,6 @@ String path = request.getContextPath();
           </s:elseif>
           </td>
         </tr>
-        <tr>
-          <td class="form-left">说明</td>
-          <td class="form-right"><s:textarea cssStyle="width:200px; height:70px;" cssClass="textarea" id="deptRemark" name="group.remark" theme="simple"/></td>
-        </tr>
       </table>
       <s:hidden name="tabId"/>
       <s:hidden name="windowPanelId"/>

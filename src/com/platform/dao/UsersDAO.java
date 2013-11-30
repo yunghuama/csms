@@ -155,6 +155,12 @@ public class UsersDAO extends GenericDAO{
 				user.setRemark(rs.getString("remark"));
 				user.setRoleId(rs.getString("role"));
 				user.setPassword(rs.getString("password"));
+				Enterprise enterprise = new Enterprise();
+				enterprise.setId(rs.getString("enterprise"));
+				user.setEnterprise(enterprise);
+				Department department = new Department();
+				department.setId(rs.getString("departmentid"));
+				user.setDepartment(department);
 				return user;
 			}
 		});

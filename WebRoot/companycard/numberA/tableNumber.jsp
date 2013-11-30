@@ -66,7 +66,7 @@ String path = request.getContextPath();
         icon: '../../image/op.gif',
         items : [{
             type:'button',
-            text:'批量修改号码',
+            text:'批量移动号码',
             useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardnumber_edit\")"/>',
             position: {
            	   a: '-20px 0px',
@@ -87,6 +87,19 @@ String path = request.getContextPath();
             }
         },'-',{
             type:'button',
+            text:'修改资料',
+            useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardnumber_edit\")"/>',
+            position: {
+           	   a: '-20px 0px',
+               b: '-20px -120px'
+            },
+            handler:function(){
+            	if(getFirstID()){
+            		 top.numberFunctions.openUpdateNumberWindow(getFirstID());
+            	}
+            }
+        },'-',{
+            type:'button',
             text:'号码资料导入',
             useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardnumber_edit\")"/>',
             position: {
@@ -94,7 +107,7 @@ String path = request.getContextPath();
                b: '-20px -120px'
             },
             handler:function(){
-             s
+             
             }
         }]
       });

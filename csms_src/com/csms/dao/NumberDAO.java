@@ -77,6 +77,7 @@ public class NumberDAO extends GenericDAO{
 			public CsmsNumber mapRow(ResultSet rs, int rowNum) throws SQLException {
 				CsmsNumber number = new CsmsNumber();
 				number.setId(rs.getString("id"));
+				number.setName(rs.getString("name"));
 				number.setNumber(rs.getString("number"));
 				number.setRemark(rs.getString("remark"));
 				number.setGroup(rs.getString("smsgroup"));
@@ -130,19 +131,10 @@ public class NumberDAO extends GenericDAO{
 		}
 	
 	public int updateA(CsmsNumber number){
-		if(number.getName()==null||"".equals(number.getName()))
 	     return jdbcTemplate.update(CSMSSQLConstant.NUMBER_UPDATE_GROUP_SQL, new Object[]{
 				number.getGroup(),
-				number.getRemark(),
 				number.getId()
 			});
-		else 
-		return jdbcTemplate.update(CSMSSQLConstant.NUMBER_UPDATE_GROUP_NAME_SQL, new Object[]{
-				number.getGroup(),
-				number.getRemark(),
-				number.getName(),
-				number.getId()
-			});	
 		}
 
 		

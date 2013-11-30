@@ -15,17 +15,9 @@ String path = request.getContextPath();
       <div class="form-group">基本信息</div>
       <s:hidden name="ids"></s:hidden>
       <table class="form-table" cellspacing="0" cellpadding="0">
-      	<tr>
-          <td class="form-left">姓名</td>
-          <td class="form-right"><s:textfield type="text" class="text" name="number.name" id="number"/> </td>
-        </tr>
         <tr>
           <td class="form-left"><span class="form-required">*</span>所属部门</td>
           <td class="form-right"><s:select list="groupList" listKey="id" listValue="name" name="number.group" id="group"></s:select> </td>
-        </tr>
-        <tr>
-          <td class="form-left">备注说明</td>
-          <td class="form-right"><s:textarea style="width:200px; height:70px;" cssClass="textarea" id="remark" name="number.remark"></s:textarea></td>
         </tr>
       </table>
       <s:hidden name="tabId"/>

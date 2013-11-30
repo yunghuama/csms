@@ -324,7 +324,6 @@ public class NumberAction extends GenericAction<CsmsNumber> {
      */
     public String toUpdate() throws Exception {
     	try{
-    		groupList = groupService.findAll(enterpriseId);
     		number = numberService.findById(number.getId());
     	}catch(Exception e){
     		e.printStackTrace();

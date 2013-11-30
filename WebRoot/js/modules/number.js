@@ -24,14 +24,14 @@ var numberFunctions = {
       })
     });
   },
-  openUpdateNumberWindow : function(depId,id){
+  openUpdateNumberWindow : function(id){
 	    new WindowPanel({
 	      id : 'updateNumber',
 	      title : '修改号码',
 	      width : 350,
 	      height : 205,
 	      closeConfirm : true,
-	      html : '<iframe name="numberUpdateFrame" id="numberUpdateFrame" src="'+projectName+'/csms/number/toUpdate.v?'+getFlushParam('updateNumber')+'&depId='+depId+'&number.id='+id+'" frameborder="0" scrolling="auto"></iframe>',
+	      html : '<iframe name="numberUpdateFrame" id="numberUpdateFrame" src="'+projectName+'/csms/number/toUpdate.v?'+getFlushParam('updateNumber')+'&number.id='+id+'" frameborder="0" scrolling="auto"></iframe>',
 	      tbar : new Toolbar({
 	        icon: 'image/op.gif',
 	        items : [{
@@ -53,16 +53,16 @@ var numberFunctions = {
   openUpdateNumberAWindow : function(id){
 	    new WindowPanel({
 	      id : 'updateNumberA',
-	      title : '修改号码',
+	      title : '移动号码',
 	      width : 350,
-	      height : 205,
+	      height : 80,
 	      closeConfirm : true,
 	      html : '<iframe name="numberAUpdateFrame" id="numberAUpdateFrame" src="'+projectName+'/csms/number/toUpdateA.v?'+getFlushParam('updateNumberA')+'&ids='+id+'" frameborder="0" scrolling="auto"></iframe>',
 	      tbar : new Toolbar({
 	        icon: 'image/op.gif',
 	        items : [{
 	          type : 'button',
-	          text : '保存',
+	          text : '移动',
 	          position: {
 	            a: '-80px 0px',
 	            b: '-80px -120px'

@@ -14,14 +14,16 @@ String path = request.getContextPath();
     <form name="numberForm" id="numberForm" action="<%=path%>/csms/number/update.v" class="form" method="post">
       <div class="form-group">基本信息</div>
       <s:hidden name="number.id"></s:hidden>
+      <s:hidden name="number.group"></s:hidden>
+      <s:hidden name="number.department"></s:hidden>
       <table class="form-table" cellspacing="0" cellpadding="0">
         <tr>
           <td class="form-left"><span class="form-required">*</span>号码</td>
           <td class="form-right"><s:textfield  cssClass="text" name="number.number" id="number"/> </td>
         </tr>
         <tr>
-          <td class="form-left"><span class="form-required">*</span>所属组群</td>
-          <td class="form-right"><s:select list="groupList" listKey="id" listValue="name" name="number.group" id="group"></s:select> </td>
+          <td class="form-left">姓名</td>
+          <td class="form-right"><s:textfield  cssClass="text" name="number.name" /></td>
         </tr>
         <tr>
           <td class="form-left">备注说明</td>

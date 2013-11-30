@@ -18,10 +18,6 @@ String path = request.getContextPath();
           <td class="form-left"><span class="form-required">*</span>部门名称</td>
           <td class="form-right"><input type="text" name="group.name" id="name" class="text"/></td>
         </tr>
-        <tr>
-          <td class="form-left">备注说明</td>
-          <td class="form-right"><textarea style="width:200px; height:70px;" class="textarea" id="remark" name="group.remark"></textarea></td>
-        </tr>
       </table>
       <s:hidden name="tabId"/>
       <s:hidden name="windowPanelId"/>

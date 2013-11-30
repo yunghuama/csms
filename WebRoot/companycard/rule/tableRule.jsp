@@ -44,9 +44,9 @@ String path = request.getContextPath();
             <td><s:property value="#rule.group.name"/></td>
             <td><span><s:property value="#rule.content"/>&nbsp;</span></td>
             <td align="center"><span><s:property value='#rule.ruleDay'/>&nbsp;
-            <s:if test='#rule.timeType=="0"'>8：00-18：00</s:if>
-            <s:if test='#rule.timeType=="1"'>18：00-24：00，00：00-08：00</s:if>
-            <s:if test='#rule.timeType=="2"'>00：00-24：00</s:if></td>
+            <s:if test='#rule.timeType=="0"'>工作时间</s:if>
+            <s:if test='#rule.timeType=="1"'>非工作时间</s:if>
+            <s:if test='#rule.timeType=="2"'>全天</s:if></td>
             <td align="center"><span><s:property value="#rule.creator.realName"/>&nbsp;</span></td>
             <td align="center">
             <s:if test='#rule.state=="0"'><span style="display:inline;color:green">开启</span></s:if>
