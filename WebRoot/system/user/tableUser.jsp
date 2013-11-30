@@ -23,10 +23,10 @@ String path = request.getContextPath();
         <div class="search-condition">
           <table class="search-table" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="c-left">姓名：</td>
-              <td><input name="searchValue" type="text" class="text" value="<s:property value="searchValue[0]"/>"/></td>
-              <td class="c-left"></td>
-              <td></td>
+              <td class="c-left">管理员类型：</td>
+              <td><s:select list="roleList" listKey="id" listValue="name" name="searchValue[0]"></s:select></td>
+              <td class="c-left">用户名</td>
+              <td><input name="searchValue[1]" type="text" class="text" value="<s:property value="searchValue[1]"/>"/></td>
             </tr>
           </table>
         </div>

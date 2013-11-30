@@ -348,8 +348,8 @@ public class UsersService implements IService {
      */
     public Page<Users> listPagination(Page<Users> page, String searchType, List<String> searchValue, String districtId) throws CRUDException {
         String ss = SearchUtil.getString(
-                new String[]{"u1.realName"},//高级查询条件
-                new String[]{SearchUtil.STRING_LIKE},//查询类型
+                new String[]{"u.role","u.accountName"},//高级查询条件
+                new String[]{SearchUtil.STRING_LIKE,SearchUtil.STRING_LIKE},//查询类型
                 searchType,//与或类型
                 searchValue);//查询值
         if (Validate.notNull(districtId))

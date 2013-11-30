@@ -64,6 +64,30 @@ public class UsersAction extends GenericAction<Users> {
      * @throws Exception
      */
     public String listPagination() throws Exception {
+    	Users users = LoginBean.getLoginBean().getUser();
+    	roleList = new ArrayList<Role>();
+    	if("402881c92ca0977f012ca09978a30001".equals(users.getRole().getId())){
+    		Role role1 = new Role();
+    		role1.setId("ff8080813c55b78c013c55cc91690005");
+    		role1.setName("省级管理员");
+    		Role role2 = new Role();
+    		role2.setId("ff8080813c56e38d013c56e38d290000");
+    		role2.setName("审核管理员");
+    		Role role3 = new Role();
+    		role3.setId("ff8080813c55b78c013c55df0e67003f");
+    		role3.setName("市级管理员");
+    		Role role4 = new Role();
+    		role4.setId("ff8080813c55b78c013c55df64c50040");
+    		role4.setName("区级管理员");
+    		Role role5 = new Role();
+    		role5.setId("ff8080813c55b78c013c55e0649d0042");
+    		role5.setName("企业管理员");
+    		roleList.add(role1);
+    		roleList.add(role2);
+    		roleList.add(role3);
+    		roleList.add(role4);
+    		roleList.add(role5);
+    	}
         try{
         if(Validate.notNull(azparam))
             page = usersService.paginationByPY(page, "realName", azparam);
