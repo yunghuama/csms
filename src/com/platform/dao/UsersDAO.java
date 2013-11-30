@@ -7,14 +7,15 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import com.csms.domain.District;
 import com.csms.domain.Enterprise;
 import com.platform.constants.SQLConstant;
 import com.platform.constants.StringConstant;
 import com.platform.domain.Department;
+import com.platform.domain.Role;
 import com.platform.domain.Users;
 import com.platform.util.Meta;
 import com.platform.util.PageHelper;
-import com.platform.util.UUIDGenerator;
 import com.platform.util.Validate;
 import com.platform.vo.Page;
 
@@ -158,6 +159,7 @@ public class UsersDAO extends GenericDAO{
 				Enterprise enterprise = new Enterprise();
 				enterprise.setId(rs.getString("enterprise"));
 				users.setEnterprise(enterprise);
+				users.setRoleId(rs.getString("role"));
 				return users;
 			}
 		});
@@ -189,17 +191,16 @@ public class UsersDAO extends GenericDAO{
 				user.setEdu(rs.getString("edu"));
 				user.setSex(rs.getString("sex"));
 				user.setState(rs.getString("state"));
-				Users u = new Users();
-				u.setId(rs.getString("creator"));
-				u.setRealName(rs.getString("creatorName"));
-				Department d = new Department();
-				d.setId(rs.getString("creatorDepartment"));
-				u.setDepartment(d);
-				Department d2 = new Department();
-				d2.setId(rs.getString("departmentid"));
-				d2.setName(rs.getString("departmentName"));
-				user.setDepartment(d2);
-				user.setCreator(u);
+				user.setRemark(rs.getString("remark"));
+				Enterprise enterprise = new Enterprise();
+				enterprise.setName(rs.getString("enterpriseName"));
+				user.setEnterprise(enterprise);
+				Role role = new Role();
+				role.setName(rs.getString("roleName"));
+				user.setRole(role);
+				District district = new District();
+				district.setName(rs.getString("districtName"));
+				user.setDistrict(district);
 				return user;
 			}}));
 		int rowCount = queryForInt(Meta.getRowCountSQL(SQLConstant.USERS_ALL_ROWCOUNT_SQL , sql),args);

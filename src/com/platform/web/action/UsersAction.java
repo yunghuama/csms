@@ -1,5 +1,6 @@
 package com.platform.web.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
@@ -7,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.csms.domain.District;
 import com.csms.domain.Enterprise;
+import com.csms.service.DistrictService;
 import com.csms.service.EnterpriseService;
 import com.platform.domain.Department;
 import com.platform.domain.Role;
@@ -18,6 +21,7 @@ import com.platform.service.RoleService;
 import com.platform.service.RoleUsersService;
 import com.platform.service.UsersService;
 import com.platform.util.FileHelper;
+import com.platform.util.LoginBean;
 import com.platform.util.UploadHelper;
 import com.platform.util.Validate;
 
@@ -37,9 +41,12 @@ public class UsersAction extends GenericAction<Users> {
     private RoleUsersService roleUsersService;
     @Autowired
     private EnterpriseService enterpriseService;
+    @Autowired
+    private DistrictService districtService;
 
     private List<Department> departmentList;
     private List<Enterprise> enterpriseList;
+    private List<District> districtList;
     private Users user;
     private String imagePath;
     private String userId;
@@ -86,7 +93,7 @@ public class UsersAction extends GenericAction<Users> {
      * @throws Exception
      */
     public String listTree() throws Exception {
-        departmentList = departmentService.findAllDepartment();
+    	districtList = districtService.findAll();
         return SUCCESS;
     }
 
@@ -97,9 +104,31 @@ public class UsersAction extends GenericAction<Users> {
      * @throws Exception
      */
     public String toSave() throws Exception {
-        // 加载部门列表
-        departmentList = departmentService.findAllDepartment();
-        enterpriseList = enterpriseService.findAll();
+    	Users users = LoginBean.getLoginBean().getUser();
+    	roleList = new ArrayList<Role>();
+    	if("402881c92ca0977f012ca09978a30001".equals(users.getRole().getId())){
+    		Role role1 = new Role();
+    		role1.setId("ff8080813c55b78c013c55cc91690005");
+    		role1.setName("省级管理员");
+    		Role role2 = new Role();
+    		role2.setId("ff8080813c56e38d013c56e38d290000");
+    		role2.setName("审核管理员");
+    		roleList.add(role1);
+    		roleList.add(role2);
+    	}
+    	//获得区域
+    	//如果是管理员
+    	if("402881c92ca0977f012ca09978a30001".equals(users.getRole().getId())){
+    		districtList = districtService.findAll();
+    	}
+    	//如果是省级管理员
+    	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    		districtList = districtService.findByType(District.DISTRICTTYPE.CITY.toString());
+    	}
+    	//如果是市级管理员
+    	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    		districtList = districtService.findByType(District.DISTRICTTYPE.AREA.toString());
+    	}
         return SUCCESS;
     }
     
@@ -111,11 +140,15 @@ public class UsersAction extends GenericAction<Users> {
      */
     public String save() throws Exception {
     	try{
-    	
     	String targetPath = null;
-    	if(Validate.notNull(imagePath)) {
-    		imagePath = ServletActionContext.getServletContext().getRealPath(imagePath);
-    		targetPath = ServletActionContext.getServletContext().getRealPath(FileHelper.SEPARATOR + Users.PIC_FOLDER);
+    	Users users = LoginBean.getLoginBean().getUser();
+    	//如果是省管理员
+    	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    		user.setRoleId("ff8080813c55b78c013c55df0e67003f");
+    	}
+    	//如果是市级管理员
+    	if("ff8080813c55b78c013c55df0e67003f".equals(users.getRole().getId())){
+    		user.setRoleId("ff8080813c55b78c013c55df64c50040");
     	}
         usersService.saveUsers(user, imagePath, targetPath);
     	}catch(Exception e){
@@ -246,6 +279,14 @@ public class UsersAction extends GenericAction<Users> {
 
 	public void setEnterpriseList(List<Enterprise> enterpriseList) {
 		this.enterpriseList = enterpriseList;
+	}
+
+	public List<District> getDistrictList() {
+		return districtList;
+	}
+
+	public void setDistrictList(List<District> districtList) {
+		this.districtList = districtList;
 	}
 	
 }

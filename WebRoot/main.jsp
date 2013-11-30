@@ -187,7 +187,7 @@ if(session.getAttribute("LoginBean")==null) {
       eventArray.push({
         trigger: 'user',
         id: 'users',
-        title: '员工管理',
+        title: '账号管理',
         html: '<iframe id="usersFrame" name="usersFrame" src="' + projectName + '/system/user/listUser.jsp" width="100%" height="100%" frameborder="0"></iframe>',
         position: {
           a: '0px 0px',

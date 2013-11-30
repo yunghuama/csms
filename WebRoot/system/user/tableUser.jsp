@@ -39,14 +39,12 @@ String path = request.getContextPath();
         <tr>
           <td>&nbsp;</td>
           <td><input type="checkbox" id="allBox"/></td>
-          <td>性别</td>
-          <td>真实姓名</td>
-          <td>出生日期</td>
           <td>用户名</td>
-          <td>所在部门</td>
-          <td>创建人</td>
-          <td>创建时间</td>
+          <td>所在区域</td>
+          <td>所在企业</td>
+          <td>备注</td>
           <td>状态</td>
+          <td>类型</td>
         </tr>
     	</table>
       <table id="dataTable" cellpadding="0" cellspacing="0">
@@ -54,20 +52,12 @@ String path = request.getContextPath();
           <tr class="row">
             <td class="num"><s:property value="#i.index+1"/></td>
             <td class="box">
-              <s:if test="#users.creator.id == #session['LoginBean'].user.id">
-                <input type="checkbox" name="idList" value="<s:property value="#users.id"/>"/>
-              </s:if>
-              <s:else>
-                <img class="more-operate" src="<%=path%>/image/more-operate.gif" onclick="openMoreOperateWindow(event, '<s:property value="#users.creator.id"/>','<s:property value="#users.creator.department.id"/>','<s:property value="#users.id"/>');"/>
-              </s:else>
+               <input type="checkbox" name="idList" value="<s:property value="#users.id"/>"/>
             </td>
-            <td align="center"><span><img src="<%=path%>/image/sex_<s:property value="#users.sex"/>.gif"/></span></td>
-            <td><span><s:property value="#users.realName"/></span></td>
-            <td align="center"><span><s:date name="#users.birthday" format="yyyy-MM-dd"/></span></td>
             <td><span><s:property value="#users.accountName"/></span></td>
-            <td><span><s:property value="#users.department.name"/>&nbsp;</span></td>
-            <td><span><s:property value="#users.creator.realName"/></span></td>
-            <td align="center"><s:date name="#users.createTime" format="yyyy-MM-dd HH:mm"/></td>
+            <td align="center"><span><s:property value="#users.district.name"/></span></td>
+            <td><span><s:property value="#users.enterprise.name"/></span></td>
+            <td><span><s:property value="#users.remark"/>&nbsp;</span></td>
             <td id="td<s:property value="#users.id"/>" align="center">
             <span>
               <s:if test="#users.state==@com.platform.constants.StringConstant@TRUE">
@@ -78,6 +68,7 @@ String path = request.getContextPath();
               </s:else>
             </span>
             </td>
+            <td><span><s:property value="#users.role.name"/></span></td>
           </tr>
         </s:iterator>
       </table>
@@ -174,7 +165,7 @@ String path = request.getContextPath();
       new Grid({
         titleTable:'titleTable',
         dataTable:'dataTable',
-        widths : [26,24,40,100,90,100,150,80,130,80],
+        widths : [26,50,150,100,150,230,80],
         height : function(){return getGridHeight({toolbarId:'toolbar',hasPage:true});}
       });
       

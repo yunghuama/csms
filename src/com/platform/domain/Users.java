@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.apache.struts2.json.annotations.JSON;
 
+import com.csms.domain.District;
 import com.csms.domain.Enterprise;
 
 public class Users extends BaseDomain {
@@ -24,7 +25,11 @@ public class Users extends BaseDomain {
     private String bigImage;
     private String normalImage;
     private String smallImage;
+    private String remark;
     private Enterprise enterprise;
+    private Role role;
+    private District district;
+    private String roleId;
     private Set sysMesUsers = new HashSet(0);
     private Set roleUsers = new HashSet(0);
     
@@ -47,7 +52,15 @@ public class Users extends BaseDomain {
         return this.accountName;
     }
 
-    public void setAccountName(String accountName) {
+    public String getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
+
+	public void setAccountName(String accountName) {
         this.accountName = accountName;
     }
 
@@ -163,6 +176,30 @@ public class Users extends BaseDomain {
 
 	public void setEnterprise(Enterprise enterprise) {
 		this.enterprise = enterprise;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public District getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(District district) {
+		this.district = district;
 	}
 
 }

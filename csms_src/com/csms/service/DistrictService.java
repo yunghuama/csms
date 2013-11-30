@@ -59,6 +59,10 @@ public class DistrictService implements IService {
     	return districtDAO.findAll(CSMSSQLConstant.DISTRICT_SELECT_ALL);
     }
 
+    public List<District> findByType(String type){
+    	return districtDAO.findAll(CSMSSQLConstant.DISTRICT_SELECT_BY_TYPE,new Object[]{type});
+    }
+    
     /**
      * 新建内容
      * 

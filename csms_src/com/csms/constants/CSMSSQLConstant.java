@@ -106,4 +106,5 @@ public class CSMSSQLConstant {
     public static final String DISTRICT_DELETE_BY_IDS = "delete from sms_district where id in ";
     public static final String DISTRICT_SELECT_BY_ID = "select * from sms_district where id = ?";
     public static final String DISTRICT_SELECT_BY_PARENT_ID = "select * from sms_district where parentid = ?";
+    public static final String DISTRICT_SELECT_BY_TYPE = "select * from sms_district where type = ?";
 }

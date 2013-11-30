@@ -12,6 +12,10 @@ public class District {
 	private String name;
 	
 	private Date cteateTime;
+	
+	public static enum DISTRICTTYPE {
+		PROVINCE,CITY,AREA
+	}
 
 	public String getId() {
 		return id;

@@ -40,8 +40,8 @@ String path = request.getContextPath();
                      
 		var zNodes =[];
 		zNodes.push({ id:'00000000000000000000000000000000', pId:'', name:'全部',open:true});
-		<s:iterator id="department" value="departmentList" status="st">
-		zNodes.push({ id:'<s:property value="#department.id"/>', pId:'<s:property value="#department.superId"/>', name:'<s:property value="#department.name"/>'});
+		<s:iterator id="district" value="districtList" status="st">
+		zNodes.push({ id:'<s:property value="#district.id"/>', pId:'<s:property value="#district.parentId"/>', name:'<s:property value="#district.name"/>'});
 		</s:iterator>
          
         

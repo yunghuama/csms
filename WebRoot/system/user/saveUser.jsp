@@ -17,16 +17,8 @@ String path = request.getContextPath();
       <div class="form-group">基本信息</div>
       <table class="form-table" cellspacing="0" cellpadding="0">
         <tr>
-          <td class="form-left"><span class="form-required">*</span>性别</td>
-          <td class="form-right"><s:radio name="user.sex" value="'0'" list="@com.platform.constants.StringConstant@SEX_RADIO" theme="simple"/></td>
-        </tr>
-        <tr>
-          <td class="form-left"><span class="form-required">*</span>真实姓名</td>
-          <td class="form-right"><input type="text" id="realName" name="user.realName" class="text_f"/></td>
-        </tr>
-        <tr>
-          <td class="form-left">出生日期</td>
-          <td class="form-right"><input type="text" name="user.birthday" class="Wdate text f" onclick="new WdatePicker({startDate:'1970-01-01'});"/></td>
+          <td class="form-left"><span class="form-required">*</span>管理员类型</td>
+          <td class="form-right"><s:select list="roleList" listKey="id" listValue="name" name="user.roleId"></s:select> </td>
         </tr>
         <tr>
           <td class="form-left"><span class="form-required">*</span>用户名</td>
@@ -37,18 +29,18 @@ String path = request.getContextPath();
           <td class="form-right"><input type="password" id="password" name="user.password" class="text_f"/></td>
         </tr>
         <tr>
-          <td class="form-left"><span class="form-required">*</span>所在部门</td>
-          <td class="form-right"><s:select cssStyle="width:143px;" name="user.department.id" list="departmentList" value="deptId" listKey="id" listValue="name" theme="simple"/></td>
+          <td class="form-left"><span class="form-required">*</span>所在区域</td>
+          <td class="form-right"><s:select list="districtList" listKey="id" listValue="name" name="user.roleId"></s:select></td>
+        </tr>
+        <tr>
+          <td class="form-left">备注</td>
+          <td class="form-right"><textarea rows="5" cols="20" name="user.remark"></textarea> </td>
         </tr>
         <tr>
           <td class="form-left">状态</td>
-          <td class="form-right"><s:select name="user.state" list="@com.platform.constants.StringConstant@STATE_RADIO" value="'T'" theme="simple"/></td>
+          <td class="form-right"><s:radio name="user.state" list="@com.platform.constants.StringConstant@STATE_RADIO" value="'T'" theme="simple"/></td>
         </tr>
-        <tr>
-          <td class="form-left">手机号</td>
-          <td class="form-right"><input type="text" id="cellNo" name="user.cellNo" class="text_f"/></td>
-        </tr>
-        
+
       </table>
       <input id="imagePath" name="imagePath" type="hidden"/>
       <s:hidden name="tabId"/>

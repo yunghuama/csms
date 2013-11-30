@@ -12,7 +12,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.platform.constants.SQLConstant;
 import com.platform.constants.StringConstant;
 import com.platform.dao.UsersDAO;
+import com.platform.dao.meta.RoleDAO;
 import com.platform.domain.Department;
+import com.platform.domain.Role;
 import com.platform.domain.Users;
 import com.platform.exception.CRUDException;
 import com.platform.util.FileHelper;
@@ -28,10 +30,12 @@ import com.platform.vo.Page;
 public class UsersService implements IService {
 
     private UsersDAO usersDAO;
+    private RoleDAO roleDAO;
 
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         usersDAO = UsersDAO.getInstance(jdbcTemplate);
+        roleDAO = RoleDAO.getInstance(jdbcTemplate);
     }
 
     /**
@@ -43,7 +47,14 @@ public class UsersService implements IService {
      * @throws CRUDException
      */
     public Users saveLogin(String accountName, String password) throws CRUDException {
-        return usersDAO.find(SQLConstant.USERS_LOGIN_SELECT_SQL, new String[]{accountName, password});
+        Users users =  usersDAO.find(SQLConstant.USERS_LOGIN_SELECT_SQL, new String[]{accountName, password});
+        if(users.getRoleId()!=null&&users.getRoleId().length()==32){
+    	   Role role = roleDAO.find(SQLConstant.ROLE_SELECT_BY_ID, new Object[]{users.getRoleId()});
+           users.setRole(role);
+        }else {
+           users.setRole(new Role());
+        }
+        return users;
     }
 
     /**
@@ -335,16 +346,16 @@ public class UsersService implements IService {
      * @return
      * @throws CRUDException
      */
-    public Page<Users> listPagination(Page<Users> page, String searchType, List<String> searchValue, String deptId) throws CRUDException {
+    public Page<Users> listPagination(Page<Users> page, String searchType, List<String> searchValue, String districtId) throws CRUDException {
         String ss = SearchUtil.getString(
                 new String[]{"u1.realName"},//高级查询条件
                 new String[]{SearchUtil.STRING_LIKE},//查询类型
                 searchType,//与或类型
                 searchValue);//查询值
-        if (Validate.notNull(deptId))
-            return usersDAO.pagination(page, SQLConstant.USERS_DEPT_SQL + ss + SQLConstant.getUsersAndDeptWhere(" u1.creator "," u2.departmentid ",Meta.getUsers(StringConstant.DEPARTMENT_ID),Meta.getDepartments(StringConstant.DEPARTMENT_ID)),new Object[]{deptId});
+        if (Validate.notNull(districtId))
+            return usersDAO.pagination(page, SQLConstant.USERS_ALL_SELECT_PARAMS_DEPT + ss,new Object[]{districtId});
         else
-            return usersDAO.pagination(page,SQLConstant.USERS_ALL_MORE_SELECT+ss + SQLConstant.getUsersAndDeptWhere(" u1.creator "," u2.departmentid ",Meta.getUsers(StringConstant.DEPARTMENT_ID),Meta.getDepartments(StringConstant.DEPARTMENT_ID)),null);
+            return usersDAO.pagination(page,SQLConstant.USERS_ALL_SELECT_PARAMS+ss ,null);
     }
     
     /**
@@ -359,11 +370,6 @@ public class UsersService implements IService {
         user.setCreator(LoginBean.getLoginBean().getUser());
         user.setCreateTime(new Date());
         user.setState(user.getState());
-        if(Validate.notNull(imagePath)) {
-            user.setBigImage(getImagePath(imagePath, targetPath, Users.BIG_IMAGE));
-            user.setNormalImage(getImagePath(imagePath, targetPath, Users.NORMAL_IMAGE));
-            user.setSmallImage(getImagePath(imagePath, targetPath, Users.SMALL_IMAGE));
-        }
         if(user.getDepartment()==null){
         	user.setDepartment(new Department());
         }
