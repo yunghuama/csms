@@ -8,9 +8,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csms.domain.Enterprise;
 import com.opensymphony.xwork2.ActionContext;
 import com.platform.constants.SQLConstant;
-import com.platform.constants.StringConstant;
 import com.platform.dao.UsersDAO;
 import com.platform.dao.meta.RoleDAO;
 import com.platform.domain.Department;
@@ -48,11 +48,13 @@ public class UsersService implements IService {
      */
     public Users saveLogin(String accountName, String password) throws CRUDException {
         Users users =  usersDAO.find(SQLConstant.USERS_LOGIN_SELECT_SQL, new String[]{accountName, password});
-        if(users.getRoleId()!=null&&users.getRoleId().length()==32){
-    	   Role role = roleDAO.find(SQLConstant.ROLE_SELECT_BY_ID, new Object[]{users.getRoleId()});
-           users.setRole(role);
-        }else {
-           users.setRole(new Role());
+        if(users!=null){
+	        if(users.getRoleId()!=null&&users.getRoleId().length()==32){
+	    	   Role role = roleDAO.find(SQLConstant.ROLE_SELECT_BY_ID, new Object[]{users.getRoleId()});
+	           users.setRole(role);
+	        }else {
+	           users.setRole(new Role());
+	        }
         }
         return users;
     }
@@ -245,21 +247,12 @@ public class UsersService implements IService {
         Users oldUser = usersDAO.find(SQLConstant.USERS_GET_BY_ID, new String[]{user.getId()});
         oldUser.setPassword(user.getPassword());
         oldUser.setAccountName(user.getAccountName());
-        oldUser.setSex(user.getSex());
-        oldUser.setBirthday(user.getBirthday());
         oldUser.setState(user.getState());
         oldUser.setArea(user.getArea());
-        oldUser.setRealName(user.getRealName());
-        oldUser.setDepartment(user.getDepartment());
         oldUser.setEditor(LoginBean.getLoginBean().getUser());
         oldUser.setEditTime(new Date());
-        oldUser.setCellNo(user.getCellNo());
-        oldUser.setEnterprise(user.getEnterprise());
-        if(Validate.notNull(imagePath)) {
-            oldUser.setBigImage(getImagePath(imagePath, targetPath, Users.BIG_IMAGE));
-            oldUser.setNormalImage(getImagePath(imagePath, targetPath, Users.NORMAL_IMAGE));
-            oldUser.setSmallImage(getImagePath(imagePath, targetPath, Users.SMALL_IMAGE));
-        }
+        oldUser.setRoleId(user.getRoleId());
+        oldUser.setRemark(user.getRemark());
         try{
      	   usersDAO.update(oldUser);
 	     }catch(Exception e){
@@ -352,10 +345,7 @@ public class UsersService implements IService {
                 new String[]{SearchUtil.STRING_LIKE,SearchUtil.STRING_LIKE},//查询类型
                 searchType,//与或类型
                 searchValue);//查询值
-        if (Validate.notNull(districtId))
-            return usersDAO.pagination(page, SQLConstant.USERS_ALL_SELECT_PARAMS_DEPT + ss,new Object[]{districtId});
-        else
-            return usersDAO.pagination(page,SQLConstant.USERS_ALL_SELECT_PARAMS+ss ,null);
+        return usersDAO.pagination(page, SQLConstant.USERS_ALL_SELECT_PARAMS_DEPT + ss,new Object[]{districtId});
     }
     
     /**
@@ -372,6 +362,9 @@ public class UsersService implements IService {
         user.setState(user.getState());
         if(user.getDepartment()==null){
         	user.setDepartment(new Department());
+        }
+        if(user.getEnterprise()==null){
+        	user.setEnterprise(new Enterprise());
         }
         try{
         	  usersDAO.save(user);

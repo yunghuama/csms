@@ -43,6 +43,7 @@ public class UsersAction extends GenericAction<Users> {
     private EnterpriseService enterpriseService;
     @Autowired
     private DistrictService districtService;
+    
 
     private List<Department> departmentList;
     private List<Enterprise> enterpriseList;
@@ -88,10 +89,35 @@ public class UsersAction extends GenericAction<Users> {
     		roleList.add(role4);
     		roleList.add(role5);
     	}
+    	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    		Role role3 = new Role();
+    		role3.setId("ff8080813c55b78c013c55df0e67003f");
+    		role3.setName("市级管理员");
+    		roleList.add(role3);
+    	}
+    	if("ff8080813c55b78c013c55df0e67003f".equals(users.getRole().getId())){
+    		Role role4 = new Role();
+    		role4.setId("ff8080813c55b78c013c55df64c50040");
+    		role4.setName("区级管理员");
+    		roleList.add(role4);
+    	}
         try{
-        if(Validate.notNull(azparam))
-            page = usersService.paginationByPY(page, "realName", azparam);
-        else
+        	//如果是省级管理员
+        	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+        		if(searchValue.size()==0){
+	        		searchValue.add(0, "ff8080813c55b78c013c55df0e67003f");
+	        		searchValue.add(1,"");
+	        		searchType = "and";
+        		}
+        	}
+        	//如果是市级管理员
+        	if("ff8080813c55b78c013c55df0e67003f".equals(users.getRole().getId())){
+        		if(searchValue.size()==0){
+	        		searchValue.add(0, "ff8080813c55b78c013c55df64c50040");
+	        		searchValue.add(1,"");
+	        		searchType = "and";
+        		}
+        	}
             page = usersService.listPagination(page, searchType, searchValue, deptId);
         }catch(Exception e){
         	e.printStackTrace();
@@ -117,7 +143,19 @@ public class UsersAction extends GenericAction<Users> {
      * @throws Exception
      */
     public String listTree() throws Exception {
-    	districtList = districtService.findAll();
+    	Users users = LoginBean.getLoginBean().getUser();
+    	//如果是管理员
+    	if("402881c92ca0977f012ca09978a30001".equals(users.getRole().getId())){
+    		districtList = districtService.findAll();
+    	}
+    	//如果是省级管理员
+    	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    		districtList = districtService.findByType(District.DISTRICTTYPE.CITY.toString());
+    	}
+    	//如果是市级管理员
+    	if("ff8080813c55b78c013c55df0e67003f".equals(users.getRole().getId())){
+    		districtList = districtService.findByType(District.DISTRICTTYPE.AREA.toString());
+    	}
         return SUCCESS;
     }
 
@@ -139,18 +177,23 @@ public class UsersAction extends GenericAction<Users> {
     		role2.setName("审核管理员");
     		roleList.add(role1);
     		roleList.add(role2);
-    	}
-    	//获得区域
-    	//如果是管理员
-    	if("402881c92ca0977f012ca09978a30001".equals(users.getRole().getId())){
     		districtList = districtService.findAll();
     	}
+    	//获得区域
     	//如果是省级管理员
     	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    		Role role1 = new Role();
+    		role1.setId("ff8080813c55b78c013c55df0e67003f");
+    		role1.setName("市级管理员");
+    		roleList.add(role1);
     		districtList = districtService.findByType(District.DISTRICTTYPE.CITY.toString());
     	}
     	//如果是市级管理员
-    	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    	if("ff8080813c55b78c013c55df0e67003f".equals(users.getRole().getId())){
+    		Role role1 = new Role();
+    		role1.setId("ff8080813c55b78c013c55df64c50040");
+    		role1.setName("区级管理员");
+    		roleList.add(role1);
     		districtList = districtService.findByType(District.DISTRICTTYPE.AREA.toString());
     	}
         return SUCCESS;
@@ -175,6 +218,7 @@ public class UsersAction extends GenericAction<Users> {
     		user.setRoleId("ff8080813c55b78c013c55df64c50040");
     	}
         usersService.saveUsers(user, imagePath, targetPath);
+        roleUsersService.saveRoleUsers(user.getId(), user.getRoleId(), "T");
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -199,9 +243,36 @@ public class UsersAction extends GenericAction<Users> {
      * @throws Exception
      */
     public String toUpdate() throws Exception {
-        // 加载部门列表
-        departmentList = departmentService.findAllDepartment();
-        enterpriseList = enterpriseService.findAll();
+    	Users users = LoginBean.getLoginBean().getUser();
+    	roleList = new ArrayList<Role>();
+    	if("402881c92ca0977f012ca09978a30001".equals(users.getRole().getId())){
+    		Role role1 = new Role();
+    		role1.setId("ff8080813c55b78c013c55cc91690005");
+    		role1.setName("省级管理员");
+    		Role role2 = new Role();
+    		role2.setId("ff8080813c56e38d013c56e38d290000");
+    		role2.setName("审核管理员");
+    		roleList.add(role1);
+    		roleList.add(role2);
+    		districtList = districtService.findAll();
+    	}
+    	//获得区域
+    	//如果是省级管理员
+    	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    		Role role1 = new Role();
+    		role1.setId("ff8080813c55b78c013c55df0e67003f");
+    		role1.setName("市级管理员");
+    		roleList.add(role1);
+    		districtList = districtService.findByType(District.DISTRICTTYPE.CITY.toString());
+    	}
+    	//如果是市级管理员
+    	if("ff8080813c55b78c013c55df0e67003f".equals(users.getRole().getId())){
+    		Role role1 = new Role();
+    		role1.setId("ff8080813c55b78c013c55df64c50040");
+    		role1.setName("区级管理员");
+    		roleList.add(role1);
+    		districtList = districtService.findByType(District.DISTRICTTYPE.AREA.toString());
+    	}
         user = usersService.findById(userId);
         return SUCCESS;
     }
@@ -213,12 +284,17 @@ public class UsersAction extends GenericAction<Users> {
      * @throws Exception
      */
     public String update() throws Exception {
-    	String targetPath = null;
-    	if(Validate.notNull(imagePath)) {
-    		imagePath = ServletActionContext.getServletContext().getRealPath(imagePath);
-    		targetPath = ServletActionContext.getServletContext().getRealPath(FileHelper.SEPARATOR + Users.PIC_FOLDER);
+    	Users users = LoginBean.getLoginBean().getUser();
+    	//如果是省管理员
+    	if("ff8080813c55b78c013c55cc91690005".equals(users.getRole().getId())){
+    		user.setRoleId("ff8080813c55b78c013c55df0e67003f");
     	}
-        usersService.updateUsers(user, imagePath, targetPath);
+    	//如果是市级管理员
+    	if("ff8080813c55b78c013c55df0e67003f".equals(users.getRole().getId())){
+    		user.setRoleId("ff8080813c55b78c013c55df64c50040");
+    	}
+        usersService.updateUsers(user, imagePath, null);
+        roleUsersService.saveRoleUsers(user.getId(), user.getRoleId(), "T");
         return SUCCESS;
     }
 

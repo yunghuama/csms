@@ -30,7 +30,7 @@ String path = request.getContextPath();
         </tr>
         <tr>
           <td class="form-left"><span class="form-required">*</span>所在区域</td>
-          <td class="form-right"><s:select list="districtList" listKey="id" listValue="name" name="user.roleId"></s:select></td>
+          <td class="form-right"><s:select list="districtList" listKey="id" listValue="name" name="user.area"></s:select></td>
         </tr>
         <tr>
           <td class="form-left">备注</td>
@@ -45,7 +45,6 @@ String path = request.getContextPath();
       <input id="imagePath" name="imagePath" type="hidden"/>
       <s:hidden name="tabId"/>
       <s:hidden name="windowPanelId"/>
-      <iframe id="tempUpload" name="tempUpload" style="display: none;"></iframe>
     </form>
     
     <script src="<%=path%>/js/core.js" type="text/javascript"></script>
@@ -61,11 +60,6 @@ String path = request.getContextPath();
       addValidate('accountName', [{type:'canNull', value:'F', message:'用户名必须填写'}]);
       addValidate('password', [{type:'canNull', value:'F', message:'密码必须填写'}]);
       
-      addValidate('realName', [{type:'maxlength', value: 50, message:'【姓名】最大长度为50'}]);
-      addValidate('accountName', [{type:'maxlength', value: 50, message:'【用户名】最大长度为50'}]);
-      addValidate('password', [{type:'maxlength', value: 20, message:'【密码】最大长度为20'}]);
-      addValidate('cellNo', [{type:'maxlength', value: 11, message:'【手机号】最大长度为11'}]);
-      addValidate('cellNo', [{type:'isMobile', value: 'T', message:'输入的手机号不是正确的手机号'}]);
     });
     
     function validateAccountName() {

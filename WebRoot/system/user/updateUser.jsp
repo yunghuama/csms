@@ -15,44 +15,31 @@ String path = request.getContextPath();
     <form name="userForm" id="userForm" action="<%=path%>/system/users/update.v" class="form" method="post" enctype="multipart/form-data">
       <div class="form-group">基本信息</div>
       <s:hidden name="user.id"/>
+      <s:hidden name="user.roleId"></s:hidden>
       <table class="form-table" cellspacing="0" cellpadding="0">
         <tr>
-          <td class="form-left"><span class="form-required">*</span>性别</td>
-          <td class="form-right"><s:radio name="user.sex" list="@com.platform.constants.StringConstant@SEX_RADIO" theme="simple"/></td>
-        </tr>
-        <tr>
-          <td class="form-left"><span class="form-required">*</span>真实姓名</td>
-          <td class="form-right"><s:textfield id="realName" name="user.realName" cssClass="text_f" theme="simple"/></td>
-        </tr>
-        <tr>
-          <td class="form-left">出生日期</td>
-          <td class="form-right"><input type="text" name="user.birthday" class="Wdate text f" value="<s:date name="user.birthday" format="yyyy-MM-dd"/>" onclick="new WdatePicker({startDate:'1970-01-01'});"/></td>
-        </tr>
-        <tr>
           <td class="form-left"><span class="form-required">*</span>用户名</td>
-          <td class="form-right"><s:property value="user.accountName"/></td>
+          <td class="form-right"><s:textfield type="text" id="accountName" name="user.accountName" class="text_f"/></td>
         </tr>
         <tr>
           <td class="form-left"><span class="form-required">*</span>密码</td>
-          <td class="form-right"><input type="password" id="password" name="user.password" class="text_f" value="<s:property value="user.password"/>"/></td>
+          <td class="form-right"><s:textfield type="password" id="password" name="user.password" class="text_f"/></td>
         </tr>
         <tr>
-          <td class="form-left"><span class="form-required">*</span>所在部门</td>
-          <td class="form-right"><s:select name="user.department.id" list="departmentList" listKey="id" listValue="name" theme="simple"/></td>
+          <td class="form-left"><span class="form-required">*</span>所在区域</td>
+          <td class="form-right"><s:select list="districtList" listKey="id" listValue="name" name="user.area"></s:select></td>
+        </tr>
+        <tr>
+          <td class="form-left">备注</td>
+          <td class="form-right"><s:textarea rows="5" cols="20" name="user.remark"></s:textarea> </td>
         </tr>
         <tr>
           <td class="form-left">状态</td>
-          <td class="form-right"><s:select name="user.state" list="@com.platform.constants.StringConstant@STATE_RADIO" theme="simple"/></td>
-        </tr>
-        <tr>
-          <td class="form-left">手机号</td>
-          <td class="form-right"><s:textfield id="cellNo" name="user.cellNo" cssClass="text_f" theme="simple"/></td>
+          <td class="form-right"><s:radio name="user.state" list="@com.platform.constants.StringConstant@STATE_RADIO" theme="simple"/></td>
         </tr>
       </table>
-      <input id="imagePath" name="imagePath" type="hidden"/>
       <s:hidden name="tabId"/>
       <s:hidden name="windowPanelId"/>
-      <iframe id="tempUpload" name="tempUpload" style="display: none;"></iframe>
     </form>
     
     <script src="<%=path%>/js/core.js" type="text/javascript"></script>

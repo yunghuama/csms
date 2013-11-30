@@ -39,7 +39,7 @@ public final class SQLConstant {
 	public static final String USERS_GET_BY_ID = "select * from users where id = ?";
 	public static final String USERS_NOSELF_ALL_SQL = "select * from users where id != ? and state = 'T'";
 	public static final String USERS_SAVE_SQL = "insert into users(id,accountname,realname,password,sex,birthday,edu,state,departmentid,creator,createtime,bigimage,normalimage,smallimage,area,cellno,enterprise,role,remark) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	public static final String USERS_UPDATE_SQL = "update users set accountname = ?,realname = ?,password = ?,sex = ?,birthday = ?,edu = ?,state = ?,departmentid = ?,editor = ?,edittime = ?,bigimage = ?,normalimage = ?,smallimage = ?,area = ?,cellno = ?,enterprise = ?,remark = ? where id = ?";
+	public static final String USERS_UPDATE_SQL = "update users set accountname = ?,realname = ?,password = ?,sex = ?,birthday = ?,edu = ?,state = ?,departmentid = ?,editor = ?,edittime = ?,bigimage = ?,normalimage = ?,smallimage = ?,area = ?,cellno = ?,enterprise = ?,role=?,remark = ? where id = ?";
 	public static final String USERS_DEPT_SQL = "select u1.*,u2.departmentid as creatorDepartment,u2.realname as creatorName,d.name as departmentName from users u1 left join users u2 on u1.creator = u2.id left join department d on u1.departmentid = d.id where u1.departmentid = ? ";
 	public static final String USERS_ALL_MORE_SELECT = "select u1.*,u2.departmentid as creatorDepartment,u2.realname as creatorName,d.name as departmentName from users u1 left join users u2 on u1.creator = u2.id left join department d on u1.departmentid = d.id where 1=1 ";
 	public static final String USERS_ALL_SELECT_PARAMS = "select u.*,district.name as districtName,r.name as roleName,enterprise.name as enterpriseName from users u left join sms_district district on u.area = district.id left join sms_enterprise enterprise on u.enterprise = enterprise.id left join role r on u.role = r.id where 1=1";
@@ -181,6 +181,7 @@ public final class SQLConstant {
 	public static final String ROLEUSERS_BY_USERS_SQL = "select * from vmeta_role_users where usersid = ?";
 	public static final String ROLEUSERS_SELECT_BY_ROLE_SQL = "select * from vmeta_role_users where roleid = ?";
 	public static final String ROLEUSERS_DELETE_BY_ID = "delete from vmeta_role_users where id = ?";
+	public static final String ROLEUSERS_DELETE_BY_USERSID = "delete from vmeta_role_users where usersid = ?";
 	public static final String ROLEUSERS_SELECT_BY_ROLE_USERS_SQL = "select * from vmeta_role_users where (roleid = ? or roleid = ? or roleid = ? or roleid = ?) and usersid = ?";
 	public static final String ROLEUSERS_BY_USERS_ROLE_SQL = "select * from vmeta_role_users where usersid = ? and roleid = ?";
 	public static final String ROLEUSERS_SAVE_SQL = "insert into vmeta_role_users(id,roleid,usersid) values(?,?,?)";

@@ -151,6 +151,38 @@ public class RoleUsersService implements IService {
         }
     }
     
+    
+    /**
+     * 角色关联用户
+     * 
+     * @param idListimport java.util.Date;
+
+     * @param roleId
+     * @param state
+     * @throws CRUDException
+     */
+    @Transactional(rollbackFor={Exception.class,RuntimeException.class})
+    public void saveRoleUsers(String usersId, String roleId, String state) throws CRUDException {
+        if (Validate.notNull(usersId)) {
+    		roleUsersDAO.deleteByProperty(SQLConstant.ROLEUSERS_DELETE_BY_USERSID,usersId);
+            if (!Validate.idNotNull(findUsersRoleByUsersAndRole(usersId, roleId))) {
+                Role r = new Role();
+                r.setId(roleId);
+
+                Users u = new Users();
+                u.setId(usersId);
+
+                RoleUsers ru = new RoleUsers();
+                ru.setRole(r);
+                ru.setUsers(u);
+
+                roleUsersDAO.save(ru);
+                // 将用户ID放入角色变更集合中
+                roleChangedService.flushRoleCache(usersId);
+                }
+            }
+       }
+    
     /**
      * 根据用户ID查找用户权限
      * 

@@ -68,7 +68,9 @@ public class UsersDAO extends GenericDAO{
 			users.getSmallImage(),
 			users.getArea(),
 			users.getCellNo(),
-			users.getEnterprise().getId()
+			users.getEnterprise().getId(),
+			users.getRoleId(),
+			users.getRemark()
 		});
 	}
 	
@@ -86,7 +88,7 @@ public class UsersDAO extends GenericDAO{
 				users.getBirthday(),
 				users.getEdu(),
 				users.getState(),
-				users.getDepartment().getId(),
+				"",
 				users.getEditor().getId(),
 				users.getEditTime(),
 				users.getBigImage(),
@@ -94,7 +96,9 @@ public class UsersDAO extends GenericDAO{
 				users.getSmallImage(),
 				users.getArea(),
 				users.getCellNo(),
-				users.getEnterprise().getId(),
+				"",
+				users.getRoleId(),
+				users.getRemark(),
 				users.getId()
 			});
 	}
@@ -142,25 +146,16 @@ public class UsersDAO extends GenericDAO{
 		return jdbcTemplate.query(sql, args, new RowMapper<Users>(){
 			@Override
 			public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Users users = new Users();
-				users.setAccountName(rs.getString("accountName"));
-				users.setArea(rs.getString("area"));
-				users.setBigImage(rs.getString("bigimage"));
-				users.setCellNo(rs.getString("cellno"));
-				users.setEdu(rs.getString("edu"));
-				users.setPassword(rs.getString("password"));
-				users.setRealName(rs.getString("realname"));
-				users.setState(rs.getString("state"));
-				users.setId(rs.getString("id"));
-				users.setSex(rs.getString("sex"));
-				Department d = new Department();
-				d.setId(rs.getString("departmentid"));
-				users.setDepartment(d);
-				Enterprise enterprise = new Enterprise();
-				enterprise.setId(rs.getString("enterprise"));
-				users.setEnterprise(enterprise);
-				users.setRoleId(rs.getString("role"));
-				return users;
+				Users user = new Users();
+				user.setId(rs.getString("id"));
+				user.setAccountName(rs.getString("accountname"));
+				user.setRealName(rs.getString("realName"));
+				user.setArea(rs.getString("area"));
+				user.setState(rs.getString("state"));
+				user.setRemark(rs.getString("remark"));
+				user.setRoleId(rs.getString("role"));
+				user.setPassword(rs.getString("password"));
+				return user;
 			}
 		});
 	}

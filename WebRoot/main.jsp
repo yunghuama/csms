@@ -38,7 +38,7 @@ if(session.getAttribute("LoginBean")==null) {
     </s:include>
     <div class="header">
       <div class="logo"></div>
-      <div class="info">&nbsp;&nbsp;&nbsp;&nbsp;欢迎您：<s:property value="#session['LoginBean'].user.realName"/> | <a href="javascript:void(0);openChangePassword();">修改密码</a> | <a href="#" style="cursor:help;">帮助</a> | <a href="javascript:void(0);window.location = '<%=path%>/logout.v';">注销</a></div>
+      <div class="info">&nbsp;&nbsp;&nbsp;&nbsp;欢迎您：<s:property value="#session['LoginBean'].user.accountName"/> | <a href="javascript:void(0);openChangePassword();">修改密码</a> | <a href="#" style="cursor:help;">帮助</a> | <a href="javascript:void(0);window.location = '<%=path%>/logout.v';">注销</a></div>
     </div>
 
     <s:set name="tString" value="@com.platform.constants.StringConstant@TRUE"/>

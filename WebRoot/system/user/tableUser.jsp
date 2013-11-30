@@ -118,7 +118,8 @@ String path = request.getContextPath();
               top.userFunctions.openUpdateUserWindow(getFirstID());
             }
           }
-        },'-',{
+        },
+        /**'-',{
           type : 'button',
           text : '删除',
           useable : '<s:property value="@com.platform.util.Meta@getOperate(\"users_delete\")"/>',
@@ -143,7 +144,9 @@ String path = request.getContextPath();
               });
             }
           }
-        },'-',{
+        },
+       **/
+        '-',{
           type : 'button',
           text : '关联角色',
           useable : '<s:property value="@com.platform.util.Meta@getOperate(\"users_linkrole\")"/>',
