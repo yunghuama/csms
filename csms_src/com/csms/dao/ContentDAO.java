@@ -58,10 +58,6 @@ public class ContentDAO extends GenericDAO{
 				content.setRemark(rs.getString("remark"));
 				content.setState(rs.getString("state"));
 				content.setCreateTime(rs.getLong("createtime"));
-				Users user = new Users();
-				user.setId(rs.getString("creator"));
-				user.setRealName(rs.getString("realname"));
-				content.setCreator(user);
 				return content;
 			}}));
 		int rowCount = queryForInt(Meta.getRowCountSQL(CSMSSQLConstant.CONTENT_ROWCOUNT_SQL , sql),args);

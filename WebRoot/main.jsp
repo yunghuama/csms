@@ -295,7 +295,7 @@ if(session.getAttribute("LoginBean")==null) {
       }
       
       
-      if("<s:property value='@com.platform.util.Meta@getOperate(\"comnumber_view\")'/>"=="T"){
+      if("<s:property value='@com.platform.util.Meta@getOperate(\"district_view\")'/>"=="T"){
     	     eventArray.push({
     	    	    trigger: 'com_district',
     	    	    id: 'district',
@@ -308,7 +308,7 @@ if(session.getAttribute("LoginBean")==null) {
     	    });
     	      }
       
-      if("<s:property value='@com.platform.util.Meta@getOperate(\"comnumber_view\")'/>"=="T"){
+      if("<s:property value='@com.platform.util.Meta@getOperate(\"enterprise_view\")'/>"=="T"){
     	     eventArray.push({
     	    	    trigger: 'com_enterprise',
     	    	    id: 'enterprise',

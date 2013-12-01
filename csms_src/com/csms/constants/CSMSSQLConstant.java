@@ -15,7 +15,7 @@ public class CSMSSQLConstant {
 	public static final String CONTENT_SAVE_SQL = "insert into sms_content(id,content,department,remark,reason,state,creator,createtime) values(?,?,?,?,?,?,?,?)";
 	public static final String CONTENT_SELECT_BY_PAGE_SQL = "select c.*,u.realname from sms_content c,users u where c.department = ? and  c.creator = u.id ";
 	public static final String CONTENT_SELECT_BY_PAGE_STATE_SQL = "select c.*,u.realname from sms_content c,users u where c.department = ? and c.state = ? and c.creator = u.id ";
-	public static final String CONTENT_SELECT_BY_PAGE_UNCHECKED_SQL = "select c.*,u.realname,d.name as departmentname from sms_content c,users u,department d where c.state = ? and c.creator = u.id and d.id = c.department";
+	public static final String CONTENT_SELECT_BY_PAGE_UNCHECKED_SQL = "select c.* from sms_content c where c.state = ?";
 	public static final String CONTENT_ROWCOUNT_SQL = "select count(c.id)";
 	public static final String CONTENT_SELECT_ALL_SQL = "select id,content from sms_content c,users u where c.department id = ? and c.creator = u.id ";
 	public static final String CONTENT_SELECT_BY_ID = "select c.* from sms_content c where id = ?";

@@ -26,8 +26,6 @@ String path = request.getContextPath();
           <td>说明</td>
           <td>状态</td>
           <td>审核备注</td>
-          <td>创建人</td>
-          <td>创建时间</td>
         </tr>
       </table>
       <table id="dataTable" cellpadding="0" cellspacing="0">
@@ -35,19 +33,12 @@ String path = request.getContextPath();
           <tr class="row">
             <td class="num"><s:property value="#i.index+1"/></td>
             <td class="box">
-              <s:if test="#content.creator.id == #session['LoginBean'].user.id">
                 <input type="checkbox" name="idList" value="<s:property value="#content.id"/>"/>
-              </s:if>
-              <s:else>
-                <img class="more-operate" src="<%=path%>/image/more-operate.gif" onclick="openMoreOperateWindow(event, '<s:property value="#content.creator.id"/>','<s:property value="#content.creator.department.id"/>','<s:property value="#content.id"/>');"/>
-              </s:else>
             </td>
             <td><span><s:property value="#content.content"/>&nbsp;</span></td>
             <td><span><s:property value="#content.remark"/>&nbsp;</span></td>
             <td align="center"><span> <s:property value='@com.csms.constants.CSMSStringConstant@CONTENT_STATE_TYPE.get(#content.state)'/>&nbsp;</span></td>
             <td align="center"><span><s:property value="#content.reason"/>&nbsp;</span></td>
-            <td align="center"><span><s:property value="#content.creator.realName"/>&nbsp;</span></td>
-            <td align="center"><span><s:date name="#content.createTime" format="yyyy-MM-dd HH:mm:ss"/>&nbsp;</span></td>
           </tr>
         </s:iterator>
       </table>
@@ -104,7 +95,7 @@ String path = request.getContextPath();
       new Grid({
         titleTable:'titleTable',
         dataTable:'dataTable',
-        widths : [30,24,200,200,100,200,130,100],
+        widths : [30,24,200,200,100,200],
         height : function(){return getGridHeight({toolbarId:'toolbar',hasPage:true});}
       });
       

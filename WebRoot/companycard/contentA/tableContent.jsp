@@ -26,8 +26,6 @@ String path = request.getContextPath();
           <td>名片备注</td>
           <td>状态</td>
           <td>审核意见</td>
-          <td>创建人</td>
-          <td>创建时间</td>
         </tr>
       </table>
       <table id="dataTable" cellpadding="0" cellspacing="0">
@@ -41,8 +39,6 @@ String path = request.getContextPath();
             <td><span><s:property value="#content.remark"/>&nbsp;</span></td>
             <td align="center"><span> <s:property value='@com.csms.constants.CSMSStringConstant@CONTENT_STATE_TYPE.get(#content.state)'/>&nbsp;</span></td>
             <td align="center"><span><s:property value="#content.reason"/>&nbsp;</span></td>
-            <td align="center"><span><s:property value="#content.creator.realName"/>&nbsp;</span></td>
-            <td align="center"><span><s:date name="#content.createTime" format="yyyy-MM-dd HH:mm:ss"/>&nbsp;</span></td>
           </tr>
         </s:iterator>
       </table>
@@ -68,7 +64,7 @@ String path = request.getContextPath();
         icon: '../../image/op.gif',
         items : [{
             type:'button',
-            text:'修改',
+            text:'审核',
             useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardcontentverify_edit\")"/>',
             position: {
             	a: '-20px 0px',
@@ -84,7 +80,7 @@ String path = request.getContextPath();
       new Grid({
         titleTable:'titleTable',
         dataTable:'dataTable',
-        widths : [30,24,200,200,100,200,130,100],
+        widths : [30,24,200,200,100,200],
         height : function(){return getGridHeight({toolbarId:'toolbar',hasPage:true});}
       });
       
