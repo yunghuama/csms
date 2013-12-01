@@ -195,7 +195,7 @@ if(session.getAttribute("LoginBean")==null) {
         }
       });
       }
-      if("<s:property value='@com.platform.util.Meta@getOperate(\"department_view\")'/>"=="T"){
+      if("F"=="T"){
       eventArray.push({
         trigger: 'dept',
         id: 'department',
@@ -207,7 +207,7 @@ if(session.getAttribute("LoginBean")==null) {
         }
       });
       }
-      if("<s:property value='@com.platform.util.Meta@getOperate(\"role_view\")'/>"=="T"){
+      if("F"=="T"){
       eventArray.push({
         trigger: 'ro',
         id: 'role',

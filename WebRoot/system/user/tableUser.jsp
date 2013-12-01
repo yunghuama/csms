@@ -145,7 +145,7 @@ String path = request.getContextPath();
             }
           }
         },
-       **/
+      
         '-',{
           type : 'button',
           text : '关联角色',
@@ -160,7 +160,9 @@ String path = request.getContextPath();
               top.userFunctions.openSaveUsersRoleWindow(getFirstID());
             }
           }
-        },'-',{
+        }, **/
+        
+        '-',{
           type: 'search'
         }]
       });
