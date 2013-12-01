@@ -18,6 +18,23 @@ String path = request.getContextPath();
     <s:include value="/share/btMask.jsp" />
   	<div id="toolbar"></div>
   	<form id="listForm" action="<%=path%>/csms/number/listPaginationA.v" method="post">
+  	<s:hidden name="searchType"/>
+      <div class="search-div">
+        <div class="search-condition">
+          <table class="search-table" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="c-left">手机号：</td>
+              <td><input name="searchValue[0]" type="text" class="text" value="<s:property value="searchValue[0]"/>"/></td>
+              <td class="c-left">姓名</td>
+              <td><input name="searchValue[1]" type="text" class="text" value="<s:property value="searchValue[1]"/>"/></td>
+            </tr>
+          </table>
+        </div>
+        <div class="search-commit">
+          <a href="javascript:void(0)" class="search-button" onclick="$('#searchType').val('and');$('#listForm').submit();">与查询</a>
+          <a href="javascript:void(0)" class="search-button" onclick="$('#searchType').val('or');$('#listForm').submit();">或查询</a>
+        </div>
+      </div>
       <table id="titleTable" cellpadding="0" cellspacing="0">
         <tr>
           <td>&nbsp;</td>
@@ -26,7 +43,6 @@ String path = request.getContextPath();
           <td>部门</td>
           <td>姓名</td>
           <td>备注</td>
-          <td>创建时间</td>
         </tr>
       </table>
       <table id="dataTable" cellpadding="0" cellspacing="0">
@@ -40,7 +56,6 @@ String path = request.getContextPath();
             <td><span><s:property value="#number.group"/>&nbsp;</span></td>
             <td align="center"><span><s:property value="#number.name"/></span></td>
             <td><span><s:property value="#number.remark"/>&nbsp;</span></td>
-            <td align="center"><span><s:date name="#number.createTime" format="yyyy-MM-dd HH:mm:ss"/>&nbsp;</span></td>
           </tr>
         </s:iterator>
       </table>
@@ -66,10 +81,10 @@ String path = request.getContextPath();
         icon: '../../image/op.gif',
         items : [{
             type:'button',
-            text:'批量移动号码',
+            text:'批量移动',
             useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardnumber_edit\")"/>',
             position: {
-           	   a: '-20px 0px',
+           	   a: '-160px -60px',
                b: '-20px -120px'
             },
             handler:function(){
@@ -103,12 +118,14 @@ String path = request.getContextPath();
             text:'号码资料导入',
             useable : '<s:property value="@com.platform.util.Meta@getOperate(\"cardnumber_edit\")"/>',
             position: {
-           	   a: '-20px 0px',
+           	   a: '0px -60px',
                b: '-20px -120px'
             },
             handler:function(){
-             
+            	top.numberFunctions.openImportNumberWindow();
             }
+        },'-',{
+          type: 'search'
         }]
       });
       

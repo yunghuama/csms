@@ -59,6 +59,8 @@ public class CSMSSQLConstant {
 	public static final String GROUP_SELECT_ALL_SQL = "select g.* from sms_group g where g.department = ? order by g.type";
 	public static final String GROUP_ROWCOUNT_SQL = "select count(g.id) ";
 	public static final String GROUP_DEFAULT_SELECT = "select * from sms_group where type = '0' and department = ?";
+	public static final String GROUP_SELECT_NAME_DEPART = "select * from sms_group where name=? and department = ?";
+	
 	
 	/**
 	 * 号码管理
@@ -75,6 +77,7 @@ public class CSMSSQLConstant {
 	public static final String NUMBER_SELECT_ALL_SQL = "select n.* from sms_number n where n.department = ?";
 	public static final String NUMBER_SELECT_COUNT_SQL = "select count(id) from sms_number where number = ?";
 	public static final String NUMBER_UPDATE_TODEFAULT_GROUP = "update sms_number set smsgroup = ? where smsgroup = ?";
+	public static final String NUMBER_UPDATE_GROUP_NAME_REMARK = "update sms_number set smsgroup =? ,name = ? ,remark = ? where number = ? and department = ?";
 
     /**
      * 报警管理

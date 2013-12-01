@@ -80,7 +80,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
 
     public String listPagination() throws Exception {
     	try{
-    	    page = numberService.listPagination(page,enterpriseId);	
+    	    page = numberService.listPagination(page,searchType,searchValue,enterpriseId);	
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -91,7 +91,7 @@ public class NumberAction extends GenericAction<CsmsNumber> {
     //根据部门获得号码
     public String listPaginationA() throws Exception {
     	try{
-    	    page = numberService.listPaginationA(page,groupId);	
+    	    page = numberService.listPaginationA(page,searchType,searchValue,groupId);	
     	}catch(Exception e){
     		e.printStackTrace();
     	}
@@ -304,6 +304,186 @@ public class NumberAction extends GenericAction<CsmsNumber> {
     		}
     		if(sb.length()>0)
     		sb.append("格式不对");
+    		//numberService.saveNumber(number);
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	if(sb.length()>0){
+    		errorInfo = sb.toString();
+    		return ERROR;
+    	}
+    	System.out.println(sb.toString());
+        return SUCCESS;
+    }
+    
+    
+    public String toImportA() throws Exception {
+    	
+    	return SUCCESS;
+    }
+    
+    /**
+     * 导入资料
+     * 
+     * @return
+     * @throws Exception
+     */
+    public String importXlsA() throws Exception {
+    	StringBuilder sb = new StringBuilder();
+    	try{
+    		UploadHelper helper = new UploadHelper(upload, uploadFileName, uploadTitle, uploadContentType, "upload",UploadHelper.NAME_UUID);
+    		List<AttachedFile> list = helper.getAttachedFiles();
+    		
+    		if(list!=null&&list.size()>0){
+    			String path = ServletActionContext.getServletContext().getRealPath("/");
+    			AttachedFile af = list.get(0);
+    			FileInputStream f = new FileInputStream(path+"/"+af.getFilePath());
+    			//如果是Excel2003格式
+    			if("xls".equals(af.getFileType())){
+    				HSSFWorkbook wb = new HSSFWorkbook(f);
+    				HSSFSheet sheet = wb.getSheetAt(0);
+    				int rowNum = sheet.getLastRowNum();
+    				for(int i=1;i<=rowNum;i++){
+    					HSSFRow row = sheet.getRow(i);
+    					HSSFCell numberCell = row.getCell((short)0);
+    					HSSFCell departCell = row.getCell((short)1);
+    					HSSFCell nameCell = row.getCell((short)2);
+    					HSSFCell remarkCell = row.getCell((short)3);
+    					String num = "";
+    					
+    					if(numberCell==null)
+    						continue;
+    					
+    					//判断是否是合法号码
+    				    if(numberCell.getCellType() == HSSFCell.CELL_TYPE_STRING){
+    						num = numberCell.getStringCellValue();
+    					}else if(numberCell.getCellType()==HSSFCell.CELL_TYPE_NUMERIC){
+    						double n = numberCell.getNumericCellValue();
+    						DecimalFormat df = new DecimalFormat("0"); 
+    						num = df.format(n);
+    					}else{
+    						sb.append("行:["+(i)+",1],");
+    						continue;
+    					}
+    				    
+    				    if(i>0&&(num==""||num.length()!=11)){
+    				    	sb.append("行:["+(i)+",1],");
+    				    	continue;
+    				    }
+    				    
+    				    
+    				    //判断号码是否存在
+    				    if(numberService.findCountByNumber(num)==0){
+    				    	sb.append("行:"+(i)+"不存在,");
+    				    }
+    					
+    				}
+    				//如果没有错误,则进行导入
+    				if(sb.length()==0){
+    					for(int i=1;i<=rowNum;i++){
+        					HSSFRow row = sheet.getRow(i);
+        					HSSFCell numberCell = row.getCell((short)0);
+        					HSSFCell departCell = row.getCell((short)1);
+        					HSSFCell nameCell = row.getCell((short)2);
+        					HSSFCell remarkCell = row.getCell((short)3);
+        					String num = "";
+        					String depart = "";
+        					String name = "";
+        					String remark = "";
+        					if(numberCell.getCellType() == HSSFCell.CELL_TYPE_STRING){
+        						num = numberCell.getStringCellValue();
+        					}else if(numberCell.getCellType()==HSSFCell.CELL_TYPE_NUMERIC){
+        						double n = numberCell.getNumericCellValue();
+        						DecimalFormat df = new DecimalFormat("0"); 
+        						num = df.format(n);
+        					}
+        					if(departCell!=null){
+        						depart = departCell.getStringCellValue();
+        					}
+        					if(nameCell!=null){
+        						name = nameCell.getStringCellValue();
+        					}
+        					if(remark!=null){
+        						remark = remarkCell.getStringCellValue();
+        					}
+        					System.out.println(num+""+depart+""+name+""+remark);
+        					numberService.updateNumber(num,depart,name,remark);
+        				}
+    				}
+    			}else if("xlsx".equals(af.getFileType())){
+    			//如果是Excel2007格式
+//    				XSSFWorkbook hssfWorkbook = new XSSFWorkbook(f);
+//        			XSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
+//        			int rowNum = hssfSheet.getLastRowNum();
+//        			for(int i=1;i<=rowNum;i++){
+//        				XSSFRow row = hssfSheet.getRow(i);
+//        				XSSFCell numberCell = row.getCell(0);
+//        				XSSFCell reamrkCell = row.getCell(1);
+//        				String num = "";
+//        				
+//        				if(numberCell.getCellType() == XSSFCell.CELL_TYPE_STRING){
+//        					num = numberCell.getStringCellValue();
+//        				}else if(numberCell.getCellType() == XSSFCell.CELL_TYPE_NUMERIC){
+//        					double n = numberCell.getNumericCellValue();
+//    						DecimalFormat df = new DecimalFormat("0"); 
+//    						num = df.format(n);
+//        				} else{
+//        					sb.append("行:["+(i)+",1],");
+//    						continue;
+//        				}
+//        				
+//        				 if(num==""||num.length()!=11){
+//      				    	sb.append("行:["+(i)+",1],");
+//      				    	continue;
+//      				    }
+//        				
+//        				 //如果有备注
+//     				    if(reamrkCell!=null){
+//     				    if(reamrkCell.getCellType() == XSSFCell.CELL_TYPE_STRING){
+//     				    	reamrkCell.getStringCellValue();
+//     					}else {
+//     						sb.append("行:["+(i)+",2],");
+//     						continue;
+//     					}
+//     				    }
+//        				 
+//     				    //判断号码是否存在
+//     				    if(numberService.findCountByNumber(num)>0){
+//     				    	sb.append("行:"+(i)+"已经存在,");
+//     				    }
+//        			}
+//        			//如果没有错误,则进行导入
+//    				if(sb.length()==0){
+//    					for(int i=1;i<=rowNum;i++){
+//    						XSSFRow row = hssfSheet.getRow(i);
+//            				XSSFCell numberCell = row.getCell(0);
+//            				XSSFCell remarkCell = row.getCell(1);
+//            				String num = "";
+//        					if(numberCell.getCellType() == XSSFCell.CELL_TYPE_STRING){
+//        						num = numberCell.getStringCellValue();
+//        					}else if(numberCell.getCellType()==XSSFCell.CELL_TYPE_NUMERIC){
+//        						double n = numberCell.getNumericCellValue();
+//        						DecimalFormat df = new DecimalFormat("0"); 
+//        						num = df.format(n);
+//        					}
+//        					//导入
+//        					CsmsNumber number1 = new CsmsNumber();
+//        					number1.setNumber(num);
+//        					number1.setGroup(number.getGroup());
+//        					if(remarkCell!=null)
+//        					number1.setRemark(remarkCell.getStringCellValue());
+//        					number1.setDepartment(enterpriseId);
+//        					if(numberService.findCountByNumber(num)==0)
+//        					numberService.saveNumber(number1);
+//        				}
+//    				}
+//        			
+    			}
+    			
+    			sb.append("请使用Excel 2003 格式");	
+    		}
+    		if(sb.length()>0)
+    		sb.append(" [格式不对]");
     		//numberService.saveNumber(number);
     	}catch(Exception e){
     		e.printStackTrace();

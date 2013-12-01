@@ -123,6 +123,16 @@ public class NumberDAO extends GenericDAO{
 			});
 		}
 	
+	public int update(String number,String group,String name,String remark,String department){
+	     return jdbcTemplate.update(CSMSSQLConstant.NUMBER_UPDATE_GROUP_NAME_REMARK, new Object[]{
+	    		 group,
+				 name,
+				 remark,
+				 number,
+				 department
+			});
+		}
+	
 	public int updateDefaultGroup(String defaultGroup,String group){
 	     return jdbcTemplate.update(CSMSSQLConstant.NUMBER_UPDATE_TODEFAULT_GROUP, new Object[]{
 	    		 defaultGroup,

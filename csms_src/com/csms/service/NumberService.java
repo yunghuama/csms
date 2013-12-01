@@ -10,25 +10,29 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.csms.constants.CSMSSQLConstant;
+import com.csms.dao.GroupDAO;
 import com.csms.dao.NumberDAO;
 import com.csms.domain.CsmsNumber;
+import com.csms.domain.Group;
 import com.csms.util.LoginUtils;
 import com.platform.exception.CRUDException;
 import com.platform.service.IService;
 import com.platform.util.LoginBean;
-import com.platform.util.Validate;
+import com.platform.util.SearchUtil;
 import com.platform.vo.Page;
 
 @Service
 public class NumberService implements IService {
 
     private NumberDAO numberDAO;
+    private GroupDAO groupDAO;
     
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
     	Log log = LogFactory.getLog(NumberService.class);
     	log.debug(jdbcTemplate);
         numberDAO = NumberDAO.getInstance(jdbcTemplate);
+        groupDAO = GroupDAO.getInstance(jdbcTemplate);
     }
 
     /**
@@ -39,15 +43,25 @@ public class NumberService implements IService {
      * @return
      * @throws CRUDException
      */
-    public Page<CsmsNumber> listPagination(Page<CsmsNumber> page,String depId) throws CRUDException {
-    	return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_DEP_SQL, new Object[]{depId});
+    public Page<CsmsNumber> listPagination(Page<CsmsNumber> page,String searchType, List<String> searchValue,String depId) throws CRUDException {
+    	String ss = SearchUtil.getString(
+                new String[]{"n.number","n.name"},//高级查询条件
+                new String[]{SearchUtil.STRING_LIKE,SearchUtil.STRING_LIKE},//查询类型
+                searchType,//与或类型
+                searchValue);//查询值
+    	return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_DEP_SQL +ss, new Object[]{depId});
     }
 
-    public Page<CsmsNumber> listPaginationA(Page<CsmsNumber> page,String group) throws CRUDException {
+    public Page<CsmsNumber> listPaginationA(Page<CsmsNumber> page,String searchType, List<String> searchValue,String group) throws CRUDException {
+    	String ss = SearchUtil.getString(
+                new String[]{"n.number","n.name"},//高级查询条件
+                new String[]{SearchUtil.STRING_LIKE,SearchUtil.STRING_LIKE},//查询类型
+                searchType,//与或类型
+                searchValue);//查询值
     	if(group!=null&&!"".equals(group)){
-    		return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_GROUP_SQL, new Object[]{group});
+    		return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_GROUP_SQL +ss, new Object[]{group});
     	}else {
-    		return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_DEP_SQL, new Object[]{LoginUtils.getEnterpriseId()});
+    		return numberDAO.pagination(page, CSMSSQLConstant.NUMBER_SELECT_BY_PAGE_DEP_SQL +ss, new Object[]{LoginUtils.getEnterpriseId()});
     	}
     }
     
@@ -93,6 +107,23 @@ public class NumberService implements IService {
     @Transactional(rollbackFor={Exception.class,RuntimeException.class})
     public void updateNumber(CsmsNumber number) throws CRUDException {
         numberDAO.update(number);
+    }
+    
+    /**
+     * 修改号码的组群和备注
+     */
+    @Transactional(rollbackFor={Exception.class,RuntimeException.class})
+    public void updateNumber(String number,String group,String name,String remark){
+    	//如果group是空，则查询默认部门
+    	if("".equals(group)){
+    		Group defaultGroup = groupDAO.find(CSMSSQLConstant.GROUP_DEFAULT_SELECT, new Object[]{LoginUtils.getEnterpriseId()});
+    		if(defaultGroup!=null)
+    		numberDAO.update(number, defaultGroup.getId(), name, remark, LoginUtils.getEnterpriseId());
+    	}else {
+    		Group defaultGroup = groupDAO.find(CSMSSQLConstant.GROUP_SELECT_NAME_DEPART, new Object[]{group,LoginUtils.getEnterpriseId()});
+    		if(defaultGroup!=null)
+    		numberDAO.update(number, defaultGroup.getId(), name, remark, LoginUtils.getEnterpriseId());
+    	}
     }
     
     /**

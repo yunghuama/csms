@@ -76,19 +76,19 @@ var numberFunctions = {
 	    });
 	  }
   ,
-  openImportNumberWindow : function(depId){
+  openImportNumberWindow : function(){
 	    new WindowPanel({
 	      id : 'importNumber',
 	      title : '导入号码',
 	      width : 350,
-	      height : 205,
+	      height : 80,
 	      closeConfirm : true,
-	      html : '<iframe name="numberImportFrame" id="numberImportFrame" src="'+projectName+'/csms/number/toImport.v?'+getFlushParam('importNumber')+'&depId='+depId+'" frameborder="0" scrolling="auto"></iframe>',
+	      html : '<iframe name="numberImportFrame" id="numberImportFrame" src="'+projectName+'/csms/number/toImportA.v?'+getFlushParam('importNumber')+'" frameborder="0" scrolling="auto"></iframe>',
 	      tbar : new Toolbar({
 	        icon: 'image/op.gif',
 	        items : [{
 	          type : 'button',
-	          text : '保存',
+	          text : '导入',
 	          position: {
 	            a: '-80px 0px',
 	            b: '-80px -120px'
