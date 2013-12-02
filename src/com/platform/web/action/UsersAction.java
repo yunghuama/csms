@@ -177,7 +177,7 @@ public class UsersAction extends GenericAction<Users> {
     		role2.setName("审核管理员");
     		roleList.add(role1);
     		roleList.add(role2);
-    		districtList = districtService.findAll();
+    		districtList = districtService.findByType(District.DISTRICTTYPE.PROVINCE.toString());
     	}
     	//获得区域
     	//如果是省级管理员

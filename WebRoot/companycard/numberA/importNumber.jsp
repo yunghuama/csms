@@ -12,7 +12,7 @@ String path = request.getContextPath();
   </head>
   <body>
     <form name="numberForm" id="numberForm" action="<%=path%>/csms/number/importXlsA.v" class="form" method="post" enctype="multipart/form-data">
-      <div class="form-group">基本信息&nbsp;&nbsp;<a href="javascript:void(0);">下载模板</a></div>
+      <div class="form-group">基本信息&nbsp;&nbsp;<a href="<%=path%>/upload/muban.xls">下载模板</a></div>
       <s:hidden name="depId"></s:hidden>
       <table class="form-table" cellspacing="0" cellpadding="0">
         <tr>
