@@ -1,11 +1,15 @@
 package com.csms.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.csms.dao.SysDAO;
+import com.csms.domain.SmsRule;
 import com.csms.domain.Warn;
 import com.platform.service.IService;
 import com.platform.vo.Page;
@@ -32,5 +36,13 @@ public class SysService implements IService {
     
     public Page<Warn> listPagination(Page page){
     	return sysDAO.paginationWarn(page);
+    }
+    
+    /**
+     * 获得规则
+     * @return
+     */
+    public HashMap<String,SmsRule> listSmsRule(){
+    	return sysDAO.listSmsRule();
     }
 }

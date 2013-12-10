@@ -3,12 +3,14 @@ package com.csms.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.csms.constants.CSMSSQLConstant;
+import com.csms.domain.SmsRule;
 import com.csms.domain.Warn;
 import com.platform.dao.GenericDAO;
 import com.platform.util.PageHelper;
@@ -84,5 +86,24 @@ public class SysDAO extends GenericDAO{
     	page.setRowCount(rowCount);
 		page.setMaxPage(PageHelper.getMaxPage(rowCount, page.getPageSize()));
     	return page;
+    }
+    
+    
+    public HashMap<String,SmsRule> listSmsRule(){
+    	final HashMap<String,SmsRule> hashMap = new HashMap<String,SmsRule>();
+    	jdbcTemplate.query(CSMSSQLConstant.SMS_RULE_QUERY, new RowMapper<SmsRule>(){
+			@Override
+			public SmsRule mapRow(ResultSet rs, int arg1) throws SQLException {
+				SmsRule smsRule = new SmsRule();
+				smsRule.setContent(rs.getString("content"));
+				smsRule.setNumber(rs.getString("number"));
+				smsRule.setRuleDay(rs.getString("ruleDay"));
+				smsRule.setTimeType(rs.getString("timeType"));
+				hashMap.put(smsRule.getNumber(), smsRule);
+				return smsRule;
+			}
+    		
+    	});
+    	return hashMap;
     }
 }

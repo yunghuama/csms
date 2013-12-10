@@ -24,7 +24,7 @@ String path = request.getContextPath();
         </tr>
         <tr>
           <td class="form-left">执行日期</td>
-          <td class="form-right">周一<input type="checkbox" name="ruleDay"/>&nbsp;周二<input type="checkbox" name="ruleDay"/>&nbsp;周三<input type="checkbox" name="ruleDay"/>&nbsp;周四<input type="checkbox" name="ruleDay"/>&nbsp;周五<input type="checkbox" name="ruleDay"/>&nbsp;周六<input type="checkbox" name="ruleDay"/>&nbsp;周日<input type="checkbox" name="ruleDay"/>&nbsp; </td>
+          <td class="form-right">周日<input type="checkbox" name="ruleDay"/>&nbsp;周一<input type="checkbox" name="ruleDay"/>&nbsp;周二<input type="checkbox" name="ruleDay"/>&nbsp;周三<input type="checkbox" name="ruleDay"/>&nbsp;周四<input type="checkbox" name="ruleDay"/>&nbsp;周五<input type="checkbox" name="ruleDay"/>&nbsp;周六<input type="checkbox" name="ruleDay"/>&nbsp; </td>
         </tr>
         <tr>
           <td class="form-left">执行时间</td>

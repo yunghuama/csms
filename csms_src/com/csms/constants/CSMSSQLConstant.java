@@ -110,4 +110,22 @@ public class CSMSSQLConstant {
     public static final String DISTRICT_SELECT_BY_ID = "select * from sms_district where id = ?";
     public static final String DISTRICT_SELECT_BY_PARENT_ID = "select * from sms_district where parentid = ?";
     public static final String DISTRICT_SELECT_BY_TYPE = "select * from sms_district where type = ?";
+    
+    
+    /**
+     * 短信处理sql
+     */
+    public static final String SSI_SELECT_BY_STATE_PAGE = "select * from tb_ssi where state = ? limit ?,?";
+    public static final String SSI_SELECT_BY_INCREASE_ID_PAGE = "select * from tb_ssi where sid > ? limit ?,?";
+    public static final String SSI_SELECT_BY_STAT = "select * from tb_ssi where state = ?";
+    public static final String SSI_SELECT_BY_INCREASE_ID = "select * from tb_ssi where sid > ?";
+    public static final String SSI_DELETE_BY_STATE = "delete from tb_ssi where state = ?";
+    public static final String SSI_RSP_SAVE = "insert into tb_ssi_rsp(active_service_flag,Divert_ServiceV_ton,Divert_ServiceV_npi,Divert_ServiceV_address,Divert_ServiceV_operatorID,Divert_ServiceV_nettype,New_SM_ContentV,new_data_codingV,STATE,CREATEDATE) values(?,?,?,?,?,?,?,?,?,?)";
+    
+    
+    /**
+     * 查询短信处理规则
+     */
+    public static final String SMS_RULE_QUERY = "SELECT snumber.number,srule.ruleDay,srule.timeType,scontent.content FROM sms_number snumber,sms_content scontent,sms_rule srule where snumber.smsgroup = srule.smsgroup and srule.content = scontent.id";
+  
 }
